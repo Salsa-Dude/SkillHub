@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  enum level: [:all, :beginner, :intermediate]
+  enum level: [:allLevels, :beginner, :intermediate]
   belongs_to :instructor, class_name: "User"
   has_many :students, class_name: "User", through: :course_sessions
   has_many :course_sessions
