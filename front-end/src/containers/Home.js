@@ -4,7 +4,12 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        I'm in Home Page
+        {this.props.currentUser ? (
+          <div>
+            <h1>{this.props.currentUser.first_name}</h1>
+            <h1>{this.props.currentUser.bio}</h1>
+          </div>
+        ) : null }
       </Fragment>
     )
   }
