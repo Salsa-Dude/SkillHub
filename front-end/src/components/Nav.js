@@ -2,7 +2,13 @@ import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 
-const Nav = ({location: { pathname}}) => {
+const Nav = ({location: { pathname}, logged_in, setCurrentUser}) => {
+  
+  let logout =  () => {
+    setCurrentUser(null)
+    localStorage.clear()
+  }
+
   return (
     <Menu pointing secondary size="huge">
       <Fragment>
@@ -29,7 +35,7 @@ const Nav = ({location: { pathname}}) => {
           as={NavLink}
           to="/messages"
         />
-          <Menu.Item to="/logout" name="Logout" />
+          <Menu.Item to="/logout" name="Logout" onClick={logout} />
         </Menu.Menu>
       </Fragment>
       <Menu.Item

@@ -35,7 +35,7 @@ class LoginContainer extends Component {
       }else{
         console.log(data)
         this.props.setCurrentUser(data.user_info)
-        // localStorage.setItem('token', data.token)
+        localStorage.setItem('token', data.token)
       }
     })
   }

@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.jumbo-container {
+  background: linear-gradient(rgba(100, 99, 99, 0.3), rgba(100, 99, 99, 0.4)), url("https://cdn.shopify.com/s/files/1/0070/7032/files/TGIM_blog_Ep7-2.jpg?6904128780371400284");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: cover;
+  background-position: 100%;
+  height: 35rem;
+}

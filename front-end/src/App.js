@@ -8,7 +8,30 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      currentUser: null
+      currentUser: null,
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if(token) {
+      fetch(`http://localhost:3000/api/v1/home`, {
+        method: "GET",
+        headers: {
+          "Authentication" : `Bearer ${token}`
+        }
+      }).then(res => res.json())
+      .then(data => {
+        this.setState({
+          currentUser: data.user,
+          loading: false
+        })
+      })
+    } else {
+      this.setState({
+        loading: false
+      })
     }
   }
 
@@ -21,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        {this.props.location.pathname !== '/login' ? <Nav/> : null }
+        {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}/> : null }
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" render={() => 
