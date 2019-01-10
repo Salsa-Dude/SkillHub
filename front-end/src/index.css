@@ -14,11 +14,44 @@ code {
 }
 
 .jumbo-container {
-  background: linear-gradient(rgba(100, 99, 99, 0.3), rgba(100, 99, 99, 0.4)), url("https://cdn.shopify.com/s/files/1/0070/7032/files/TGIM_blog_Ep7-2.jpg?6904128780371400284");
+  background: linear-gradient(rgba(100, 99, 99, 0.5), rgba(100, 99, 99, 0.5)), url("https://cdn.shopify.com/s/files/1/0070/7032/files/TGIM_blog_Ep7-2.jpg?6904128780371400284");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   background-size: cover;
   background-position: 100%;
   height: 35rem;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(41,48,59,0.55);
+}
+
+.jumbo-catchphase {
+  height: auto;
+  width: 40%;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  color: white;
+}
+
+.jumbo-catchphase h1 {
+  font-size: 45px;
+}
+
+.get-started-container {
+  margin-top: 40px;
+}
+
+.get-started-btn {
+  font-size: 20px !important;
+}
+
+.navbar {
+  border: none !important;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.active {
+  border: none !important;
 }

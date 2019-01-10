@@ -10,12 +10,12 @@ const Nav = ({location: { pathname}, logged_in, setCurrentUser}) => {
   }
 
   return (
-    <Menu pointing secondary size="huge">
+    <Menu className="navbar" pointing secondary size="huge">
       <Fragment>
         <Menu.Item
           as={NavLink}
           to="/home"
-          name="Home"
+          name="SkillHub"
           active={pathname === "/home"}
         />
         <Menu.Item
@@ -24,7 +24,7 @@ const Nav = ({location: { pathname}, logged_in, setCurrentUser}) => {
           to="/trips"
         />
         <Menu.Item
-          name='Become a Instructor'
+          name='Become a Mentor'
           as={NavLink}
           to="/myProperties"
         />
