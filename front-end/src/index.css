@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
 body {
   margin: 0;
   padding: 0;
@@ -29,7 +31,7 @@ code {
   height: auto;
   width: 40%;
   position: absolute;
-  top: 25%;
+  top: 18%;
   left: 10%;
   color: white;
 }
@@ -50,8 +52,21 @@ code {
   border: none !important;
   padding-left: 5%;
   padding-right: 5%;
+  /* margin-top: 1% !important; */
 }
 
 .active {
   border: none !important;
+}
+
+.login-btn {
+  border: solid !important;
+  color: white !important;
+  background-color: #00b5ad !important;
+}
+
+.logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  color: #00b5ad !important;
 }
