@@ -58,5 +58,21 @@ code {
 .active {
   border: none !important;
 }
+/**************************************************************************  
+LOGIN FORM
+*****************************************************************/
 
+.emailLabel, .passwordLabel {
+  padding-bottom: 10px;
+}
+
+.loginHeading {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.switchForm {
+  text-align: center;
+  padding-top: 10px;
+}
 

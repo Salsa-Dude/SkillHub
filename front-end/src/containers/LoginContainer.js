@@ -1,6 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import { Button, Form, Message,  Container, Divider, Grid, Header, Icon, Image, List, Menu, Responsive, Segment,
-  Sidebar, Visibility, } from 'semantic-ui-react'
+import { Button, Form, Message } from 'semantic-ui-react'
 
 
 class LoginContainer extends Component {
