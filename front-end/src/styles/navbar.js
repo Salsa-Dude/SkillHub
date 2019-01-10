@@ -1,14 +1,14 @@
 
-// .logo {
-//   font-family: 'Fredoka One', cursive;
-//   font-size: 20px;
-//   color: #00b5ad !important;
-// }
+export const login = {
+  border: 'solid',
+  color: 'white',
+  'background-color': '#00b5ad'
+}
 
-const logo = {
+export const logo = {
   'font-family': 'Fredoka One',
   'font-size': '20px',
   'color': '#00b5ad'
 }
 
-export default { logo }
+

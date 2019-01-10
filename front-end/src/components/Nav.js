@@ -2,16 +2,15 @@ import React, { Fragment, Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Menu, Icon, Label, Input, Modal } from "semantic-ui-react";
 
-import styles from '../styles/navbar'
+import {login, logo} from '../styles/navbar'
 
- class Nav extends Component {
-   constructor({ location: { pathname }, logged_in, setCurrentUser }) {
+class Nav extends Component {
+  
+  constructor({ location: { pathname }, logged_in, setCurrentUser }) {
      super()
+  }
   
-   }
-  
-
-  render() {
+   render() {
 
     let logout =  () => {
       this.props.setCurrentUser(null)
@@ -26,8 +25,8 @@ import styles from '../styles/navbar'
             as={NavLink}
             to="/home"
             name="SkillHub"
-            // className="logo"
-            style={styles.logo}
+            style={logo}
+
             active={this.props.pathname === "/home"}
           />
           <Menu.Item
@@ -56,8 +55,7 @@ import styles from '../styles/navbar'
             as={NavLink}
             to="/home"
             name="SkillHub"
-            // className="logo"
-            style={styles.logo}
+            style={logo}
             active={this.props.pathname === "/home"}
             />
             <Menu.Item
@@ -79,7 +77,7 @@ import styles from '../styles/navbar'
                 as={NavLink}
                 to="/login"
                 name="Login"
-                className="login-btn"
+                style={login}
                 onClick={this.handleOpen}
                 // active={pathname === "/login"}
               />
