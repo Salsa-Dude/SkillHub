@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Button } from 'semantic-ui-react'
+
 class Home extends Component {
   render() {
     return (
