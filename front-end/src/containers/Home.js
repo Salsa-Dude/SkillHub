@@ -1,8 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon, Grid } from 'semantic-ui-react'
 
 class Home extends Component {
   render() {
+    const topCategoriesContainer = {
+      marginRight: 'auto',
+      marginLeft: 'auto'
+    }
+
     return (
       <Fragment>
           <div className="jumbo-container">
@@ -14,6 +19,42 @@ class Home extends Component {
                 </div>
               </div>
           </div>
+          <div className="howSkillHubWorks-container">
+            <div className="howSkillHubWorks-inner">
+              <div className="howSkillHubWorks-col">
+                <span className="howSkillHubIcon">
+                  <Icon className="howIcon" name='users' />
+                </span>
+                <div className="howSkillAbout">
+                  Find local mentors in the DC area
+                </div>
+              </div>
+              <div className="howSkillHubWorks-col">
+                <span className="howSkillHubIcon">
+                  <Icon className="howIcon" name='handshake outline' />
+                </span>
+                <div className="howSkillAbout">
+                  Learn a skill one-on-one in person
+                </div>
+              </div>
+              <div className="howSkillHubWorks-col">
+                <span className="howSkillHubIcon">
+                  <Icon className="howIcon" name='whmcs' />
+                </span>
+                  <div className="howSkillAbout">
+                    Learn a variety of unique skills
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div className="space"></div>
+
+          <Grid>
+            <Grid.Column style={topCategoriesContainer} width={10}>
+              <h2>Top Categories</h2>
+
+            </Grid.Column>
+          </Grid>
         
       </Fragment>
     )

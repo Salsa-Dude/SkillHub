@@ -58,8 +58,8 @@ code {
 .active {
   border: none !important;
 }
-/**************************************************************************  
-LOGIN FORM
+/**************************************************************** 
+  LOGIN FORM
 *****************************************************************/
 
 .emailLabel, .passwordLabel {
@@ -74,5 +74,39 @@ LOGIN FORM
 .switchForm {
   text-align: center;
   padding-top: 10px;
+}
+
+/**************************************************************** 
+  HOWSKILLHUBWORKS
+*****************************************************************/
+
+.howSkillHubWorks-container {
+  padding-top: 30px;
+  background-image: linear-gradient(to right top, #103d70, #00b5ad);
+  padding-bottom: 10px;
+}
+
+.howSkillHubWorks-inner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.howSkillHubWorks-col {
+  display: flex;
+}
+
+.howSkillHubIcon .howIcon {
+  font-size: 45px;
+  color: white;
+}
+
+.howSkillAbout {
+  color: white;
+  margin-left: 5%;
+  font-size: 17px;
+}
+
+.space {
+  height: 60px;
 }
 
