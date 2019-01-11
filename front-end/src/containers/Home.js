@@ -1,7 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Icon, Grid } from 'semantic-ui-react'
+import {connect} from 'react-redux'
 
 class Home extends Component {
+
+  componentDidMount() {
+    URL = "http://localhost:3000/api/v1/courses"
+    fetch(URL)
+    .then(res => res.json())
+    .then(courses => {
+      console.log(courses)
+      this.props.fetchedCourses(courses)
+    })
+  }
+
+
   render() {
     const topCategoriesContainer = {
       marginRight: 'auto',
@@ -58,6 +71,14 @@ class Home extends Component {
         
       </Fragment>
     )
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchedCourses: (courses) => {
+      dispatch({type: "FETCHED_COURSES", courses: courses})
+    }
   }
 }
 
