@@ -1,19 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Icon, Grid } from 'semantic-ui-react'
 import {connect} from 'react-redux'
+import {fetchingCourses} from '../redux/actions'
 
 class Home extends Component {
 
   componentDidMount() {
-    URL = "http://localhost:3000/api/v1/courses"
-    fetch(URL)
-    .then(res => res.json())
-    .then(courses => {
-      console.log(courses)
-      this.props.fetchedCourses(courses)
-    })
+    this.props.fetchingCourses()
   }
-
 
   render() {
     const topCategoriesContainer = {
@@ -74,12 +68,12 @@ class Home extends Component {
   }
 }
 
+// props called fetchingCourses that fetches the Tasks from server
 const mapDispatchToProps = dispatch => {
   return {
-    fetchedCourses: (courses) => {
-      dispatch({type: "FETCHED_COURSES", courses: courses})
-    }
+    fetchingCourses: () => {dispatch(fetchingCourses())}
   }
 }
 
-export default Home;
+// export default connect(null, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
