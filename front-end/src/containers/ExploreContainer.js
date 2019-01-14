@@ -1,14 +1,22 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux';
+import CourseCard from '../components/CourseCard'
+
 import { Divider, Grid, Image, GridColumn } from 'semantic-ui-react'
 import "../styles/explore.css"
 
 class ExploreContainer extends Component {
   render(){
-
+    
     const exploreGrid = {
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: "20px"
+    }
+
+    const CategoriesGrid = {
+      marginLeft: "auto",
+      marginRight: "auto",
     }
 
     return (
@@ -30,7 +38,18 @@ class ExploreContainer extends Component {
           </Grid.Column>
         </Grid> 
         <div className="space"></div>
-          fjeoiwfhofeh
+        <Grid>
+          <Grid.Column style={CategoriesGrid} width={13}>
+            <div className="allCategoriesContainer">
+              <h2>Featured courses</h2>
+              <div className="featuredCourses">
+                {this.props.courses.map(course => {
+                  return <CourseCard course={course} key={course.id} /> 
+                })}
+              </div>
+            </div>
+          </Grid.Column>
+        </Grid>
        </div>
        
      </Fragment>
@@ -38,4 +57,8 @@ class ExploreContainer extends Component {
   }
 }
 
-export default ExploreContainer;
+const mapStateToProps = (state) => {
+  return { courses: state.courses };
+};
+
+export default connect(mapStateToProps)(ExploreContainer);
