@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import CourseCard from '../components/CourseCard'
-
+import Slider from "react-slick";
 import { Divider, Grid, Image, GridColumn } from 'semantic-ui-react'
 import "../styles/explore.css"
 
@@ -19,12 +19,18 @@ class ExploreContainer extends Component {
       marginRight: "auto",
     }
 
+    var settings = {
+      dots: false,
+      slidesToShow: 4,
+      arrows: true
+    };
+
     return (
      <Fragment>
        <Divider />
        <div className="explore-container">
         <Grid>
-          <Grid.Column style={exploreGrid} width={13}>
+          <Grid.Column style={exploreGrid} width={14}>
             <h2>Explore categories and skills</h2>
             <div className="explore-categories">
               <div class="wrapper">
@@ -39,13 +45,22 @@ class ExploreContainer extends Component {
         </Grid> 
         <div className="space"></div>
         <Grid>
-          <Grid.Column style={CategoriesGrid} width={13}>
+          <Grid.Column style={CategoriesGrid} width={14}>
             <div className="allCategoriesContainer">
               <h2>Featured courses</h2>
               <div className="featuredCourses">
-                {this.props.courses.map(course => {
-                  return <CourseCard course={course} key={course.id} /> 
-                })}
+                {/* <div className="grid-box"> */}
+                  {/* <div className="ui four column grid"> */}
+                    {/* <div className="row"> */}
+                    <Slider {...settings}>
+                    {this.props.courses.map(course => {
+                        return <div><CourseCard course={course} key={course.id} /></div> 
+                      })}
+                    </Slider>
+                      
+                    {/* </div> */}
+                  {/* </div> */}
+                {/* </div> */}
               </div>
             </div>
           </Grid.Column>

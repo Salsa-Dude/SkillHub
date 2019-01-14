@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Card, Image, Rating } from 'semantic-ui-react'
+import "../styles/courseCard.css"
+import { Card, Image, Rating, CardDescription } from 'semantic-ui-react'
 
 const CourseCard = props => {
+
+  const ratingIcon = {
+    marginTop: '15px'
+  }
+
   return (
     // <Link to={`/properties/${this.props.courses.id}`}>
-    <div className="search-card">
+    <div className="course-card-container">
       <Card>
         <Image src={props.course.image} />
         <Card.Content>
           <Card.Header>{props.course.name}</Card.Header>
-          <Card.Meta>{props.course.city}</Card.Meta>
-          <Card.Meta>{props.course.address}</Card.Meta>
-          {/* <Card.Description>${this.props.place.price} per week</Card.Description> */}
-          {/* { rating ? <Rating icon='star' defaultRating={rating} maxRating={5} disabled /> : null } */}
+          <Card.Description style={ratingIcon}>{props.course.instructor.first_name} {props.course.instructor.last_name}</Card.Description>
+          <Rating style={ratingIcon} icon='star' defaultRating={5} maxRating={5} disabled /> <span className="rating-number">5</span>
         </Card.Content>
       </Card>
     </div>
