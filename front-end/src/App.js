@@ -4,6 +4,8 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './containers/Home';
 import LoginContainer from './containers/LoginContainer'
+import ExploreContainer from "./containers/ExploreContainer"
+
 class App extends Component {
   constructor() {
     super()
@@ -53,6 +55,7 @@ class App extends Component {
           <Route exact path="/login" render={() => this.state.currentUser == null ?
             <LoginContainer setCurrentUser={this.setCurrentUser} /> : <Redirect to="/home" />}
           />
+          <Route exact path="/explore" render={() => <ExploreContainer /> } />
         </Switch>
       </Fragment>
     );

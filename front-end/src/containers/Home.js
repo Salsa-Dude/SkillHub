@@ -7,6 +7,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.fetchingCourses()
+    
   }
 
   render() {
@@ -14,6 +15,7 @@ class Home extends Component {
       marginRight: 'auto',
       marginLeft: 'auto'
     }
+
 
     return (
       <Fragment>
@@ -57,7 +59,7 @@ class Home extends Component {
           <div className="space"></div>
 
           <Grid>
-            <Grid.Column style={topCategoriesContainer} width={10}>
+            <Grid.Column style={topCategoriesContainer} width={13}>
               <h2>Top Categories</h2>
 
             </Grid.Column>
@@ -69,6 +71,8 @@ class Home extends Component {
 }
 
 // props called fetchingCourses that fetches the Tasks from server
+
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchingCourses: () => {dispatch(fetchingCourses())}
