@@ -5,7 +5,7 @@ import "../styles/courseCard.css"
 import { Card, Image, Rating, CardDescription } from 'semantic-ui-react'
 
 const CourseCard = props => {
-
+  
   const ratingIcon = {
     marginTop: '15px'
   }

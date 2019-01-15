@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Home from './containers/Home';
 import LoginContainer from './containers/LoginContainer'
 import ExploreContainer from "./containers/ExploreContainer"
+import DancingContainer from "./containers/DancingContainer"
 
 class App extends Component {
   constructor() {
@@ -56,6 +57,7 @@ class App extends Component {
             <LoginContainer setCurrentUser={this.setCurrentUser} /> : <Redirect to="/home" />}
           />
           <Route exact path="/explore" render={() => <ExploreContainer /> } />
+          <Route exact path="/dancing" render={() => <DancingContainer /> } />
         </Switch>
       </Fragment>
     );

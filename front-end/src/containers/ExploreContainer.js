@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
-import CourseCard from '../components/CourseCard'
+import { Link } from 'react-router-dom'
 import Slider from "react-slick";
+
+import CourseCard from '../components/CourseCard'
 import { Divider, Grid, Image, GridColumn } from 'semantic-ui-react'
 import "../styles/explore.css"
 
@@ -25,6 +27,12 @@ class ExploreContainer extends Component {
       arrows: true
     };
 
+    const DancingLink = {
+      gridColumn: '1',
+      gridRow: '1 / 3'
+     
+    }
+
     return (
      <Fragment>
        <Divider />
@@ -34,7 +42,7 @@ class ExploreContainer extends Component {
             <h2>Explore categories and skills</h2>
             <div className="explore-categories">
               <div class="wrapper">
-                <div class="box a">Dancing</div>
+                <Link style={DancingLink} to="/dancing"><div class="box a">Dancing</div></Link>
                 <div class="box b">Languages</div>
                 <div class="box c">Carpentry</div>
                 <div class="box d">Musical</div>

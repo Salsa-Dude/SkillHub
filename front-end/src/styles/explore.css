@@ -37,7 +37,7 @@
   background: linear-gradient(rgba(100, 99, 99, 0.4), rgba(100, 99, 99, 0.4)), url("https://scontent.fphl1-1.fna.fbcdn.net/v/t1.0-9/21430566_1594943547195745_7064093837522924615_n.jpg?_nc_cat=108&_nc_ht=scontent.fphl1-1.fna&oh=f8030c2e73b2be5aedd0016f0ac3bb3d&oe=5CC6337F");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  height: 100%;
 }
 
 .b {
