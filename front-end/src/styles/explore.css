@@ -47,6 +47,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: 100%;
 }
 
 .c {
@@ -56,6 +57,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: 100%;
 }
 
 .d {
@@ -65,6 +67,7 @@
   position: relative;
   grid-column: 3;
   grid-row: 1;
+  height: 100%
 }
   
 .e {
@@ -74,6 +77,7 @@
   position: relative;
   grid-column: 3;
   grid-row: 2;
+  /* height: 100%; */
 }
 
 .space2 {

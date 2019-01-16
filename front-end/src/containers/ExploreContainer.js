@@ -48,9 +48,9 @@ class ExploreContainer extends Component {
             <div className="explore-categories">
               <div class="wrapper">
                 <Link style={DancingLink} to="/dancing"><div class="box a">Dancing</div></Link>
-                <div class="box b">Languages</div>
-                <div class="box c">Carpentry</div>
-                <div class="box d">Musical</div>
+                <Link to="/languages"><div class="box b">Languages</div></Link>
+                <Link to="/carpentry"><div class="box c">Carpentry</div></Link>
+                <Link to="/musical"><div class="box d">Musical</div></Link>
                 <div class="box e">Art</div>
               </div>
             </div>

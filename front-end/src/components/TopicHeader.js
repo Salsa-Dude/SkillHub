@@ -33,7 +33,7 @@ const TopicHeader = (props) => {
           <Breadcrumb size='big'>
             <Breadcrumb.Section style={breadCrumb} as={NavLink} to="/explore" >Explore</Breadcrumb.Section>
             <Breadcrumb.Divider style={breadCrumb} icon='right chevron' />
-            <Breadcrumb.Section active>Dancing</Breadcrumb.Section>
+            <Breadcrumb.Section active>{props.title}</Breadcrumb.Section>
           </Breadcrumb>
             <h1>{props.title}</h1>
           </Grid.Column>

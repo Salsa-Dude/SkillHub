@@ -75,7 +75,7 @@ class CourseDetailsContainer extends Component {
                     <div>
                       <Image size='tiny' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg3HQeJm8oZPpYVRgRgiLnnUimKY4FMme6AZh3OfK0TNo4WMhR' avatar />
                       <span>{courseObject.instructor.first_name} {courseObject.instructor.last_name}
-                      <div className="mentor-contact-btn"><Button color='teal'>Contact</Button></div>
+                      <div className="mentor-contact-btn"><Button icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
                       </span>
                       
                       <div className="mentor-bio">
@@ -95,6 +95,10 @@ class CourseDetailsContainer extends Component {
     // const mentorContactBtn = {
     //   display: 'block'
     // }
+
+    const mailIcon = {
+      paddingRight: '20px'  
+    }
 
     const exploreGrid = {
       marginLeft: "auto",

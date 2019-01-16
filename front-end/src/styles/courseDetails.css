@@ -114,5 +114,10 @@
   position: absolute;
   top: 30px;
   left: 10px;
+  width: 100px;
+}
+
+.mentor-contact-btn button {
+  width: 100%;
 }
 
