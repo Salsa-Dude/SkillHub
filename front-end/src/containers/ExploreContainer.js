@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import Slider from "react-slick";
 import {fetchingCourses} from '../redux/actions'
 
@@ -38,6 +38,11 @@ class ExploreContainer extends Component {
       gridRow: '1 / 3'
     }
 
+    const linkPadding = {
+      margin: '0',
+      padding: '0'
+    }
+
     return (
      <Fragment>
        <Divider />
@@ -51,7 +56,7 @@ class ExploreContainer extends Component {
                 <Link to="/languages"><div class="box b">Languages</div></Link>
                 <Link to="/carpentry"><div class="box c">Carpentry</div></Link>
                 <Link to="/musical"><div class="box d">Musical</div></Link>
-                <div class="box e">Art</div>
+                <Link to="/art"><div class="box e">Art</div></Link>
               </div>
             </div>
           </Grid.Column>

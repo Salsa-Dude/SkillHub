@@ -128,3 +128,7 @@ code {
 .ui.menu .ui.dropdown .menu >.item {
   font-size: 16px !important;
 } 
+
+.p {
+  border: solid !important;
+}

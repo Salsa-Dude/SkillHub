@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :course_sessions
       resources :messages
       resources :reviews
+      resources :categories
       post '/login', to: 'auth#create'
       get '/home', to: 'users#home'
     end

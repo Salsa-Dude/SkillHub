@@ -7,6 +7,8 @@ Course.destroy_all
 CourseSession.destroy_all
 Review.destroy_all
 Message.destroy_all
+Category.destroy_all
+CourseSession.destroy_all
 
 @Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", password: '123', bio: "Salsa and bachata dancer and instructor")
 @Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", password: '123', bio: "I love to travel and explore new hobbies")
@@ -34,19 +36,23 @@ Message.destroy_all
 
 
 
-
-
-
-
-
-
-
-
-
-
 @CourseSession1 = CourseSession.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 10), student_id: @Liz.id, course_id: @Course1.id)
 
 @Review1 = Review.create!(description: "Joseph was a great instructor! I had a great time", rating: 5, student_id: @Liz.id, course_session_id: @CourseSession1.id)
 
 @Message1 = Message.create!(content: "Do you teach bachata too?", sender_id: @Liz.id, recipient_id: @Joseph.id )
+
+@Category1 = Category.create!(name: "Dancing")
+@Category2 = Category.create!(name: "Languages")
+@Category3 = Category.create!(name: "Musical")
+@Category4 = Category.create!(name: "Carpentry")
+@Category5 = Category.create!(name: "Art")
+
+
+@CourseCategory1 = CourseCategory.create!(course_id: @Course1.id, category_id: @Category1.id)
+@CourseCategory2 = CourseCategory.create!(course_id: @Course2.id, category_id: @Category5.id)
+@CourseCategory3 = CourseCategory.create!(course_id: @Course4.id, category_id: @Category1.id)
+@CourseCategory4 = CourseCategory.create!(course_id: @Course6.id, category_id: @Category2.id)
+
+
 
