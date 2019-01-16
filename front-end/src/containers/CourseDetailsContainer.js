@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card } from 'semantic-ui-react'
+import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon } from 'semantic-ui-react'
 import {fetchingCourses} from '../redux/actions'
 import '../styles/courseDetails.css'
 
@@ -52,42 +52,38 @@ class CourseDetailsContainer extends Component {
                 <div className="course-stats">
                   <div className="stat">
                     <p className="course-students-stat">
-                      
+                      <Icon className="stat-icon users-icon" name="users" /> 50
                     </p>
+                    <p className="stat-heading">Students</p>
+                  </div>
+                  <div className="stat">
                     <p>
-                     
+                      <Icon className="stat-icon" name="tag" />
                     </p>
+                    <p className="stat-heading">Category</p>
                   </div>
                   <div className="stat">
-
-                  </div>
-                  <div className="stat">
-
+                    <p>
+                      <Icon className="stat-icon" name="signal" />
+                    </p>
+                    <p className="stat-heading">All Levels</p>
                   </div>
                 </div>
-              <Card>
-              <Card.Content>
-                <Card.Header>Your Host</Card.Header>
-              </Card.Content>
-              <Card.Content>
-                <Feed>
-                  <Feed.Event>
-                    <Feed.Label>
-                    <Image src='http://www.thatentertains.com/wp-content/uploads/2018/01/female-place-holder-profile-image.jpg' />
-                    <span className="user-name">Joseph</span>
-                    </Feed.Label>
-                    <Feed.Content>
-                      <Feed.Summary>
-                        hello
-                      </Feed.Summary>
-                    </Feed.Content>
-                  </Feed.Event>
-                </Feed>
-              </Card.Content>
-              <Button color='teal'>
-                Message Host
-              </Button>
-            </Card>
+                <Divider />
+                <div className="mentor-section">
+                  <div className="mentor-about">
+                    <div>
+                      <Image size='tiny' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg3HQeJm8oZPpYVRgRgiLnnUimKY4FMme6AZh3OfK0TNo4WMhR' avatar />
+                      <span>{courseObject.instructor.first_name} {courseObject.instructor.last_name}
+                      <div className="mentor-contact-btn"><Button color='teal'>Contact</Button></div>
+                      </span>
+                      
+                      <div className="mentor-bio">
+                        <p>{courseObject.bio}</p>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Tab.Pane> },
@@ -95,6 +91,10 @@ class CourseDetailsContainer extends Component {
         { menuItem: 'Contact', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
       ]
     }
+
+    // const mentorContactBtn = {
+    //   display: 'block'
+    // }
 
     const exploreGrid = {
       marginLeft: "auto",
