@@ -30,6 +30,8 @@ Message.destroy_all
 
 @Course5 = Course.create!(name: "Pro Gaming Training", description: "My method of teaching is relaxed friendly and go with the flow. Despite this, I will spend every moment teaching you something to help improve. But most importantly my goal in teaching is to teach you not just a specific skill for a specific game, but skills for multiple games. So you can pick up any game and have a solid base. Lessons usually consist of live game analysis, replay analysis, or jumping into custom games with your coach so they can give you tips, tricks, and strategies to help you win more!", image: "https://cdn.dotablast.com/wp-content/uploads/2015/06/evil-geniuses-esl-one.jpg", bio: "Former gold metal champion in Super Mario", instructor_id: @Lane.id, city: "DC", address: "645 Pennsylvania Ave SE, Washington, DC 20003")
 
+@Course6 = Course.create!(name: "Stand Up Comedy", description: "Stand-up comedy is a fantastic art form and once you start digging, you realize the possibilities are endless. In the words of my comedy mentor, “The beauty of stand-up is that all you need is a light, a chair, and a microphone so you can take it with you wherever you go.", image: "https://images.unsplash.com/photo-1468390090990-afe21a9448f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1335&q=80", bio: "Originally from New Zealand, I'm an actor, comedian and acting coach.", instructor_id: @Hillary.id, city: "DC", address: "1140 Connecticut Ave NW, Washington, DC 20036")
+
 
 
 

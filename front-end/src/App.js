@@ -6,6 +6,7 @@ import Home from './containers/Home';
 import LoginContainer from './containers/LoginContainer'
 import ExploreContainer from "./containers/ExploreContainer"
 import DancingContainer from "./containers/DancingContainer"
+import CourseDetailsContainer from './containers/CourseDetailsContainer'
 
 class App extends Component {
   constructor() {
@@ -58,6 +59,10 @@ class App extends Component {
           />
           <Route exact path="/explore" render={() => <ExploreContainer /> } />
           <Route exact path="/dancing" render={() => <DancingContainer /> } />
+          <Route exact path="/courses/:id" render={(props) => {
+            let courseId = props.match.params.id 
+            return <CourseDetailsContainer courseId={courseId}/>
+          }} />
         </Switch>
       </Fragment>
     );

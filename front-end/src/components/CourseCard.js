@@ -11,7 +11,7 @@ const CourseCard = props => {
   }
 
   return (
-    // <Link to={`/properties/${this.props.courses.id}`}>
+    <Link to={`/courses/${props.course.id}`}>
     <div className="course-card-container">
       <Card>
         <Image src={props.course.image} />
@@ -22,7 +22,7 @@ const CourseCard = props => {
         </Card.Content>
       </Card>
     </div>
-    // </Link>
+    </Link>
   )
 }
 

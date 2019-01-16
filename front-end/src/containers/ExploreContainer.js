@@ -2,12 +2,18 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import Slider from "react-slick";
+import {fetchingCourses} from '../redux/actions'
 
 import CourseCard from '../components/CourseCard'
 import { Divider, Grid, Image, GridColumn } from 'semantic-ui-react'
 import "../styles/explore.css"
 
 class ExploreContainer extends Component {
+
+  componentDidMount() {
+    this.props.fetchingCourses()
+  }
+
   render(){
     
     const exploreGrid = {
@@ -23,14 +29,13 @@ class ExploreContainer extends Component {
 
     var settings = {
       dots: false,
-      slidesToShow: 4,
+      slidesToShow: 5,
       arrows: true
     };
 
     const DancingLink = {
       gridColumn: '1',
       gridRow: '1 / 3'
-     
     }
 
     return (
@@ -57,18 +62,11 @@ class ExploreContainer extends Component {
             <div className="allCategoriesContainer">
               <h2>Featured courses</h2>
               <div className="featuredCourses">
-                {/* <div className="grid-box"> */}
-                  {/* <div className="ui four column grid"> */}
-                    {/* <div className="row"> */}
-                    <Slider {...settings}>
-                    {this.props.courses.map(course => {
-                        return <div><CourseCard course={course} key={course.id} /></div> 
-                      })}
-                    </Slider>
-                      
-                    {/* </div> */}
-                  {/* </div> */}
-                {/* </div> */}
+                <Slider {...settings}>
+                {this.props.courses.map(course => {
+                    return <div><CourseCard course={course} key={course.id} /></div> 
+                  })}
+                </Slider>
               </div>
             </div>
           </Grid.Column>
@@ -84,4 +82,10 @@ const mapStateToProps = (state) => {
   return { courses: state.courses };
 };
 
-export default connect(mapStateToProps)(ExploreContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchingCourses: () => {dispatch(fetchingCourses())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreContainer);

@@ -1,0 +1,80 @@
+.courseBannerContainer {
+  min-height: 300px;
+  height: 300px;
+  width: 100%;
+  color: #fff;
+  position: relative;
+}
+
+.course-gradient-background {
+  background: linear-gradient(324.97deg, rgb(0, 153, 145) 0%, rgb(0, 102, 97) 100%);
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 62%;
+  height: 100%;
+  transform-origin: 100% -100%;
+  transform: skewX(-15deg);
+}
+
+/* .course-background-image {
+  background-image: url('https://images.unsplash.com/photo-1468390090990-afe21a9448f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1335&q=80');
+  opacity: 1;
+  background-color: transparent;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 49%;
+    z-index: 1;
+} */
+
+.course-banner-content {
+  position: relative;
+  z-index: 3;
+  color: white;
+}
+
+.course-banner-content h1 {
+  font-size: 55px;
+}
+
+.bread-crumb {
+  color: white;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.ui.secondary.pointing.menu a {
+  font-size: 18px;
+}
+
+.tab-about {
+  height: 200px;
+  width: 60%;
+  /* border: solid red; */
+}
+
+.tab-about-content {
+  font-size: 16px;
+}
+
+.tab-mentor {
+  width: 35%;
+  height: 200px;
+  border: solid blue;
+}
+
+.course-students-stat {
+
+}
+

@@ -97,5 +97,12 @@
 
  .slick-prev {
   z-index: 100;
-  left: -40px !important
+  left: -4% !important
 }
+
+.slick-next {
+  z-index: 100;
+  right: -4%;
+}
+
+
