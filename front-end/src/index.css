@@ -113,3 +113,18 @@ code {
   height: 60px;
 }
 
+
+.k {
+  border: none !important;
+  box-shadow: none !important;
+  color: rgba(0,0,0,.95) !important;
+  
+}
+
+.r {
+  font-size: 18px;
+}
+
+.ui.menu .ui.dropdown .menu >.item {
+  font-size: 16px !important;
+} 

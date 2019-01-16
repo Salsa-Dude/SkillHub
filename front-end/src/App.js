@@ -11,6 +11,9 @@ import LanguagesContainer from './containers/LanguagesContainer'
 import CarpentryContainer from './containers/CarpentryContainer'
 import MusicalContainer from './containers/MusicalContainer'
 import ArtContainer from './containers/ArtContainer'
+import SessionsContainer from './containers/SessionsContainer'
+import MyCoursesContainer from './containers/MyCoursesContainer'
+import AddCourse from './components/AddCourse'
 
 class App extends Component {
   constructor() {
@@ -67,6 +70,9 @@ class App extends Component {
           <Route exact path="/carpentry" render={() => <CarpentryContainer /> } />
           <Route exact path="/musical" render={() => <MusicalContainer /> } />
           <Route exact path="/art" render={() => <ArtContainer /> } />
+          <Route exact path="/sessions" render={() => <SessionsContainer /> } />
+          <Route exact path="/my-courses" render={() => <MyCoursesContainer /> } />
+          <Route exact path="/add-course" render={() => <AddCourse /> } />
           <Route exact path="/courses/:id" render={(props) => {
             let courseId = props.match.params.id 
             return <CourseDetailsContainer courseId={courseId}/>

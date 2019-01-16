@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
-import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider } from "semantic-ui-react";
+import { NavLink, withRouter, Link } from "react-router-dom";
+import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider, Dropdown} from "semantic-ui-react";
 import {login, logo, loginContainer, loginForm, loginModal, loginBtn} from '../styles/navbar'
 
 class Nav extends Component {
@@ -58,6 +58,10 @@ class Nav extends Component {
       localStorage.clear()
     }
 
+    const myCourses = {
+      fontSize: '16px'
+    }
+
     return (
       <Menu className="navbar" pointing secondary size="huge">
         {this.props.logged_in ? (
@@ -71,15 +75,32 @@ class Nav extends Component {
             active={this.props.pathname === "/home"}
           />
           <Menu.Item
-            name='My Sessions'
+            name='Explore'
             as={NavLink}
-            to="/trips"
+            to="/explore"
           />
           <Menu.Item
-            name='Become a Mentor'
+            name='My Sessions'
+            as={NavLink}
+            to="/sessions"
+            active={this.pathname === "/trips"}
+          />
+         
+          <Menu className="k">
+            <Dropdown className="r" item text='Mentor'>
+              <Dropdown.Menu>
+                <Link style={myCourses} to="/my-courses"><Dropdown.Item className="mentor-links">My Courses</Dropdown.Item></Link>
+                <Link style={myCourses} to="/add-course"><Dropdown.Item className="mentor-links">Add Course</Dropdown.Item></Link>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu>
+          
+          {/* <Menu.Item
+            name='Become A Mentor'
             as={NavLink}
             to="/myProperties"
-          />
+            
+          /> */}
           <Menu.Menu position="right">
           <Menu.Item as='a'>
             <Icon name='mail' />Messages
