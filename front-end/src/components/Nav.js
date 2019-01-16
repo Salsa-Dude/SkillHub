@@ -102,7 +102,7 @@ class Nav extends Component {
             
           /> */}
           <Menu.Menu position="right">
-          <Menu.Item as='a'>
+          <Menu.Item as={NavLink} to="/messages" active={this.pathname === "/messages"}>
             <Icon name='mail' />Messages
             <Label color='red'>
               7
