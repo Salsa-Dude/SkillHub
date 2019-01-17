@@ -16,25 +16,25 @@ class DancingContainer extends Component {
       return course.name === "Dancing"
     })
 
+    console.log(dancingCourses)
+
     
 
-    return (
+    return dancingCourses ? (
       <Fragment>
         <TopicHeader 
           img="https://images.unsplash.com/photo-1511913411692-818ea059c8be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Dancing"
         />
-        <div className="grid-box">
           <div className="ui four column grid">
             <div className="row">
-              {/* {dancingCourses.map(course => {
+              {dancingCourses.courses.map(course => {
                 return <CourseCard key={course.id} course={course} />
-              })} */}
+              })}
             </div>
           </div>
-        </div>
       </Fragment>
-    ) 
+    ) : null
   }
 }
 

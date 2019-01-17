@@ -17,7 +17,7 @@ const CourseCard = props => {
         <Image src={props.course.image} />
         <Card.Content>
           <Card.Header>{props.course.name}</Card.Header>
-          <Card.Description style={ratingIcon}>{props.course.instructor.first_name} {props.course.instructor.last_name}</Card.Description>
+          {/* <Card.Description style={ratingIcon}>{props.course.instructor.first_name} {props.course.instructor.last_name}</Card.Description> */}
           <Rating style={ratingIcon} icon='star' defaultRating={5} maxRating={5} disabled /> <span className="rating-number">5</span>
         </Card.Content>
       </Card>
