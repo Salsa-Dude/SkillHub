@@ -21,9 +21,11 @@ class CourseDetailsContainer extends Component {
       courseObject = this.props.courses.find(course => {
         return course.id == this.props.courseId
       })
+     
     }
 
     if (courseObject) {
+      console.log(courseObject.categories[0].name.toLowerCase())
       backgroundImage = {
       backgroundImage: `url('${courseObject.image}')`,
       opacity: '1',
@@ -134,6 +136,10 @@ class CourseDetailsContainer extends Component {
                     <Breadcrumb.Section style={BreadcrumbStyle} link>Courses</Breadcrumb.Section>
                     </Link>
                     <Breadcrumb.Divider icon='right chevron' />
+                    <Link to={`/${courseObject.categories[0].name.toLowerCase()}`}>
+                    <Breadcrumb.Section style={BreadcrumbStyle} link>Category</Breadcrumb.Section>
+                    </Link>
+                    <Breadcrumb.Divider icon='right angle' />
                     <Breadcrumb.Section active>{courseObject.name}</Breadcrumb.Section>
                     </Breadcrumb>
                   </div>
