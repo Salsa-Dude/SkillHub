@@ -73,7 +73,7 @@ class CourseDetailsContainer extends Component {
                 <div className="mentor-section">
                   <div className="mentor-about">
                     <div>
-                      <Image size='tiny' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg3HQeJm8oZPpYVRgRgiLnnUimKY4FMme6AZh3OfK0TNo4WMhR' avatar />
+                      <Image size='tiny' src={courseObject.instructor.image} avatar />
                       <span>{courseObject.instructor.first_name} {courseObject.instructor.last_name}
                       <div className="mentor-contact-btn"><Button icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
                       </span>

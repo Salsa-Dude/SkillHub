@@ -8,7 +8,7 @@ import CourseCard from '../components/CourseCard'
 class MusicalContainer extends Component {
 
   componentDidMount() {
-    this.props.fetchingDancingCourses()
+    this.props.fetchingDancingCoursesDispatch()
   }
 
   render() {
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingDancingCourses: () => {dispatch(fetchingDancingCourses())}
+    fetchingDancingCoursesDispatch: () => {dispatch(fetchingDancingCourses())}
   }
 }
 

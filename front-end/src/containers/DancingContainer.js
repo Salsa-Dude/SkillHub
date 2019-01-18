@@ -30,7 +30,7 @@ class DancingContainer extends Component {
                   return <CourseCard key={course.id} course={course} />
                 })}
               </div>
-            </div>
+          </div>
           </div>
       </Fragment>
     ) : null

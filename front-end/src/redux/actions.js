@@ -11,8 +11,12 @@ const fetchingDancingCourses = () => {
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/categories')
     .then(res => res.json())
-    .then(dancingCourses => dispatch({type: "FETCHED_DANCING_COURSES", dancingCourses}))
+    .then(dancingCourses => dispatch(fetchedDancingCourses(dancingCourses)))
   }
+}
+
+const fetchedDancingCourses = (dancingCourses) => {
+  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
 }
 
 
