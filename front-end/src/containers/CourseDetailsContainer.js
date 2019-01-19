@@ -7,15 +7,27 @@ import {fetchingCourses} from '../redux/actions'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
+  constructor() {
+    super()
+    
+  }
 
   componentDidMount() {
     this.props.fetchingCourses()
+  }
+
+  getStudentImage = (id, courseObj) => {
+    let student = courseObj.students.find(student => {
+      return student.id === id
+    })   
+    return student.image
   }
 
   render() {
     let courseObject;
     let backgroundImage;
     let panes;
+    
 
     if (this.props) {
       courseObject = this.props.courses.find(course => {
@@ -25,7 +37,7 @@ class CourseDetailsContainer extends Component {
     }
 
     if (courseObject) {
-      console.log(courseObject.categories[0].name.toLowerCase())
+      console.log(courseObject)
       backgroundImage = {
       backgroundImage: `url('${courseObject.image}')`,
       opacity: '1',
@@ -62,7 +74,7 @@ class CourseDetailsContainer extends Component {
                     <p>
                       <Icon className="stat-icon" name="tag" />
                     </p>
-                    <p className="stat-heading">Category</p>
+                    <p className="stat-heading">{courseObject.categories[0].name}</p>
                   </div>
                   <div className="stat">
                     <p>
@@ -89,8 +101,22 @@ class CourseDetailsContainer extends Component {
               </div>
             </div>
           </Tab.Pane> },
-        { menuItem: 'Reviews', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
-        { menuItem: 'Contact', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
+        { menuItem: 'Reviews', render: () => 
+          <Tab.Pane attached={false}>
+            <div class="review-container">
+              {courseObject.reviews ? courseObject.reviews.map(review => {
+                  return (
+                    <p>  <Rating icon='star' defaultRating={review.rating} maxRating={5} disabled /> {review.description} <span><Image size='mini' src={this.getStudentImage(review.student_id, courseObject)} avatar /></span>
+                    </p>
+                  )
+                }) : null }
+            </div>
+          </Tab.Pane> 
+          },
+        { menuItem: 'Location', render: () => 
+        <Tab.Pane attached={false}>
+        
+        </Tab.Pane> },
       ]
     }
 

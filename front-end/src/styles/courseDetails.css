@@ -59,13 +59,13 @@
 }
 
 .tab-about {
-  height: 200px;
-  width: 60%;
-  /* border: solid red; */
+  width: 55%;
+  margin-left: 5%;
 }
 
 .tab-about-content {
   font-size: 16px;
+  line-height: 1.7;
 }
 
 .tab-mentor {
@@ -119,5 +119,24 @@
 
 .mentor-contact-btn button {
   width: 100%;
+}
+
+.review-container {
+  display: inline-block;
+}
+
+.review-container p {
+  display: block;
+}
+
+.reviewer-image {
+  height: 50px;
+  width: 50px;
+  
+  border: solid;
+}
+
+.reviewer-image img {
+  height: 100%;
 }
 
