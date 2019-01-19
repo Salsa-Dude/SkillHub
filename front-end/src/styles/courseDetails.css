@@ -140,3 +140,14 @@
   height: 100%;
 }
 
+.mapouter {
+  width: 50%;
+
+}
+
+#gmap_canvas {
+  width: 100%;
+  height: 30vh;
+}
+
+

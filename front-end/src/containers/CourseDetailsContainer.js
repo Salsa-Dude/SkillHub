@@ -114,9 +114,9 @@ class CourseDetailsContainer extends Component {
           </Tab.Pane> 
           },
         { menuItem: 'Location', render: () => 
-        <Tab.Pane attached={false}>
-        
-        </Tab.Pane> },
+          <Tab.Pane attached={false}>
+            <div className="mapouter"><div className="gmap_canvas"><iframe id="gmap_canvas" src={`https://maps.google.com/maps?q=${courseObject.address}&t=&z=13&ie=UTF8&iwloc=&output=embed`} scrolling="no"  ></iframe></div></div>
+          </Tab.Pane> },
       ]
     }
 
