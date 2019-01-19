@@ -173,6 +173,9 @@ class CourseDetailsContainer extends Component {
                   <Rating style={ratingIcon} icon='star' defaultRating={5} maxRating={5} disabled /> <span className="rating-number">5</span>
                 </Grid.Column>
               </Grid>
+              <div class="book-session">
+              <Button style={{width: '150px', height: '50px', backgroundColor: "#eb872a", color: 'white'}}  >Book Session</Button>
+              </div>
             </div>
           </div>
           <div className="underline-tabs">

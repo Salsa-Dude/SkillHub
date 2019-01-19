@@ -48,6 +48,11 @@
   color: white;
 }
 
+.book-session {
+  margin-top: 20px;
+  margin-left: 25%;
+}
+
 .tab-container {
   display: flex;
   justify-content: space-between;
