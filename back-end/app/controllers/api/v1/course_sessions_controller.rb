@@ -18,6 +18,10 @@ class Api::V1::CourseSessionsController < ApplicationController
     render json: @course_session
   end
 
+  def destroy 
+    render json: CourseSession.find(params[:id]).destroy
+  end
+
   private
 
   def course_session_params

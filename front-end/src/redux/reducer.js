@@ -40,14 +40,19 @@ const courseSessionReducer = (state = [], action) => {
     case "ADD_SESSION": 
       return [...state, action.sessionData]
     case "UPDATE_SESSION":
-    console.log(action)
       return state.map(stateSession => {
-        if(stateSession.id == action.sessionData.id) {
+        if(stateSession.id === action.sessionData.id) {
           return action.sessionData
         } else {
           return stateSession
         }
       })
+    case "DELETE_SESSION":
+      let findSession = state.find(session => session.id == action.session.id)
+      let index = state.indexOf(findSession)
+      let sessionsCopy = [...state]
+      sessionsCopy.splice(index, 1)
+      return sessionsCopy
     default:
       return state
   }

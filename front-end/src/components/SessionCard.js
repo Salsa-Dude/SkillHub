@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { updatingSession } from '../redux/actions'
+import { deletingSession } from '../redux/actions'
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -30,13 +31,16 @@ class SessionCard extends Component {
       student_id: parseInt(localStorage.getItem('currentUser')),
       course_id: this.props.session.course_id
     }
-
     this.props.updateSession(data)
-
     this.setState({ 
       open: false,
-      // startDate: this.props.session.checkin,
-      // endDate: this.props.session.checkout,
+    })
+  }
+
+  deleteSession = () => {
+    this.props.deleteSession(this.props.session.id)
+    this.setState({ 
+      modalOpen: false
     })
   }
 
@@ -82,11 +86,10 @@ class SessionCard extends Component {
           <Card.Description>Check In: {moment(this.state.startDate).format("MM/DD/YYYY")}
           </Card.Description>
           <Card.Description>Check Out: {moment(this.state.endDate).format("MM/DD/YYYY")}</Card.Description>
-          <Card.Description style={{marginTop: '10px'}}>{this.props.session.course.description}</Card.Description>
-         
+          
           {/* <Card.Description style={ratingIcon}>{this.props.session.course.instructor.first_name} {props.course.instructor.last_name}</Card.Description> */}
           {/* <Rating style={ratingIcon} icon='star' defaultRating={5} maxRating={5} disabled /> <span className="rating-number">5</span> */}
-          <div>
+          <div className="right">
           <Icon link onClick={this.show('blurring')} name='edit' size='large' />
             
             <Modal dimmer={dimmer} open={open} onClose={this.close}>
@@ -129,6 +132,25 @@ class SessionCard extends Component {
                 />
               </Modal.Actions>
             </Modal>
+            <Modal
+              trigger={<Icon link onClick={this.handleOpen} name='trash' size='large' />}
+              open={this.state.modalOpen}
+              onClose={this.handleClose}
+              size='small'
+            >
+              <Header className="delete-header" icon='trash' content='Delete Trip ' />
+              <Modal.Description>
+                <p className="delete-message">Are you sure you want to delete this upcoming trip?</p>
+              </Modal.Description>
+              <Modal.Actions>
+              <Button color='red' onClick={this.handleClose} inverted>
+                  <Icon name='x' /> No
+                </Button>
+                <Button color='green' onClick={this.deleteSession} inverted>
+                  <Icon name='checkmark' /> Yes
+                </Button>
+              </Modal.Actions>
+            </Modal>
           </div>
         </Card.Content>
       </Card>
@@ -140,7 +162,8 @@ class SessionCard extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateSession: (sessionData) => {dispatch(updatingSession(sessionData))}
+    updateSession: (sessionData) => {dispatch(updatingSession(sessionData))},
+    deleteSession: (id) => {dispatch(deletingSession(id))}
   }
 }
 

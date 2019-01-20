@@ -68,6 +68,8 @@ const loggedIn = (user) => {
   return { type: "LOGGED_IN", user}
 }
 
+/////////////// COURSE_SESSION /////////////////////////////////////////////
+
 const bookedSession = (sessionData) => {
   return {type: "ADD_SESSION", sessionData}
 }
@@ -107,8 +109,23 @@ const updatedSession = (sessionData) => {
   return {type: "UPDATE_SESSION", sessionData}
 }
 
+const deletingSession = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/course_sessions/${id}`, {
+      method: "DELETE"
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(deleteSession(data))
+    })
+  }
+}
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession}
+const deleteSession = (session) => {
+  return {type: "DELETE_SESSION", session}
+}
+
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession}
 
 
 
