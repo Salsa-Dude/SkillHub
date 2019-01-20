@@ -23,9 +23,19 @@ const dancingReducer = (oldState = [], action) => {
   return oldState
 }
 
+const loginReducer = (oldState = null, action) => {
+  switch(action.type) {
+    case "LOGGED_IN":
+      return action.user
+    default: 
+      return oldState
+  }
+}
+
 const rootReducer = combineReducers({
   courses: courseReducer,
-  dancingCourses: dancingReducer
+  dancingCourses: dancingReducer,
+  user: loginReducer
 })
 
 export default rootReducer

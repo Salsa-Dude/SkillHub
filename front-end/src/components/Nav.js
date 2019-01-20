@@ -1,4 +1,6 @@
 import React, { Fragment, Component } from "react";
+import { connect } from 'react-redux'
+import { loggingIn } from '../redux/actions'
 import { NavLink, withRouter, Link } from "react-router-dom";
 import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider, Dropdown} from "semantic-ui-react";
 import {login, logo, loginContainer, loginForm, loginModal, loginBtn} from '../styles/navbar'
@@ -15,28 +17,9 @@ class Nav extends Component {
   }
 
   handleLoginSubmit = () => {
+    let loginFormInput = this.state
+    this.props.loggingIn(loginFormInput)
     this.setState({ modalOpen: false })
-    fetch(`http://localhost:3000/api/v1/login`, {
-      method:"POST",
-      headers: {
-        "Content-type":"application/json",
-        "Accept":"application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.error){
-        alert('Incorrect username or password')
-      }else{
-        console.log(data)
-        this.props.setCurrentUser(data.user_info)
-        localStorage.setItem('token', data.token)
-      }
-    })
   }
 
   handleChange = (e, { name, value }) => {
@@ -202,4 +185,10 @@ class Nav extends Component {
   
 }
 
-export default withRouter(Nav);
+const mapDispatchToStore = (dispatch) => {
+  return {
+    loggingIn: (loginFormInput) => {dispatch(loggingIn(loginFormInput))}
+  }
+}
+
+export default connect(null, mapDispatchToStore)(withRouter(Nav));
