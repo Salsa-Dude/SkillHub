@@ -87,10 +87,25 @@ const bookingSession = (sessionData) => {
  }
 }
 
+const updatingSession = (sessionData) => {
+  return dispatch => {
+    console.log(sessionData)
+    fetch(`http://localhost:3000/api/v1/course_sessions/${sessionData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(sessionData)
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
+}
 
 
-
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession}
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession}
 
 
 

@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-
-import { Card, Image, Rating, CardDescription, Form, Modal, Icon, Header, Button } from 'semantic-ui-react'
-import "../styles/sessions.css"
+import { connect } from 'react-redux';
+import { updatingSession } from '../redux/actions'
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import { Card, Image, Rating, CardDescription, Form, Modal, Icon, Header, Button } from 'semantic-ui-react'
+import "../styles/sessions.css"
 
 
 class SessionCard extends Component {
@@ -17,11 +18,24 @@ class SessionCard extends Component {
       startDate: this.props.session.checkin,
       endDate: this.props.session.checkout,
       modalOpen: false,
+      courseSession: this.props.session
     }
   }
 
-  show = dimmer => () => this.setState({ dimmer, open: true })
+  updateSession = () => {
+    let data = {
+      id: this.props.session.id,
+      checkin: this.state.startDate,
+      checkout: this.state.endDate,
+      student_id: parseInt(localStorage.getItem('currentUser')),
+      course_id: this.props.session.course_id
+    }
 
+    console.log(data)
+    this.props.updateSession(data)
+  }
+
+  show = dimmer => () => this.setState({ dimmer, open: true })
 
   startHandleChange = (date) => {
     this.setState({
@@ -41,18 +55,16 @@ class SessionCard extends Component {
 
   close = () => {
     this.setState({ 
-      open: false
+      open: false,
+      startDate: this.props.session.checkin,
+      endDate: this.props.session.checkout,
     })
   } 
 
 
   render() {
-    const ratingIcon = {
-      marginTop: '15px'
-    }
-
+  
     const { open, dimmer } = this.state
-
 
     return (
       <Fragment>
@@ -107,8 +119,8 @@ class SessionCard extends Component {
                   positive
                   icon='checkmark'
                   labelPosition='right'
-                  content="Update Trip"
-                  
+                  content="Update Session"
+                  onClick={this.updateSession}
                 />
               </Modal.Actions>
             </Modal>
@@ -121,4 +133,10 @@ class SessionCard extends Component {
   }
 }
 
-export default SessionCard
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSession: (sessionData) => {dispatch(updatingSession(sessionData))}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SessionCard) 

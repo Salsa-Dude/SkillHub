@@ -9,6 +9,11 @@ class Api::V1::CourseSessionsController < ApplicationController
     render json: @course_session
   end
 
+  def update 
+    @course_session = CourseSession.find(params[:id]).update(course_session_params)
+    render json: @lease
+  end
+
   private
 
   def course_session_params
