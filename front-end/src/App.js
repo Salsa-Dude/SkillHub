@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import Nav from './components/Nav';
@@ -48,4 +49,6 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+
+
+export default withRouter((App));

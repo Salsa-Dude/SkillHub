@@ -21,22 +21,15 @@ class CourseDetailsContainer extends Component {
   }
 
   bookSession = (courseObj) => {
-    // console.log(this.props.currentUser.currentUser.id)
-    // let data = {
-    //   checkin: this.state.startDate,
-    //   checkout: this.state.endDate,
-    //   student_id: this.props.currentUser.currentUser.id,
-    //   course_id: courseObj.id
-    // }
-    
-    // fetch('http://localhost:3000/api/v1/course_sessions', {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then(res => res.json())
-    // .then(console.log(data))
+    if(localStorage.getItem('token')) {
+      let data = {
+        checkin: this.state.startDate,
+        checkout: this.state.endDate,
+        student_id: parseInt(localStorage.getItem('currentUser')),
+        course_id: courseObj.id
+      }
+      this.props.bookingSession(data)
+    }
   }
 
 
@@ -291,12 +284,15 @@ class CourseDetailsContainer extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchingCourses: () => {dispatch(fetchingCourses())},
-    bookingSession: () => {dispatch(bookingSession())}
+    bookingSession: (data) => {dispatch(bookingSession(data))}
   }
 }
 
 const mapStateToProps = (state) => {
-  return { courses: state.courses };
+  return { 
+    courses: state.courses
+  };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseDetailsContainer)

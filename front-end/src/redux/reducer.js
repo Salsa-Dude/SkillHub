@@ -32,10 +32,20 @@ const loginReducer = (oldState = null, action) => {
   }
 }
 
+const courseSessionReducer = (oldState = [], action) => {
+  switch(action.type) {
+    case "ADD_SESSION": 
+      return [...oldState, action.sessionData]
+    default:
+      return oldState
+  }
+}
+
 const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
-  user: loginReducer
+  user: loginReducer,
+  courseSessions: courseSessionReducer
 })
 
 export default rootReducer

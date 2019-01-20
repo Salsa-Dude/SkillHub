@@ -15,6 +15,10 @@ const fetchingDancingCourses = () => {
   }
 }
 
+const fetchedDancingCourses = (dancingCourses) => {
+  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
+}
+
 const loggingIn = (loggingInfo) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/login`, {
@@ -36,6 +40,7 @@ const loggingIn = (loggingInfo) => {
         console.log(data)
         dispatch(loggedIn(data.user_info))
         localStorage.setItem('token', data.token)
+        localStorage.setItem('currentUser', data.user_info.id)
       }
     })
   }
@@ -45,15 +50,26 @@ const loggedIn = (user) => {
   return { type: "LOGGED_IN", user}
 }
 
-const bookingSession = () => {
-  return {}
+const bookedSession = (sessionData) => {
+  return {type: "ADD_SESSION", sessionData}
+}
+
+const bookingSession = (sessionData) => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/course_sessions', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sessionData)
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(bookedSession(data))
+    })
+ }
 }
 
 
-
-const fetchedDancingCourses = (dancingCourses) => {
-  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
-}
 
 
 export {fetchingCourses, fetchingDancingCourses, loggingIn, bookingSession}
