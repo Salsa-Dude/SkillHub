@@ -24,6 +24,7 @@ class SessionsContainer extends Component {
           <div className="ui four column grid">
             <div className="row">
               {this.props.userSessions.map(session => {
+                console.log(session.id)
                 return <div>{<SessionCard key={session.id} session={session} />}</div>
               })}
             </div>

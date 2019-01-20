@@ -55,7 +55,7 @@ class Nav extends Component {
             name="SkillHub"
             style={logo}
 
-            active={this.props.pathname === "/home"}
+            // active={this.props.pathname === "/home"}
           />
           <Menu.Item
             name='Explore'
@@ -101,7 +101,7 @@ class Nav extends Component {
             to="/home"
             name="SkillHub"
             style={logo}
-            active={this.props.pathname === "/home"}
+            // active={this.props.pathname === "/home"}
             />
             <Menu.Item
             name='Explore'

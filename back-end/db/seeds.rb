@@ -100,12 +100,12 @@ CourseSession.destroy_all
 #*** COURSE SESSIONS ***************************************
 
 @CourseSession1 = CourseSession.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 10), student_id: @Liz.id, course_id: @Course1.id)
-@CourseSession1 = CourseSession.create!(checkin: DateTime.new(2018, 5, 22), checkout: DateTime.new(2018, 10, 10), student_id: @Beth.id, course_id: @Course1.id)
+@CourseSession2 = CourseSession.create!(checkin: DateTime.new(2018, 5, 22), checkout: DateTime.new(2018, 10, 10), student_id: @Beth.id, course_id: @Course1.id)
 
 #*** REVIEWS ***************************************
 
 @Review1 = Review.create!(description: "Joseph was a great instructor! I had a great time", rating: 5, student_id: @Liz.id, course_session_id: @CourseSession1.id)
-@Review2 = Review.create!(description: "Great music, Great people, Great time!", rating: 5, student_id: @Beth.id, course_session_id: @CourseSession1.id)
+@Review2 = Review.create!(description: "Great music, Great people, Great time!", rating: 5, student_id: @Beth.id, course_session_id: @CourseSession2.id)
 
 
 #*** MESSAGES ***************************************
