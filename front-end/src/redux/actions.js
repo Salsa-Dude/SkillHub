@@ -24,6 +24,7 @@ const fetchedCourseSessions = (userSessions) => {
   return {type: "FETCHED_COURSE_SESSIONS", userSessions}
 }
 
+
 const fetchingDancingCourses = () => {
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/categories')
@@ -96,26 +97,3 @@ export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, logging
 
 
 
-// this.setState({ modalOpen: false })
-//     fetch(`http://localhost:3000/api/v1/login`, {
-//       method:"POST",
-//       headers: {
-//         "Content-type":"application/json",
-//         "Accept":"application/json"
-//       },
-//       body: JSON.stringify({
-//         email: this.state.email,
-//         password: this.state.password
-//       })
-//     }).then(res => res.json())
-//     .then(data => {
-//       console.log(data)
-//       if(data.error){
-//         alert('Incorrect username or password')
-//       }else{
-//         console.log(data)
-//         this.props.currentUser(data.user_info)
-//         this.props.setCurrentUser(data.user_info)
-//         localStorage.setItem('token', data.token)
-//       }
-//     })

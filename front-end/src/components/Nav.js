@@ -66,7 +66,7 @@ class Nav extends Component {
             name='My Sessions'
             as={NavLink}
             to="/sessions"
-            active={this.pathname === "/trips"}
+            // active={this.pathname === "/sessions"}
           />
          
           <Menu className="k">

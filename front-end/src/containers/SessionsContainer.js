@@ -1,41 +1,38 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux';
-import {fetchingCourses} from '../redux/actions'
 import {fetchingCourseSessions} from '../redux/actions'
 
+import SessionCard from '../components/SessionCard'
 import { Divider } from 'semantic-ui-react'
 import '../styles/sessions.css'
 
 class SessionsContainer extends Component {
-
+  constructor(props) {
+    super(props)
+  }
   componentDidMount() {
     this.props.fetchingCourseSessions()
   }
 
   render() {
-    return (
+    console.log(this.props.userSessions)
+    return  this.props.userSessions ? (
       <Fragment>
         <Divider />
         <div className="sessions-container">
           <h1>My Sessions</h1>
           <div className="ui four column grid">
             <div className="row">
-              {/* {user.rentals.map(trip => {
-                return <TripCard deleteTrip={this.props.deleteTrip} updateTrip={this.props.updateTrip} allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
-              })} */}
+              {this.props.userSessions.map(session => {
+                return <div>{<SessionCard key={session.id} session={session} />}</div>
+              })}
             </div>
           </div>
         </div>
       </Fragment>
-    )
+    ) : null
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     courseSession: state.courseSessions
-//   }
-// }
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -43,4 +40,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SessionsContainer)
+const mapStateToProps = (state) => {
+  return {
+    userSessions: state.courseSessions
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionsContainer)
