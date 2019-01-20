@@ -1,16 +1,47 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import DatePicker from "react-datepicker";
+import moment from 'moment';
 
-import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon } from 'semantic-ui-react'
+import "react-datepicker/dist/react-datepicker.css";
+import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header } from 'semantic-ui-react'
 import {fetchingCourses} from '../redux/actions'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
   constructor() {
     super()
-    
+    this.state = {
+      startDate: new Date(),
+      endDate: new Date(),
+      modalOpen: false 
+    }
   }
+
+  bookSession = () => {
+    console.log('book')
+  }
+
+  startHandleChange = (date) => {
+    this.setState({
+      startDate: date
+    })
+  }
+
+  endHandleChange = (date) => {
+    this.setState({
+      endDate: date
+    })
+  }
+
+  handleOpen = () => {
+    this.setState({ modalOpen: true })
+  }
+
+  handleClose = () => {
+    this.setState({ modalOpen: false })
+  } 
 
   componentDidMount() {
     this.props.fetchingCourses()
@@ -174,7 +205,55 @@ class CourseDetailsContainer extends Component {
                 </Grid.Column>
               </Grid>
               <div class="book-session">
-              <Button style={{width: '150px', height: '50px', backgroundColor: "#eb872a", color: 'white'}}  >Book Session</Button>
+              <Modal trigger={<Button onClick={this.handleOpen} style={{width: '150px', height: '50px', backgroundColor: "#eb872a", color: 'white'}} >Book Session</Button>}
+              open={this.state.modalOpen}
+              onClose={this.handleClose}
+              >
+
+               <Modal.Content image>
+                <Image wrapped size='medium' src={courseObject.image} />
+                <Modal.Description style={{ marginLeft: "5%", width: "50%" }}>
+                <Header style={{fontSize: "30px"}}>{courseObject.name}</Header>
+                <Form>
+                  <Form.Field>
+                    <label>Select Start Date: </label>
+                    <DatePicker
+                      selected={ this.state.startDate}
+                      onChange={ this.startHandleChange }
+                      minDate={this.state.startDate}
+                      className="date-picker-course"
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Select End Date: </label>
+                    <DatePicker
+                      selected={ this.state.endDate }
+                      onChange={ this.endHandleChange }
+                      minDate={this.state.endDate}
+                      className="date-picker-course"
+                    />
+                  </Form.Field>
+                </Form>
+                </Modal.Description>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button style={{backgroundColor: '#db4f56', color: 'white'}} onClick={this.handleClose}>
+                  Cancel
+                </Button>
+                <Button
+                  positive
+                  icon='checkmark'
+                  labelPosition='right'
+                  content="Book Session"
+                  onClick={this.bookSession}
+                />
+              </Modal.Actions>
+            </Modal>
+
+
+
+             
+              
               </div>
             </div>
           </div>
