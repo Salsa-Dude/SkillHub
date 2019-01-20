@@ -29,6 +29,7 @@ class CourseDetailsContainer extends Component {
         course_id: courseObj.id
       }
       this.props.bookingSession(data)
+      this.setState({ modalOpen: false })
     }
   }
 

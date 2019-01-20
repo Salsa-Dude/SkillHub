@@ -7,6 +7,23 @@ const fetchingCourses = () => {
   }
 }
 
+const fetchingCourseSessions = () => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/course_sessions')
+    .then(res => res.json())
+    .then(data => {
+      let userSessions = data.filter(session => {
+        return session.student_id === parseInt(localStorage.getItem('currentUser'))
+      })
+      dispatch(fetchedCourseSessions(userSessions))
+    })
+  }
+}
+
+const fetchedCourseSessions = (userSessions) => {
+  return {type: "FETCHED_COURSE_SESSIONS", userSessions}
+}
+
 const fetchingDancingCourses = () => {
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/categories')
@@ -72,7 +89,7 @@ const bookingSession = (sessionData) => {
 
 
 
-export {fetchingCourses, fetchingDancingCourses, loggingIn, bookingSession}
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession}
 
 
 

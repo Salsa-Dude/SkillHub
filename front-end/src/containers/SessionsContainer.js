@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux';
 import {fetchingCourses} from '../redux/actions'
+import {fetchingCourseSessions} from '../redux/actions'
 
 import { Divider } from 'semantic-ui-react'
 import '../styles/sessions.css'
@@ -8,7 +9,7 @@ import '../styles/sessions.css'
 class SessionsContainer extends Component {
 
   componentDidMount() {
-    this.props.fetchingCourses()
+    this.props.fetchingCourseSessions()
   }
 
   render() {
@@ -30,9 +31,15 @@ class SessionsContainer extends Component {
   }
 }
 
+// const mapStateToProps = (state) => {
+//   return {
+//     courseSession: state.courseSessions
+//   }
+// }
+
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingCourses: () => {dispatch(fetchingCourses())}
+    fetchingCourseSessions: () => {dispatch(fetchingCourseSessions())}
   }
 }
 

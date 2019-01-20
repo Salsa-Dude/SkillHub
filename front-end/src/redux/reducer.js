@@ -34,6 +34,8 @@ const loginReducer = (oldState = null, action) => {
 
 const courseSessionReducer = (oldState = [], action) => {
   switch(action.type) {
+    case "FETCHED_COURSE_SESSIONS": 
+    return [...oldState, action.userSessions]
     case "ADD_SESSION": 
       return [...oldState, action.sessionData]
     default:
