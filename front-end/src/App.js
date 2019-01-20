@@ -17,56 +17,21 @@ import AddCourse from './components/AddCourse'
 import MessageContainer from './containers/MessageContainer'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      currentUser: null,
-      loading: true
-    }
-  }
-
-  componentDidMount() {
-    let token = localStorage.getItem('token')
-    if(token) {
-      fetch(`http://localhost:3000/api/v1/home`, {
-        method: "GET",
-        headers: {
-          "Authentication" : `Bearer ${token}`
-        }
-      }).then(res => res.json())
-      .then(data => {
-        this.setState({
-          currentUser: data.user,
-          loading: false
-        })
-      })
-    } else {
-      this.setState({
-        loading: false
-      })
-    }
-  }
-
-  setCurrentUser = (userObj) => {
-    
-    this.setState({
-      currentUser: userObj
-    })
-  }
 
   render() {
     return (
+      
       <Fragment>
-        {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}/> : null }
+        {this.props.location.pathname !== '/login' ? <Nav/> : null }
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" render={() => 
-            <Home currentUser={this.state.currentUser} />} 
+            <Home />} 
           />
-          <Route exact path="/login" render={() => this.state.currentUser == null ?
-            <LoginContainer setCurrentUser={this.setCurrentUser} /> : <Redirect to="/home" />}
+          <Route exact path="/login" render={() => localStorage.getItem('token') ?
+            <LoginContainer /> : <Redirect to="/home" />}
           />
-          <Route exact path="/explore" render={() => <ExploreContainer /> } />
+          <Route exact path="/explore" component={ExploreContainer} />
           <Route exact path="/dancing" render={() => <DancingContainer /> } />
           <Route exact path="/languages" render={() => <LanguagesContainer /> } />
           <Route exact path="/carpentry" render={() => <CarpentryContainer /> } />
@@ -76,11 +41,7 @@ class App extends Component {
           <Route exact path="/my-courses" render={() => <MyCoursesContainer /> } />
           <Route exact path="/add-course" render={() => <AddCourse /> } />
           <Route exact path="/messages" render={() => <MessageContainer /> } />
-          <Route exact path="/courses/:id" render={(props) => {
-            console.log(props)
-            let courseId = props.match.params.id 
-            return <CourseDetailsContainer currentUser={this.state} courseId={courseId}/>
-          }} />
+          <Route exact path="/courses/:id" component={CourseDetailsContainer} />
         </Switch>
       </Fragment>
     );

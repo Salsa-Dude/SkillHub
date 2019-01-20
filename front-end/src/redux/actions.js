@@ -45,12 +45,18 @@ const loggedIn = (user) => {
   return { type: "LOGGED_IN", user}
 }
 
+const bookingSession = () => {
+  return {}
+}
+
+
+
 const fetchedDancingCourses = (dancingCourses) => {
   return {type: "FETCHED_DANCING_COURSES", dancingCourses}
 }
 
 
-export {fetchingCourses, fetchingDancingCourses, loggingIn}
+export {fetchingCourses, fetchingDancingCourses, loggingIn, bookingSession}
 
 
 

@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import moment from 'moment';
+import {fetchingCourses} from '../redux/actions'
+import {bookingSession} from '../redux/actions'
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header } from 'semantic-ui-react'
-import {fetchingCourses} from '../redux/actions'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
@@ -61,6 +62,7 @@ class CourseDetailsContainer extends Component {
 
   componentDidMount() {
     this.props.fetchingCourses()
+
   }
 
   getStudentImage = (id, courseObj) => {
@@ -78,7 +80,7 @@ class CourseDetailsContainer extends Component {
 
     if (this.props) {
       courseObject = this.props.courses.find(course => {
-        return course.id == this.props.courseId
+        return course.id == this.props.match.params.id
       })
      
     }
@@ -288,7 +290,8 @@ class CourseDetailsContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingCourses: () => {dispatch(fetchingCourses())}
+    fetchingCourses: () => {dispatch(fetchingCourses())},
+    bookingSession: () => {dispatch(bookingSession())}
   }
 }
 

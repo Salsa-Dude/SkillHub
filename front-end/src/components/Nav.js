@@ -12,9 +12,11 @@ class Nav extends Component {
      this.state = {
       modalOpen: false,
       email: "",
-      password: ""
+      password: "",
+      currentUser: null
      }
   }
+
 
   handleLoginSubmit = () => {
     let loginFormInput = this.state
@@ -35,9 +37,7 @@ class Nav extends Component {
   } 
   
    render() {
-
     let logout =  () => {
-      this.props.setCurrentUser(null)
       localStorage.clear()
     }
 
@@ -47,7 +47,7 @@ class Nav extends Component {
 
     return (
       <Menu className="navbar" pointing secondary size="huge">
-        {this.props.logged_in ? (
+        {localStorage.getItem('token') || this.props.user ? (
         <Fragment>
           <Menu.Item
             as={NavLink}
@@ -185,10 +185,14 @@ class Nav extends Component {
   
 }
 
-const mapDispatchToStore = (dispatch) => {
+const mapStateToStore = (state) => {
   return {
-    loggingIn: (loginFormInput) => {dispatch(loggingIn(loginFormInput))}
+    user: state.user
   }
 }
 
-export default connect(null, mapDispatchToStore)(withRouter(Nav));
+const mapDispatchToStore = (dispatch) => ({
+  loggingIn: (loginFormInput) => dispatch(loggingIn(loginFormInput)),
+})
+
+export default connect(mapStateToStore, mapDispatchToStore)(withRouter(Nav));
