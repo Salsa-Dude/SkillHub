@@ -31,8 +31,13 @@ class SessionCard extends Component {
       course_id: this.props.session.course_id
     }
 
-    console.log(data)
     this.props.updateSession(data)
+
+    this.setState({ 
+      open: false,
+      // startDate: this.props.session.checkin,
+      // endDate: this.props.session.checkout,
+    })
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })

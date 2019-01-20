@@ -32,14 +32,24 @@ const loginReducer = (oldState = null, action) => {
   }
 }
 
-const courseSessionReducer = (oldState = [], action) => {
+const courseSessionReducer = (state = [], action) => {
+ 
   switch(action.type) {
     case "FETCHED_COURSE_SESSIONS": 
     return action.userSessions
     case "ADD_SESSION": 
-      return [...oldState, action.sessionData]
+      return [...state, action.sessionData]
+    case "UPDATE_SESSION":
+    console.log(action)
+      return state.map(stateSession => {
+        if(stateSession.id == action.sessionData.id) {
+          return action.sessionData
+        } else {
+          return stateSession
+        }
+      })
     default:
-      return oldState
+      return state
   }
 }
 

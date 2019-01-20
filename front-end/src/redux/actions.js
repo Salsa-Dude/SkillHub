@@ -88,20 +88,23 @@ const bookingSession = (sessionData) => {
 }
 
 const updatingSession = (sessionData) => {
+  console.log(sessionData)
   return dispatch => {
-    console.log(sessionData)
     fetch(`http://localhost:3000/api/v1/course_sessions/${sessionData.id}`, {
       method: "PATCH",
       headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(sessionData)
     }).then(res => res.json())
     .then(data => {
-      console.log(data)
+      dispatch(updatedSession(data))
     })
   }
+}
+
+const updatedSession = (sessionData) => {
+  return {type: "UPDATE_SESSION", sessionData}
 }
 
 

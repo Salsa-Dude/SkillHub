@@ -8,10 +8,14 @@ class Api::V1::CourseSessionsController < ApplicationController
     @course_session = CourseSession.create(course_session_params)
     render json: @course_session
   end
+  
+  def show
+    render json: CourseSession.find(params[:id])
+  end
 
   def update 
     @course_session = CourseSession.find(params[:id]).update(course_session_params)
-    render json: @lease
+    render json: @course_session
   end
 
   private
