@@ -10,8 +10,8 @@ import {fetchingCourses} from '../redux/actions'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
@@ -19,9 +19,25 @@ class CourseDetailsContainer extends Component {
     }
   }
 
-  bookSession = () => {
-    console.log('book')
+  bookSession = (courseObj) => {
+    // console.log(this.props.currentUser.currentUser.id)
+    // let data = {
+    //   checkin: this.state.startDate,
+    //   checkout: this.state.endDate,
+    //   student_id: this.props.currentUser.currentUser.id,
+    //   course_id: courseObj.id
+    // }
+    
+    // fetch('http://localhost:3000/api/v1/course_sessions', {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data)
+    // }).then(res => res.json())
+    // .then(console.log(data))
   }
+
 
   startHandleChange = (date) => {
     this.setState({
@@ -68,7 +84,6 @@ class CourseDetailsContainer extends Component {
     }
 
     if (courseObject) {
-      console.log(courseObject)
       backgroundImage = {
       backgroundImage: `url('${courseObject.image}')`,
       opacity: '1',
@@ -245,7 +260,7 @@ class CourseDetailsContainer extends Component {
                   icon='checkmark'
                   labelPosition='right'
                   content="Book Session"
-                  onClick={this.bookSession}
+                  onClick={ () => this.bookSession(courseObject)}
                 />
               </Modal.Actions>
             </Modal>

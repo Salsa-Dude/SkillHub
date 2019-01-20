@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   setCurrentUser = (userObj) => {
+    
     this.setState({
       currentUser: userObj
     })
@@ -76,8 +77,9 @@ class App extends Component {
           <Route exact path="/add-course" render={() => <AddCourse /> } />
           <Route exact path="/messages" render={() => <MessageContainer /> } />
           <Route exact path="/courses/:id" render={(props) => {
+            console.log(props)
             let courseId = props.match.params.id 
-            return <CourseDetailsContainer courseId={courseId}/>
+            return <CourseDetailsContainer currentUser={this.state} courseId={courseId}/>
           }} />
         </Switch>
       </Fragment>
