@@ -95,7 +95,7 @@ const updatingSession = (sessionData) => {
     fetch(`http://localhost:3000/api/v1/course_sessions/${sessionData.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(sessionData)
     }).then(res => res.json())
@@ -124,8 +124,23 @@ const deleteSession = (session) => {
   return {type: "DELETE_SESSION", session}
 }
 
+/////////////// REVIEW /////////////////////////////////////////////
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession}
+const addingReview = (sessionData) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sessionData)
+    }).then(res => res.json())
+    .then(data => console.log(data))
+  }
+}
+
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview}
 
 
 

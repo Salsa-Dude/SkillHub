@@ -1,10 +1,6 @@
 
 import {combineReducers} from 'redux'
 
-// let initialState = {
-//   courses: []
-// }
-
 const courseReducer = (oldState = [], action) => {
   switch(action.type) {
     case "FETCHED_COURSES":
