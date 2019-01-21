@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import {fetchingCourses} from '../redux/actions'
 import {bookingSession} from '../redux/actions'
+import {sendingMessage} from '../redux/actions'
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea } from 'semantic-ui-react'
@@ -18,6 +19,7 @@ class CourseDetailsContainer extends Component {
       endDate: new Date(),
       modalOpen: false,
       open: false,
+      messageContent: ''
     }
   }
 
@@ -32,6 +34,23 @@ class CourseDetailsContainer extends Component {
       this.props.bookingSession(data)
       this.setState({ modalOpen: false })
     }
+  }
+
+  sendMessage = (courseObject) => {
+    let data = {
+      content: this.state.messageContent,
+      sender_id: parseInt(localStorage.getItem('currentUser')),
+      recipient_id: courseObject.instructor_id,
+    }
+    
+    this.props.sendingMessage(data)
+    this.setState({ open: false })
+  }
+
+  messageChange = (e) => {
+    this.setState({
+      messageContent: e.target.value
+    })
   }
 
 
@@ -148,7 +167,7 @@ class CourseDetailsContainer extends Component {
                         <Modal.Content className="contact-message-container">
                           <Image className="contact-user-image" circular size="small" src={courseObject.instructor.image} />
                         <Modal.Description className="message-form">
-                        <Form.Field rows='7' className="message-input" control={TextArea} placeholder='Write a message' />
+                        <Form.Field onChange={(e) => this.messageChange(e)} rows='7' className="message-input" control={TextArea} placeholder='Write a message' />
                         </Modal.Description>
                         </Modal.Content>
                         <Modal.Actions>
@@ -160,13 +179,11 @@ class CourseDetailsContainer extends Component {
                             icon='checkmark'
                             labelPosition='right'
                             content="Send Message"
-                            onClick={this.updateSession}
+                            onClick={() => this.sendMessage(courseObject)}
                           />
                         </Modal.Actions>
                       </Modal>
-
-
-
+                      
                       <div className="mentor-bio">
                         <p>{courseObject.bio}</p>
                       </div>  
@@ -194,10 +211,6 @@ class CourseDetailsContainer extends Component {
           </Tab.Pane> },
       ]
     }
-
-    // const mentorContactBtn = {
-    //   display: 'block'
-    // }
 
     const mailIcon = {
       paddingRight: '20px'  
@@ -294,10 +307,6 @@ class CourseDetailsContainer extends Component {
               </Modal.Actions>
             </Modal>
 
-
-
-             
-              
               </div>
             </div>
           </div>
@@ -318,7 +327,8 @@ class CourseDetailsContainer extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchingCourses: () => {dispatch(fetchingCourses())},
-    bookingSession: (data) => {dispatch(bookingSession(data))}
+    bookingSession: (data) => {dispatch(bookingSession(data))},
+    sendingMessage: (data) => {dispatch(sendingMessage(data))}
   }
 }
 

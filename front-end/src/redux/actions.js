@@ -159,8 +159,29 @@ const fetchedMessages = (messagesData) => {
   return {type: "FETCHED_MESSAGES", messagesData}
 }
 
+const sendingMessage = (data) => {
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/messages', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    .then(data => {
+      sendMessage(data)
+    })
+  }
+}
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages}
+const sendMessage = (messageData) => {
+  return {type: "ADD_MESSAGE", messageData}
+}
+
+
+
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage}
 
 
 

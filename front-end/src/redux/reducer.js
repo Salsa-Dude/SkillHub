@@ -67,6 +67,8 @@ const messageReducer = (state = [], action) => {
   switch(action.type) {
     case "FETCHED_MESSAGES": 
       return action.messagesData
+    case "ADD_MESSAGE":
+    return [...state, action.messagesData]
     default:
       return state
   }
