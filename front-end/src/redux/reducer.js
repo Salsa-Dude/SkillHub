@@ -63,12 +63,22 @@ const reviewReducer = (state= [], action) => {
   }
 }
 
+const messageReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_MESSAGES": 
+      return action.messagesData
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
   user: loginReducer,
   courseSessions: courseSessionReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  messages: messageReducer
 })
 
 export default rootReducer

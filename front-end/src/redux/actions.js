@@ -143,8 +143,24 @@ const addReview = (reviewData) => {
   return {type: "ADD_REVIEW", reviewData}
 }
 
+/////////////// MESSAGES /////////////////////////////////////////////
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview}
+const fetchingMessages = () => {
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/messages')
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchedMessages(data))
+    })
+  }
+}
+
+const fetchedMessages = (messagesData) => {
+  return {type: "FETCHED_MESSAGES", messagesData}
+}
+
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages}
 
 
 

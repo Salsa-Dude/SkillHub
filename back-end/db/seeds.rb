@@ -111,6 +111,7 @@ CourseSession.destroy_all
 #*** MESSAGES ***************************************
 
 @Message1 = Message.create!(content: "Do you teach bachata too?", sender_id: @Liz.id, recipient_id: @Joseph.id )
+@Message2 = Message.create!(content: "Do you teach salsa too?", sender_id: @Beth.id, recipient_id: @Joseph.id )
 
 #*** CATEGORIES ***************************************
 
