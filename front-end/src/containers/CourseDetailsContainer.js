@@ -7,7 +7,7 @@ import {fetchingCourses} from '../redux/actions'
 import {bookingSession} from '../redux/actions'
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header } from 'semantic-ui-react'
+import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea } from 'semantic-ui-react'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
@@ -16,7 +16,8 @@ class CourseDetailsContainer extends Component {
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
-      modalOpen: false 
+      modalOpen: false,
+      open: false,
     }
   }
 
@@ -54,24 +55,32 @@ class CourseDetailsContainer extends Component {
     this.setState({ modalOpen: false })
   } 
 
-  componentDidMount() {
-    this.props.fetchingCourses()
+  show = dimmer => () => this.setState({ dimmer, open: true })
 
-  }
-
+  close = () => {
+    this.setState({ 
+      open: false
+    })
+  } 
+  
   getStudentImage = (id, courseObj) => {
     let student = courseObj.students.find(student => {
       return student.id === id
     })   
     return student.image
   }
+  
+  componentDidMount() {
+    this.props.fetchingCourses()
+
+  }
 
   render() {
     let courseObject;
     let backgroundImage;
     let panes;
+    const { open, dimmer } = this.state
     
-
     if (this.props) {
       courseObject = this.props.courses.find(course => {
         return course.id == this.props.match.params.id
@@ -131,9 +140,33 @@ class CourseDetailsContainer extends Component {
                     <div>
                       <Image size='tiny' src={courseObject.instructor.image} avatar />
                       <span>{courseObject.instructor.first_name} {courseObject.instructor.last_name}
-                      <div className="mentor-contact-btn"><Button icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
+                      <div className="mentor-contact-btn"><Button onClick={this.show('blurring')} icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
                       </span>
                       
+                      <Modal dimmer={dimmer} open={open} onClose={this.close}>
+                        <Modal.Header>Message {courseObject.instructor.first_name}</Modal.Header>
+                        <Modal.Content className="contact-message-container">
+                          <Image className="contact-user-image" circular size="small" src={courseObject.instructor.image} />
+                        <Modal.Description className="message-form">
+                        <Form.Field rows='7' className="message-input" control={TextArea} placeholder='Write a message' />
+                        </Modal.Description>
+                        </Modal.Content>
+                        <Modal.Actions>
+                          <Button color='black' onClick={this.close}>
+                            Cancel
+                          </Button>
+                          <Button
+                            positive
+                            icon='checkmark'
+                            labelPosition='right'
+                            content="Send Message"
+                            onClick={this.updateSession}
+                          />
+                        </Modal.Actions>
+                      </Modal>
+
+
+
                       <div className="mentor-bio">
                         <p>{courseObject.bio}</p>
                       </div>  

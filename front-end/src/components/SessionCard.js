@@ -89,12 +89,6 @@ class SessionCard extends Component {
 
   handleChange = e => this.setState({ rating: e.target.value })
 
-  show = dimmer => () => this.setState({ dimmer, open: true })
-
-  closeModal = (e) => {
-    let test = e.currentTarget.parentElement.parentElement.parentElement
-    test.style.opacity = 'none'
-  }
 
   render() {
     const { open, dimmer } = this.state

@@ -159,4 +159,29 @@
   height: 30vh;
 }
 
+.contact-message-container {
+  display: flex !important;
+}
+
+.contact-message-container textarea {
+  width: 100%;
+}
+
+.contact-user-image {
+  height: 150px !important;
+  width: 150px !important;
+}
+
+.message-form {
+  margin-left: 10%;
+  margin-top: 10px;
+  width: 400px !important;
+}
+
+.message-input {
+  width: 100% !important;
+}
+
+
+
 
