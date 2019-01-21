@@ -135,8 +135,12 @@ const addingReview = (sessionData) => {
       },
       body: JSON.stringify(sessionData)
     }).then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => dispatch(addReview(data)))
   }
+}
+
+const addReview = (reviewData) => {
+  return {type: "ADD_REVIEW", reviewData}
 }
 
 

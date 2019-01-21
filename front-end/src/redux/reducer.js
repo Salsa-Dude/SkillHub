@@ -54,11 +54,21 @@ const courseSessionReducer = (state = [], action) => {
   }
 }
 
+const reviewReducer = (state= [], action) => {
+  switch(action.type) {
+    case "ADD_REVIEW":
+      return [...state, action.reviewData]
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
   user: loginReducer,
-  courseSessions: courseSessionReducer
+  courseSessions: courseSessionReducer,
+  reviews: reviewReducer
 })
 
 export default rootReducer
