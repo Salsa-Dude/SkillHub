@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_164029) do
     t.integer "status", default: 0
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.datetime "modified_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

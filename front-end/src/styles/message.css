@@ -1,4 +1,9 @@
 .message-container {
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.inner-message-container {
   width: 65%;
   margin-top: 3%;
 }
@@ -11,6 +16,11 @@
 
 .sender-name {
   font-size: 17px;
+}
+
+.message-date {
+  margin-top: 10px;
+  color: grey;
 }
 
 .message-buttons {
