@@ -10,10 +10,15 @@ class Api::V1::MessagesController < ApplicationController
     render json: @message
   end
 
+  def destroy
+    render json: Message.find(params(:id)).destroy
+  end
+
   private 
 
   def message_params
     params.require(:message).permit(:content, :sender_id, :recipient_id)
   end
+
 
 end
