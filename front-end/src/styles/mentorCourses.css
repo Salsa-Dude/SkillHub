@@ -1,0 +1,23 @@
+.mentor-courses-container {
+  
+
+}
+
+.item-span {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mentor-course-header {
+  font-size: 25px !important;
+  margin-bottom: 10px !important;
+}
+
+.mentor-btns {
+  display: flex;
+  float: right;
+}
+
+.mentor-btns button {
+  margin-right: 20px !important;
+}
