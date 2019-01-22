@@ -1,9 +1,16 @@
 import React, {Component, Fragment} from 'react'
-
+import {connect} from 'react-redux'
+import {fetchingMentorCourses} from '../redux/actions'
 import { Divider } from 'semantic-ui-react'
 
 class MyCoursesContainer extends Component {
+
+  componentDidMount() {
+    this.props.fetchingMentorCourses()
+  }
+
   render() {
+    console.log(this.props.mentorCourses)
     return (
       <Fragment>
         <Divider />
@@ -22,4 +29,16 @@ class MyCoursesContainer extends Component {
   }
 }
 
-export default MyCoursesContainer
+const mapDispatchToState = (state) => {
+  return {
+    mentorCourses: state.mentorCourses
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchingMentorCourses: () => {dispatch(fetchingMentorCourses())}
+  }
+}
+
+export default connect(mapDispatchToState, mapDispatchToProps)(MyCoursesContainer)

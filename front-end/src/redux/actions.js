@@ -193,11 +193,24 @@ const deleteMessage = (messageData) => {
   return {type: "DELETE_MESSAGE", messageData}
 }
 
+/////////////// MENTOR COURSES /////////////////////////////////////////////
+
+const fetchingMentorCourses = () => {
+  return dispatch => {
+    fetch("http://localhost:3000/api/v1/courses")
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchMentorCourses(data))
+    })
+  }
+}
+
+const fetchMentorCourses = (mentorCoursesData) => {
+  return {type: "FETCH_MENTOR_COURSES", mentorCoursesData }
+}
 
 
-
-
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage}
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses}
 
 
 

@@ -64,7 +64,6 @@ const reviewReducer = (state= [], action) => {
 }
 
 const messageReducer = (state = [], action) => {
-  console.log(action)
   switch(action.type) {
     case "FETCHED_MESSAGES": 
       return action.messagesData
@@ -81,13 +80,23 @@ const messageReducer = (state = [], action) => {
   }
 }
 
+const mentorReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCH_MENTOR_COURSES":
+      return action.mentorCoursesData 
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
   user: loginReducer,
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
-  messages: messageReducer
+  messages: messageReducer,
+  mentorCourses: mentorReducer
 })
 
 export default rootReducer
