@@ -178,10 +178,26 @@ const sendMessage = (messageData) => {
   return {type: "ADD_MESSAGE", messageData}
 }
 
+const deletingMessage = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/messages/${id}`, {
+      method: "DELETE"
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(deleteMessage(data))
+    })
+  }
+}
+
+const deleteMessage = (messageData) => {
+  return {type: "DELETE_MESSAGE", messageData}
+}
 
 
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage}
+
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage}
 
 
 

@@ -57,6 +57,8 @@ class SessionCard extends Component {
     course_session_id: this.state.courseSession.id
    }
    this.props.addReview(data)
+
+   this.setState({ modalOpen: false , rating: 0, reviewContent: '' })
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })

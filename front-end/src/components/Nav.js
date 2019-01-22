@@ -17,6 +17,10 @@ class Nav extends Component {
      }
   }
 
+  logout = () => {
+    localStorage.clear()
+  }
+
 
   handleLoginSubmit = () => {
     let loginFormInput = this.state
@@ -91,7 +95,7 @@ class Nav extends Component {
               7
             </Label>
           </Menu.Item>
-            <Menu.Item to="/logout" name="Logout" onClick={logout} />
+            <Menu.Item as={NavLink} to="/logout" name="Logout" onClick={this.logout} />
           </Menu.Menu>
         </Fragment>
         ) : (
@@ -113,11 +117,11 @@ class Nav extends Component {
             </Menu.Item>
             
             <Menu.Menu position="right">
-              <Menu.Item
+              {/* <Menu.Item
                 name='Become a Mentor'
                 as={NavLink}
                 to="/myProperties"
-              />
+              /> */}
               <Modal style={loginModal} trigger={
                 <Menu.Item
                   // as={NavLink}

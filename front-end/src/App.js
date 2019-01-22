@@ -25,7 +25,7 @@ class App extends Component {
       <Fragment>
         {this.props.location.pathname !== '/login' ? <Nav/> : null }
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route exact path="/logout" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" render={() => 
             <Home />} 
           />

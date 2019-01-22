@@ -11,7 +11,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def destroy
-    render json: Message.find(params(:id)).destroy
+    render json: Message.find(params[:id]).destroy
   end
 
   private 

@@ -64,11 +64,18 @@ const reviewReducer = (state= [], action) => {
 }
 
 const messageReducer = (state = [], action) => {
+  console.log(action)
   switch(action.type) {
     case "FETCHED_MESSAGES": 
       return action.messagesData
     case "ADD_MESSAGE":
-    return [...state, action.messagesData]
+      return [...state, action.messageData]
+    case "DELETE_MESSAGE":
+    let findMessage = state.find(message => message.id === action.messageData.id)
+    let index = state.indexOf(findMessage)
+    let messagesCopy = [...state]
+    messagesCopy.splice(index, 1)
+    return messagesCopy
     default:
       return state
   }

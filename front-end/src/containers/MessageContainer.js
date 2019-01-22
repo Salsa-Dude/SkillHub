@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import moment from 'moment';
 import { fetchingMessages} from '../redux/actions'
 import {sendingMessage} from '../redux/actions'
+import {deletingMessage} from '../redux/actions'
 import { Divider, Button, Image, List, Icon, Modal, Header, Form, TextArea } from 'semantic-ui-react'
 
 import '../styles/message.css'
@@ -14,6 +15,7 @@ class MessageContainer extends Component {
     this.state = {
       modalOpen: false,
       messageContent: '',
+      messageId: '',
       senderImage: "",
       senderName: '',
       senderId: '',
@@ -44,6 +46,14 @@ class MessageContainer extends Component {
 
   }
 
+  deleteMessage = () => {
+    this.props.deletingMessage(this.state.messageId)
+    this.setState({ 
+      modalOpen: false,
+      messageId: ''
+    })
+  }
+
   messageChange = (e) => {
     this.setState({
       messageContent: e.target.value
@@ -67,6 +77,21 @@ class MessageContainer extends Component {
     })
   }
 
+  secondOpen = (messageId) => {
+    this.setState({ 
+      modalOpen: true,
+      messageId: messageId
+    })
+    
+  }
+
+  secondClose = () => {
+    this.setState({ 
+      modalOpen: false,
+      messageId: ''
+    })
+  } 
+
   close = () => {
     this.setState({ 
       open: false,
@@ -79,6 +104,7 @@ class MessageContainer extends Component {
 
   render() {
     const { open, dimmer } = this.state
+    
   
     const userMessages = this.props.allMessages.filter(message => {
       return message.recipient_id === parseInt(localStorage.getItem('currentUser'))
@@ -118,9 +144,28 @@ class MessageContainer extends Component {
                         />
                       </Modal.Actions>
                     </Modal>
-
-
-                    <Button basic color="red">Delete <Icon style={{marginLeft: "10px"}} name="trash"></Icon></Button>
+                    <Modal trigger={<Button onClick={() => this.secondOpen(message.id)} basic color="red">Delete <Icon style={{marginLeft: "10px"}} name="trash"></Icon></Button>}
+                    open={this.state.modalOpen}
+                    onClose={this.secondClose}
+                    >
+                    <Modal.Content>
+                      <Modal.Description>
+                        <Header>DELETE</Header>
+                          <p>Are you sure you want to delete this message?</p>
+                      </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions>
+                      <Button style={{backgroundColor: '#db4f56', color: 'white'}} onClick={this.secondClose}>
+                        Cancel
+                      </Button>
+                      <Button
+                        positive
+                        content="Delete Message"
+                        id={this}
+                        onClick={this.deleteMessage}
+                      />
+                    </Modal.Actions>
+                  </Modal>
                   </List.Content>
                   <Image style={{marginTop: '10px'}} size="mini" avatar src={message.sender.image} />
                   <List.Content className="sender-name">{message.sender.first_name}</List.Content>
@@ -146,7 +191,8 @@ const mapDispatchToState = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchMessages: () => {dispatch(fetchingMessages())},
-    sendingMessage: (data) => {dispatch(sendingMessage(data))}
+    sendingMessage: (data) => {dispatch(sendingMessage(data))},
+    deletingMessage: (id) => {dispatch(deletingMessage(id))}
   }
 }
 

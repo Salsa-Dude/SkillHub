@@ -59,7 +59,7 @@ class Home extends Component {
 
           <Grid>
             <Grid.Column style={topCategoriesContainer} width={13}>
-              <h2>Top Categories</h2>
+              <h2>Trending Courses</h2>
 
             </Grid.Column>
           </Grid>
@@ -70,6 +70,12 @@ class Home extends Component {
 }
 
 // props called fetchingCourses that fetches the Tasks from server
+
+const mapStateToProps = state => {
+  return {
+    
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
