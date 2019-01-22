@@ -3,6 +3,7 @@ import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment';
 import { fetchingMessages} from '../redux/actions'
+import {sendingMessage} from '../redux/actions'
 import { Divider, Button, Image, List, Icon, Modal, Header, Form, TextArea } from 'semantic-ui-react'
 
 import '../styles/message.css'
@@ -15,7 +16,8 @@ class MessageContainer extends Component {
       messageContent: '',
       senderImage: "",
       senderName: '',
-      senderId: ''
+      senderId: '',
+      open: false,
     }
   }
 
@@ -30,6 +32,16 @@ class MessageContainer extends Component {
       recipient_id: parseInt(this.state.senderId)
     }
 
+    this.props.sendingMessage(data)
+    
+    this.setState({ 
+      open: false,
+      senderImage: "",
+      senderName: "",
+      senderId: "",
+      messageContent: ''
+    })
+
   }
 
   messageChange = (e) => {
@@ -38,32 +50,35 @@ class MessageContainer extends Component {
     })
   }
 
-  handleOpen = (e) => {
+  handleOpen = (e, dimmer) => {
+    this.setState({ dimmer, open: true })
+    
     let btn = e.currentTarget
+    
     console.log(btn)
     let gotSenderImage = btn.dataset.image
     let gotSenderName = btn.dataset.name
     let gotSenderId = btn.dataset.id
 
     this.setState({ 
-      modalOpen: true,
       senderImage: gotSenderImage,
       senderName: gotSenderName,
       senderId: gotSenderId
     })
   }
 
-  handleClose = () => {
+  close = () => {
     this.setState({ 
-      modalOpen: false,
+      open: false,
       senderImage: "",
       senderName: "",
       senderId: "",
       messageContent: ''
     })
-  } 
+  }
 
   render() {
+    const { open, dimmer } = this.state
   
     const userMessages = this.props.allMessages.filter(message => {
       return message.recipient_id === parseInt(localStorage.getItem('currentUser'))
@@ -80,12 +95,10 @@ class MessageContainer extends Component {
               return (
                 <List.Item key={message.id}>
                   <List.Content className="message-buttons" floated='right'>
-                    <Modal trigger={<Button onClick={(e) => this.handleOpen(e)} data-image={message.sender.image} data-name={message.sender.first_name} data-id={message.sender_id}  basic color='teal'>Reply <Icon style={{marginLeft: "10px"}} name="reply"></Icon></Button>}
-                    open={this.state.modalOpen}
-                    onClose={this.handleClose}
-                    >
-
-                    <Modal.Header>Reply to</Modal.Header>
+                   <Button onClick={(e) => this.handleOpen(e, 'inverted' )} data-image={message.sender.image} data-name={message.sender.first_name} data-id={message.sender_id}  basic color='teal'>Reply <Icon style={{marginLeft: "10px"}} name="reply"></Icon></Button>
+                    
+                  <Modal dimmer={dimmer} open={open} onClose={this.close}>
+                    <Header>Reply to {this.state.senderName}</Header>
                       <Modal.Content className="contact-message-container">
                         <Image className="contact-user-image" circular size="small" src={this.state.senderImage} />
                       <Modal.Description className="message-form">
@@ -93,7 +106,7 @@ class MessageContainer extends Component {
                       </Modal.Description>
                       </Modal.Content>
                       <Modal.Actions>
-                        <Button color='black' onClick={this.handleClose}>
+                        <Button color='black' onClick={this.close}>
                           Cancel
                         </Button>
                         <Button
@@ -130,10 +143,10 @@ const mapDispatchToState = (state) => {
   }
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMessages: () => {dispatch(fetchingMessages())}
+    fetchMessages: () => {dispatch(fetchingMessages())},
+    sendingMessage: (data) => {dispatch(sendingMessage(data))}
   }
 }
 
