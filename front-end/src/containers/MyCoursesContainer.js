@@ -1,14 +1,33 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {fetchingMentorCourses} from '../redux/actions'
-import { Divider, Image, Item, Grid, Button } from 'semantic-ui-react'
+
+import MentorCourseCard from '../components/MentorCourseCard'
+import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea } from 'semantic-ui-react'
 import "../styles/mentorCourses.css"
 
 class MyCoursesContainer extends Component {
+  constructor() {
+    super()
+    this.state = {
+      open: false,
+    }
+  }
 
   componentDidMount() {
     this.props.fetchingMentorCourses()
   }
+
+  handleOpen = (e, dimmer) => {
+    this.setState({ dimmer, open: true })
+  }
+
+  close = () => {
+    this.setState({ 
+      open: false
+    })
+  }
+
 
   render() {
     
@@ -16,7 +35,7 @@ class MyCoursesContainer extends Component {
       return course.instructor_id === parseInt(localStorage.getItem('currentUser'))
     })
 
-    console.log(userMentorCourses)
+    const { open, dimmer } = this.state
    
     return (
       <Fragment>
@@ -28,25 +47,7 @@ class MyCoursesContainer extends Component {
                   <div className="mentor-courses-container">
                     <Grid style={{marginTop: '20px'}}>
                       <Grid.Column width={11}>
-                        <Item.Group>
-                          <Item>
-                            <Item.Image size='medium' src={course.image} />
-
-                            <Item.Content>
-                              <Item.Header className="mentor-course-header" as='a'>{course.name}</Item.Header>
-                              <Item.Meta><span className="item-span">Address:</span> {course.address}</Item.Meta>
-                              <Item.Meta><span className="item-span">City:</span> {course.city}</Item.Meta>
-                              <Item.Description>
-                                <span className="item-span">Description:</span> <span className="mentor-course-description">{course.description}</span>
-                              </Item.Description>
-                              <Item.Description><span className="item-span">About me</span> {course.bio}</Item.Description>
-                            </Item.Content>
-                          </Item>
-                          <div className="mentor-btns">
-                              <Button basic color='teal'>Edit</Button>
-                              <Button basic color='red'>Delete</Button>
-                            </div>
-                        </Item.Group>
+                        <MentorCourseCard course={course} />
                       </Grid.Column>
                     </Grid>
                   </div>
