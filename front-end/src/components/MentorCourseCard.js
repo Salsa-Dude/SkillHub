@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import {updatingMentorCourses} from '../redux/actions'
-import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea } from 'semantic-ui-react'
+import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea, Icon } from 'semantic-ui-react'
 import "../styles/mentorCourses.css"
 
 class MentorCourseCard extends Component {
@@ -9,6 +9,7 @@ class MentorCourseCard extends Component {
     super(props)
     this.state = {
       open: false,
+      modalOpen: false,
       courseName: this.props.course.name,
       courseAddress: this.props.course.address,
       courseCity: this.props.course.city,
@@ -36,6 +37,10 @@ class MentorCourseCard extends Component {
     this.setState({ 
       open: false
     })
+  }
+
+  deleteCourse = () => {
+    console.log('me')
   }
 
   nameChange = (e) => {
@@ -66,6 +71,10 @@ class MentorCourseCard extends Component {
     this.setState({ dimmer, open: true })
   }
 
+  handleTwoOpen = () => {
+    this.setState({ modalOpen: true })
+  }
+
   close = () => {
     this.setState({ 
       open: false,
@@ -76,6 +85,8 @@ class MentorCourseCard extends Component {
       courseBio: this.props.course.bio
     })
   }
+
+  handleClose = () => this.setState({ modalOpen: false })
 
   render() {
 
@@ -130,7 +141,23 @@ class MentorCourseCard extends Component {
               />
             </Modal.Actions>
           </Modal>
-          <Button basic color='red'>Delete</Button>
+          <Modal trigger={<Button onClick={this.handleTwoOpen} basic color='red'>Delete</Button>}
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
+          >
+            <Header className="delete-header" icon='trash' content='Delete Trip ' />
+            <Modal.Description>
+              <p className="delete-message">Are you sure you want to delete this course?</p>
+            </Modal.Description>
+            <Modal.Actions>
+              <Button color='red' onClick={this.handleClose} inverted>
+                <Icon name='x' /> No
+              </Button>
+              <Button color='green' onClick={this.deleteCourse} inverted>
+                <Icon name='checkmark' /> Yes
+              </Button>
+            </Modal.Actions>
+          </Modal>
         </div>
       </Item.Group>
     )
