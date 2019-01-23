@@ -15,7 +15,6 @@ class Nav extends Component {
       modalOpen: false,
       email: "",
       password: "",
-      currentUser: localStorage.getItem('currentUser')
      }
   }
 
@@ -196,7 +195,7 @@ class Nav extends Component {
 
 const mapStateToStore = (state) => {
   return {
-    user: state.user
+    user: state.login
   }
 }
 

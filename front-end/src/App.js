@@ -16,6 +16,7 @@ import SessionsContainer from './containers/SessionsContainer'
 import MyCoursesContainer from './containers/MyCoursesContainer'
 import AddCourse from './components/AddCourse'
 import MessageContainer from './containers/MessageContainer'
+import UserContainer from './containers/UserContainer'
 
 class App extends Component {
 
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact path="/add-course" render={() => <AddCourse /> } />
           <Route exact path="/messages" render={() => <MessageContainer /> } />
           <Route exact path="/courses/:id" component={CourseDetailsContainer} />
+          <Route exact path="/user/:id" component={UserContainer} />
         </Switch>
       </Fragment>
     );

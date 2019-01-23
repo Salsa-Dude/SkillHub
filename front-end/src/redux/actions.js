@@ -66,7 +66,6 @@ const loggingIn = (loggingInfo) => {
   }
 }
 
-
 const loggedIn = (user) => {
   return { type: "LOGGED_IN", user}
 }
@@ -80,6 +79,25 @@ const loggingOut = () => {
 const logOut = (user) => {
   return {type: "LOGOUT", user}
 }
+
+
+/////////////// USER /////////////////////////////////////////////
+
+const fetchingUser = (id) => {
+  return dispatch => {
+   fetch(`http://localhost:3000/api/v1/users/${id}`)
+   .then(res => res.json())
+   .then(data => {
+     dispatch(fetchUser(data))
+   })
+  }
+}
+
+const fetchUser = (userData) => {
+  return {type: "FETCH_USER", userData}
+}
+
+
 
 /////////////// COURSE_SESSION /////////////////////////////////////////////
 
@@ -257,7 +275,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

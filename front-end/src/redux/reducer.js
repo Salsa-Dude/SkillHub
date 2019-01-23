@@ -1,13 +1,22 @@
 
 import {combineReducers} from 'redux'
 
+const userReducer = (state = null, action) => {
+  switch(action.type) {
+    case "FETCH_USER":
+      return action.userData
+    default:
+      return state
+  }
+}
+
 const courseReducer = (oldState = [], action) => {
   switch(action.type) {
     case "FETCHED_COURSES":
       return action.courses
     default:
+      return oldState
   }
-  return oldState
 }
 
 const dancingReducer = (oldState = [], action) => {
@@ -15,8 +24,9 @@ const dancingReducer = (oldState = [], action) => {
     case "FETCHED_DANCING_COURSES":
       return action.dancingCourses
     default:
+      return oldState
   }
-  return oldState
+
 }
 
 const loginReducer = (oldState = null, action) => {
@@ -107,9 +117,10 @@ const mentorReducer = (state = [], action) => {
 
 
 const rootReducer = combineReducers({
+  user: userReducer,
   courses: courseReducer,
   dancingCourses: dancingReducer,
-  user: loginReducer,
+  login: loginReducer,
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
   messages: messageReducer,

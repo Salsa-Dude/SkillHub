@@ -116,13 +116,19 @@
 }
 
 .mentor-bio {
-  margin-top: 30px;
+  margin-top: 10px;
 }
+
+.mentor-contact-box {
+  position: relative;
+  margin-top: 15px;
+}
+
 
 .mentor-contact-btn {
   position: absolute;
-  top: 30px;
-  left: 10px;
+  top: -300%;
+  left: 40%; 
   width: 100px;
 }
 

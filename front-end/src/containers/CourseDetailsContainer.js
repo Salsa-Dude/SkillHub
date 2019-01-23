@@ -108,6 +108,7 @@ class CourseDetailsContainer extends Component {
     }
 
     if (courseObject) {
+      console.log(courseObject)
       backgroundImage = {
       backgroundImage: `url('${courseObject.image}')`,
       opacity: '1',
@@ -157,10 +158,16 @@ class CourseDetailsContainer extends Component {
                 <div className="mentor-section">
                   <div className="mentor-about">
                     <div>
-                      <Image size='tiny' src={courseObject.instructor.image} avatar />
-                      <span>{courseObject.instructor.first_name} {courseObject.instructor.last_name}
+                      <Link to={`/user/${courseObject.instructor_id}`}>  
+                        <Image size='tiny' src={courseObject.instructor.image} circular  />
+                      </Link>
+                      <div className="mentor-contact-box">
+                      <span className="user-name">{courseObject.instructor.first_name} {courseObject.instructor.last_name}</span>
                       <div className="mentor-contact-btn"><Button onClick={this.show('blurring')} icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
-                      </span>
+                      </div>
+                     
+                     
+                    
                       
                       <Modal dimmer={dimmer} open={open} onClose={this.close}>
                         <Modal.Header>Message {courseObject.instructor.first_name}</Modal.Header>
