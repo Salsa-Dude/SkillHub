@@ -18,7 +18,6 @@ class UserContainer extends Component {
 
     return this.props.user ? (
       <Fragment>
-        <Divider />
         <div className="user-container">
           <Grid>
             <Grid.Column className="user-sidebar" width={5}>

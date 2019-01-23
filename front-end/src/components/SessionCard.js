@@ -104,9 +104,9 @@ class SessionCard extends Component {
         <Card.Content>
           <Card.Header>{this.props.session.course.name}</Card.Header>
           <Card.Meta>{this.props.session.course.address}</Card.Meta>
-          <Card.Description>Check In: {moment(this.state.startDate).format("MM/DD/YYYY")}
+          <Card.Description>Start: {moment(this.state.startDate).format("MMMM Do YYYY, h:mm a")}
           </Card.Description>
-          <Card.Description>Check Out: {moment(this.state.endDate).format("MM/DD/YYYY")}</Card.Description>
+          <Card.Description>End: {moment(this.state.endDate).format("MMMM Do YYYY, h:mm a")}</Card.Description>
           <Modal
             trigger={<Button onClick={this.handleOpen} style={{marginTop: '10px'}} size="mini" basic color='teal'> Leave Review
             </Button>}
@@ -148,7 +148,9 @@ class SessionCard extends Component {
                     <DatePicker
                       selected={ this.state.startDate}
                       onChange={ this.startHandleChange }
-                      minDate={this.state.startDate}
+                      // minDate={this.state.startDate}
+                      showTimeSelect
+                      dateFormat="Pp"
                     />
                   </Form.Field>
                   <Form.Field>
@@ -156,7 +158,9 @@ class SessionCard extends Component {
                     <DatePicker
                       selected={ this.state.endDate }
                       onChange={ this.endHandleChange }
-                      minDate={this.state.endDate}
+                      // minDate={this.state.endDate}
+                      showTimeSelect
+                      dateFormat="Pp"
                     />
                   </Form.Field>
                 </Form>

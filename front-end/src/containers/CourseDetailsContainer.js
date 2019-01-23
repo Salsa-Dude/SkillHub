@@ -165,9 +165,6 @@ class CourseDetailsContainer extends Component {
                       <span className="user-name">{courseObject.instructor.first_name} {courseObject.instructor.last_name}</span>
                       <div className="mentor-contact-btn"><Button onClick={this.show('blurring')} icon basic color='teal'><Icon style={mailIcon} name='mail' />Contact</Button></div>
                       </div>
-                     
-                     
-                    
                       
                       <Modal dimmer={dimmer} open={open} onClose={this.close}>
                         <Modal.Header>Message {courseObject.instructor.first_name}</Modal.Header>
@@ -277,15 +274,18 @@ class CourseDetailsContainer extends Component {
                <Modal.Content image>
                 <Image wrapped size='medium' src={courseObject.image} />
                 <Modal.Description style={{ marginLeft: "5%", width: "50%" }}>
-                <Header style={{fontSize: "30px"}}>{courseObject.name}</Header>
+                <Header style={{fontSize: "30px", color: "#41444b"}}>{courseObject.name}</Header>
+                <p class="book-sesssion-user">Book a session with {courseObject.instructor.first_name} {courseObject.instructor.last_name}</p>
                 <Form>
                   <Form.Field>
                     <label>Select Start Date: </label>
                     <DatePicker
                       selected={ this.state.startDate}
                       onChange={ this.startHandleChange }
-                      minDate={this.state.startDate}
+                      // minDate={this.state.startDate}
                       className="date-picker-course"
+                      showTimeSelect
+                      dateFormat="Pp"
                     />
                   </Form.Field>
                   <Form.Field>
@@ -293,8 +293,10 @@ class CourseDetailsContainer extends Component {
                     <DatePicker
                       selected={ this.state.endDate }
                       onChange={ this.endHandleChange }
-                      minDate={this.state.endDate}
+                      // minDate={this.state.endDate}
                       className="date-picker-course"
+                      showTimeSelect
+                      dateFormat="Pp"
                     />
                   </Form.Field>
                 </Form>

@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {fetchingDancingCourses} from '../redux/actions'
 
+import { Divider } from 'semantic-ui-react'
 import TopicHeader from '../components/TopicHeader'
 import CourseCard from '../components/CourseCard'
 class CarpentryContainer extends Component {
@@ -19,6 +20,7 @@ class CarpentryContainer extends Component {
 
     return carpentryCourses ? (
       <Fragment>
+        <Divider />
         <TopicHeader 
           img="https://images.unsplash.com/photo-1497219055242-93359eeed651?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1591&q=80" 
           title="Carpentry"

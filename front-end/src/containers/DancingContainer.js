@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import TopicHeader from '../components/TopicHeader'
 import {connect} from 'react-redux'
 import {fetchingDancingCourses} from '../redux/actions'
+import { Divider } from 'semantic-ui-react'
 
 import CourseCard from '../components/CourseCard'
 import '../styles/dancingContainer.css'
@@ -19,6 +20,7 @@ class DancingContainer extends Component {
 
     return dancingCourses ? (
       <Fragment>
+        <Divider />
         <TopicHeader 
           img="https://images.unsplash.com/photo-1511913411692-818ea059c8be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Dancing"
