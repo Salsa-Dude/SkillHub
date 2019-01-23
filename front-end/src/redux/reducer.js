@@ -85,7 +85,6 @@ const mentorReducer = (state = [], action) => {
     case "FETCH_MENTOR_COURSES":
       return action.mentorCoursesData 
     case "UPDATED_MENTOR_COURSES":
-    console.log(action)
       return state.map(course => {
         if(course.id === action.updatedCourses.id) {
           return action.updatedCourses
@@ -93,6 +92,12 @@ const mentorReducer = (state = [], action) => {
           return course
         }
       })
+    case "DELETE_MENTOR_COURSE":
+      let findCourse = state.find(course => course.id === action.menterCourse.id)
+      let index = state.indexOf(findCourse)
+      let copyCourses = [...state]
+      copyCourses.splice(index, 1)
+      return copyCourses
     default:
       return state
   }

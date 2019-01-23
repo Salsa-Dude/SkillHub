@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import {updatingMentorCourses} from '../redux/actions'
+import {deletingMentorCourse} from '../redux/actions'
 import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea, Icon } from 'semantic-ui-react'
 import "../styles/mentorCourses.css"
 
@@ -40,7 +41,7 @@ class MentorCourseCard extends Component {
   }
 
   deleteCourse = () => {
-    console.log('me')
+    this.props.deleteCourse(this.state.courseId)
   }
 
   nameChange = (e) => {
@@ -167,7 +168,8 @@ class MentorCourseCard extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateMentorCourses: (data) => {dispatch(updatingMentorCourses(data))}
+    updateMentorCourses: (data) => {dispatch(updatingMentorCourses(data))},
+    deleteCourse: (id) => {dispatch(deletingMentorCourse(id))}
   }
 }
 

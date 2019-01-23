@@ -15,6 +15,10 @@ class Api::V1::CoursesController < ApplicationController
     render json: @course
   end
 
+  def destroy
+    render json: Course.find(params[:id]).destroy
+  end
+
   private
 
   def course_params
