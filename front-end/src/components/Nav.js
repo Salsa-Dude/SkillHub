@@ -1,24 +1,27 @@
 import React, { Fragment, Component } from "react";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import { loggingIn } from '../redux/actions'
-import { NavLink, withRouter, Link } from "react-router-dom";
+import { loggingOut} from '../redux/actions'
+
 import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider, Dropdown} from "semantic-ui-react";
 import {login, logo, loginContainer, loginForm, loginModal, loginBtn} from '../styles/navbar'
 
 class Nav extends Component {
   
-  constructor({ location: { pathname }, logged_in, setCurrentUser }) {
-     super()
+  constructor(props) {
+     super(props)
      this.state = {
       modalOpen: false,
       email: "",
       password: "",
-      currentUser: null
+      currentUser: localStorage.getItem('currentUser')
      }
   }
 
   logout = () => {
     localStorage.clear()
+    this.props.loggingOut()
   }
 
 
@@ -39,6 +42,7 @@ class Nav extends Component {
   handleClose = () => {
     this.setState({ modalOpen: false })
   } 
+
   
    render() {
     let logout =  () => {
@@ -189,6 +193,7 @@ class Nav extends Component {
   
 }
 
+
 const mapStateToStore = (state) => {
   return {
     user: state.user
@@ -197,6 +202,7 @@ const mapStateToStore = (state) => {
 
 const mapDispatchToStore = (dispatch) => ({
   loggingIn: (loginFormInput) => dispatch(loggingIn(loginFormInput)),
+  loggingOut: () => dispatch(loggingOut())
 })
 
 export default connect(mapStateToStore, mapDispatchToStore)(withRouter(Nav));
