@@ -209,9 +209,27 @@ const fetchMentorCourses = (mentorCoursesData) => {
   return {type: "FETCH_MENTOR_COURSES", mentorCoursesData }
 }
 
+const updatingMentorCourses = (updateMentorCourses) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/v1/courses/${updateMentorCourses.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updateMentorCourses)
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(updatedMentorCourses(data))
+    })
+  }
+}
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses}
+const updatedMentorCourses = (updatedCourses) => {
+  return {type: "UPDATED_MENTOR_COURSES", updatedCourses}
+}
 
+
+export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses}
 
 
 

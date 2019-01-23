@@ -1,20 +1,41 @@
 import React, { Component, Fragment } from 'react'
-
+import { connect } from 'react-redux'
+import {updatingMentorCourses} from '../redux/actions'
 import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea } from 'semantic-ui-react'
 import "../styles/mentorCourses.css"
-
 
 class MentorCourseCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
       open: false,
-      courseName: props.course.name,
-      courseAddress: props.course.address,
-      courseCity: props.course.city,
-      courseDescription: props.course.description,
-      courseBio: props.course.bio
+      courseName: this.props.course.name,
+      courseAddress: this.props.course.address,
+      courseCity: this.props.course.city,
+      courseDescription: this.props.course.description,
+      courseBio: this.props.course.bio,
+      courseImage: this.props.course.image,
+      courseId: this.props.course.id
     }
+  }
+
+  updateCourse = () => {
+    let data = {
+      id: this.state.courseId,
+      name: this.state.courseName,
+      description: this.state.courseDescription,
+      image: this.state.courseImage,
+      bio: this.state.courseBio,
+      instructor_id: parseInt(localStorage.getItem('currentUser')),
+      city: this.state.courseCity,
+      address: this.state.courseAddress,
+    }
+
+    this.props.updateMentorCourses(data)
+
+    this.setState({ 
+      open: false
+    })
   }
 
   nameChange = (e) => {
@@ -65,13 +86,13 @@ class MentorCourseCard extends Component {
           <Item.Image size='medium' src={this.props.course.image} />
 
           <Item.Content>
-            <Item.Header className="mentor-course-header" as='a'>{this.props.course.name}</Item.Header>
-            <Item.Meta><span className="item-span">Address:</span> {this.props.course.address}</Item.Meta>
-            <Item.Meta><span className="item-span">City:</span> {this.props.course.city}</Item.Meta>
+            <Item.Header className="mentor-course-header" as='a'>{this.state.courseName}</Item.Header>
+            <Item.Meta><span className="item-span">Address:</span> {this.state.courseAddress}</Item.Meta>
+            <Item.Meta><span className="item-span">City:</span> {this.state.courseCity}</Item.Meta>
             <Item.Description>
-              <span className="item-span">Description:</span> <span className="mentor-course-description">{this.props.course.description}</span>
+              <span className="item-span">Description:</span> <span className="mentor-course-description">{this.state.courseDescription}</span>
             </Item.Description>
-            <Item.Description><span className="item-span">About me</span> {this.props.course.bio}</Item.Description>
+            <Item.Description><span className="item-span">About me</span> {this.state.courseBio}</Item.Description>
           </Item.Content>
         </Item>
         <div className="mentor-btns">
@@ -105,7 +126,7 @@ class MentorCourseCard extends Component {
                 icon='checkmark'
                 labelPosition='right'
                 content="Update Course"
-                onClick={this.sendReply}
+                onClick={this.updateCourse}
               />
             </Modal.Actions>
           </Modal>
@@ -117,6 +138,12 @@ class MentorCourseCard extends Component {
 
 }
 
-export default MentorCourseCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    updateMentorCourses: (data) => {dispatch(updatingMentorCourses(data))}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MentorCourseCard);
 
 

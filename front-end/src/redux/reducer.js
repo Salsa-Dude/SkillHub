@@ -84,10 +84,20 @@ const mentorReducer = (state = [], action) => {
   switch(action.type) {
     case "FETCH_MENTOR_COURSES":
       return action.mentorCoursesData 
+    case "UPDATED_MENTOR_COURSES":
+    console.log(action)
+      return state.map(course => {
+        if(course.id === action.updatedCourses.id) {
+          return action.updatedCourses
+        } else {
+          return course
+        }
+      })
     default:
       return state
   }
 }
+
 
 const rootReducer = combineReducers({
   courses: courseReducer,

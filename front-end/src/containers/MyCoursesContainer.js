@@ -47,7 +47,7 @@ class MyCoursesContainer extends Component {
                   <div className="mentor-courses-container">
                     <Grid style={{marginTop: '20px'}}>
                       <Grid.Column width={11}>
-                        <MentorCourseCard course={course} />
+                        <MentorCourseCard key={course.id }course={course} />
                       </Grid.Column>
                     </Grid>
                   </div>
