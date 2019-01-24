@@ -3,6 +3,7 @@ import { NavLink, withRouter, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import { loggingIn } from '../redux/actions'
 import { loggingOut} from '../redux/actions'
+import {fetchingMessages} from '../redux/actions'
 
 import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider, Dropdown} from "semantic-ui-react";
 import {login, logo, loginContainer, loginForm, loginModal, loginBtn} from '../styles/navbar'
@@ -15,11 +16,16 @@ class Nav extends Component {
       modalOpen: false,
       email: "",
       password: "",
+      isUser: ""
+      
      }
   }
 
   logout = () => {
     localStorage.clear()
+    this.setState({
+      isUser: ''
+    })
     this.props.loggingOut()
   }
 
@@ -42,19 +48,23 @@ class Nav extends Component {
     this.setState({ modalOpen: false })
   } 
 
+  componentDidMount() {
+    this.setState({
+      isUser: localStorage.getItem('currentUser')
+    })
+  }
+
   
    render() {
-    let logout =  () => {
-      localStorage.clear()
-    }
+   
 
     const myCourses = {
       fontSize: '16px'
     }
-
+    
     return (
       <Menu className="navbar" pointing secondary size="huge">
-        {localStorage.getItem('token') || this.props.user ? (
+        {this.state.isUser || this.props.user ?  (
         <Fragment>
           <Menu.Item
             as={NavLink}
@@ -95,7 +105,7 @@ class Nav extends Component {
           <Menu.Item as={NavLink} to="/messages">
             <Icon name='mail' />Messages
             <Label color='red'>
-              7
+              
             </Label>
           </Menu.Item>
             <Menu.Item as={NavLink} to="/logout" name="Logout" onClick={this.logout} />
@@ -201,7 +211,9 @@ const mapStateToStore = (state) => {
 
 const mapDispatchToStore = (dispatch) => ({
   loggingIn: (loginFormInput) => dispatch(loggingIn(loginFormInput)),
-  loggingOut: () => dispatch(loggingOut())
+  loggingOut: () => dispatch(loggingOut()),
+  fetchingMessages: () => {dispatch(fetchingMessages())}
+
 })
 
 export default connect(mapStateToStore, mapDispatchToStore)(withRouter(Nav));

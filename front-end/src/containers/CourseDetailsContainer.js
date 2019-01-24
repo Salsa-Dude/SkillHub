@@ -67,7 +67,10 @@ class CourseDetailsContainer extends Component {
   }
 
   handleOpen = () => {
-    this.setState({ modalOpen: true })
+    if(localStorage.getItem('currentUser')) {
+      this.setState({ modalOpen: true })
+    }
+  
   }
 
   handleClose = () => {

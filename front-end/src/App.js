@@ -19,12 +19,12 @@ import MessageContainer from './containers/MessageContainer'
 import UserContainer from './containers/UserContainer'
 
 class App extends Component {
-
+ 
   render() {
     return (
       
       <Fragment>
-        {this.props.location.pathname !== '/login' ? <Nav/> : null }
+        {this.props.location.pathname !== '/login' ? <Nav /> : null }
         <Switch>
           <Route exact path="/logout" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" render={() => 
