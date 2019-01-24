@@ -55,14 +55,14 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="space"></div>
+          {/* <div className="space"></div>
 
           <Grid>
             <Grid.Column style={topCategoriesContainer} width={13}>
               <h2>Trending Courses</h2>
 
             </Grid.Column>
-          </Grid>
+          </Grid> */}
         
       </Fragment>
     )

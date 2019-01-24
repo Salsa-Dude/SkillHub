@@ -5,7 +5,7 @@ import { updatingSession } from '../redux/actions'
 import { deletingSession } from '../redux/actions'
 import { addingReview } from '../redux/actions'
 
-
+import swal from 'sweetalert';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
@@ -39,6 +39,11 @@ class SessionCard extends Component {
     this.setState({ 
       open: false,
     })
+    swal({
+      text: "Session has been updated!",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   deleteSession = () => {
@@ -49,16 +54,21 @@ class SessionCard extends Component {
   }
 
   postReview = () => {
-   console.log(this.state)
-   let data = {
+    console.log(this.state)
+    let data = {
     description: this.state.reviewContent,
     rating: this.state.rating,
     student_id: parseInt(localStorage.getItem('currentUser')),
     course_session_id: this.state.courseSession.id
-   }
-   this.props.addReview(data)
-
-   this.setState({ modalOpen: false , rating: 0, reviewContent: '' })
+    }
+    this.props.addReview(data)
+    this.setState({ modalOpen: false , rating: 0, reviewContent: '' })
+    
+    swal({
+      text: "Review has been posted",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })

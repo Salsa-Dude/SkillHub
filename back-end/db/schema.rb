@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_164029) do
     t.integer "instructor_id"
     t.string "city"
     t.string "address"
+    t.integer "hourly"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

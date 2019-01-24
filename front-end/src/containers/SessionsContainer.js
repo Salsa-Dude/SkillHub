@@ -20,7 +20,7 @@ class SessionsContainer extends Component {
       <Fragment>
         <Divider />
         <div className="sessions-container">
-          <h1>My Sessions</h1>
+          <h1>Up Coming Sessions</h1>
           <div className="ui four column grid">
             <div className="row">
               {this.props.userSessions.map(session => {

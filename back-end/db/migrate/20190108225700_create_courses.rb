@@ -9,6 +9,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.integer :instructor_id
       t.string :city
       t.string :address
+      t.integer :hourly
       t.timestamps
     end
   end

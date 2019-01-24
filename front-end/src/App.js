@@ -17,6 +17,7 @@ import MyCoursesContainer from './containers/MyCoursesContainer'
 import AddCourse from './components/AddCourse'
 import MessageContainer from './containers/MessageContainer'
 import UserContainer from './containers/UserContainer'
+import DashBoard from './containers/DashBoard'
 
 class App extends Component {
  
@@ -45,6 +46,7 @@ class App extends Component {
           <Route exact path="/messages" render={() => <MessageContainer /> } />
           <Route exact path="/courses/:id" component={CourseDetailsContainer} />
           <Route exact path="/user/:id" component={UserContainer} />
+          <Route exact path="/dashboard" component={DashBoard} />
         </Switch>
       </Fragment>
     );

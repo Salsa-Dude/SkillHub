@@ -6,7 +6,7 @@ import { fetchingMessages} from '../redux/actions'
 import {sendingMessage} from '../redux/actions'
 import {deletingMessage} from '../redux/actions'
 import { Divider, Button, Image, List, Icon, Modal, Header, Form, TextArea } from 'semantic-ui-react'
-
+import swal from 'sweetalert';
 import '../styles/message.css'
 
 class MessageContainer extends Component {
@@ -43,6 +43,12 @@ class MessageContainer extends Component {
       senderId: "",
       messageContent: ''
     })
+
+    swal({
+      text: "Message has been sent!",
+      icon: "success",
+      button: "Ok",
+    });
 
   }
 

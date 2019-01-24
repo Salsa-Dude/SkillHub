@@ -6,15 +6,17 @@ from 'semantic-ui-react'
 import CourseCard from "../components/CourseCard"
 import "../styles/userContainer.css"
 
-class UserContainer extends Component {
+class DashBoard extends Component {
 
 
   componentDidMount() {
-    let userId = this.props.match.params.id
+    let userId = parseInt(localStorage.getItem('currentUser'))
     this.props.fetchUser(userId)
+    console.log(userId)
   }
 
   render() {
+   
 
     return this.props.user ? (
       <Fragment>
@@ -38,14 +40,14 @@ class UserContainer extends Component {
             <Grid.Column className="user-about-me" width={9}>
              <h2>About me</h2>
              <div className="inner-user-about-me">
-               {this.props.user.bio}. {this.props.user.courses ? this.props.user.courses[0].bio : null}
+               {this.props.user.bio}. {this.props.user.courses[0].bio}
              </div>
              <div className="user-courses-container">
                <h2>My courses</h2>
                 <div className="inner-user-courses">
-                  {this.props.user.courses ? this.props.user.courses.map(course => {
+                  {this.props.user.courses.map(course => {
                     return <CourseCard key={course.key} course={course} />
-                  }) : null}
+                  })}
                 </div>
              </div>
             </Grid.Column>
@@ -55,6 +57,7 @@ class UserContainer extends Component {
     ) : null
   }
 }
+
 
 const mapStateToProps = (state) => {
   return {
@@ -68,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer) 
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard) 
