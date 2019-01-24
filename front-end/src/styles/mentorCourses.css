@@ -1,11 +1,16 @@
 .mentor-courses-container {
   
-
+  color: #41444b
 }
 
 .item-span {
   font-weight: bold;
   font-size: 16px;
+  color: #41444b
+}
+
+.mentor-course-description {
+  color: #41444b
 }
 
 .mentor-course-header {

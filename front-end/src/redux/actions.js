@@ -90,6 +90,7 @@ const fetchingClassSessions = () => {
     fetch('http://localhost:3000/api/v1/course_sessions')
     .then(res => res.json())
     .then(data => {
+      console.log(data)
       let mentorSessions = data.filter(session => {
         return session.course.instructor_id === parseInt(localStorage.getItem('currentUser'))
       })

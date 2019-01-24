@@ -21,6 +21,7 @@ class DashBoard extends Component {
   }
 
   render() {
+
     
     return this.props.user ? (
       <Fragment>
@@ -53,7 +54,7 @@ class DashBoard extends Component {
                     return (
                      <CourseSessionCard classSession={course} />
                      )
-                  })}
+                  }) }
                 </div>
              </div>
             </Grid.Column>

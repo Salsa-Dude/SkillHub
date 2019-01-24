@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {updatingMentorCourses} from '../redux/actions'
 import {deletingMentorCourse} from '../redux/actions'
 import { Divider, Image, Item, Grid, Button, Header, Modal, Form , TextArea, Icon } from 'semantic-ui-react'
+import swal from 'sweetalert';
 import "../styles/mentorCourses.css"
 
 class MentorCourseCard extends Component {
@@ -17,7 +18,8 @@ class MentorCourseCard extends Component {
       courseDescription: this.props.course.description,
       courseBio: this.props.course.bio,
       courseImage: this.props.course.image,
-      courseId: this.props.course.id
+      courseId: this.props.course.id,
+      hourly: this.props.course.hourly
     }
   }
 
@@ -31,6 +33,7 @@ class MentorCourseCard extends Component {
       instructor_id: parseInt(localStorage.getItem('currentUser')),
       city: this.state.courseCity,
       address: this.state.courseAddress,
+      hourly: this.state.hourly
     }
 
     this.props.updateMentorCourses(data)
@@ -38,6 +41,11 @@ class MentorCourseCard extends Component {
     this.setState({ 
       open: false
     })
+    swal({
+      text: "Course has been Updated!",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   deleteCourse = () => {
@@ -65,6 +73,12 @@ class MentorCourseCard extends Component {
   bioChange = (e) => {
     this.setState({
      courseBio: e.target.value
+    })
+  }
+
+  hourlyChange = (e) => {
+    this.setState({
+     hourly: e.target.value
     })
   }
 
@@ -104,7 +118,8 @@ class MentorCourseCard extends Component {
             <Item.Description>
               <span className="item-span">Description:</span> <span className="mentor-course-description">{this.state.courseDescription}</span>
             </Item.Description>
-            <Item.Description><span className="item-span">About me</span> {this.state.courseBio}</Item.Description>
+            <Item.Description style={{ color: '#41444b'}}><span className="item-span">About me</span> {this.state.courseBio}</Item.Description>
+            <Item.Description><span className="item-span">Hourly</span> ${this.state.hourly}</Item.Description>
           </Item.Content>
         </Item>
         <div className="mentor-btns">
@@ -125,6 +140,10 @@ class MentorCourseCard extends Component {
                   <Form.Field>
                   <Form.TextArea onChange={(e) => this.descriptionChange(e)} name="courseDescription" rows='6' label='Description' value={this.state.courseDescription} placeholder='What is the course about...' />
                   <Form.TextArea onChange={(e) => this.bioChange(e)} name="courseBio" rows='3' value={this.state.courseBio} label='About Me' placeholder='brief bio of yourself...' />
+                  <Form.Field>
+                    <label>Hourly</label>
+                    <input name="courseHourly" onChange={(e) => this.hourlyChange(e)} placeholder='Hourly' value={this.state.hourly} />
+                  </Form.Field>
                   </Form.Field>
                 </Form>
               </Modal.Description>

@@ -129,8 +129,6 @@ class CourseDetailsContainer extends Component {
     
     const { open, dimmer } = this.state
    
-    
-    
     if (this.props) {
       courseObject = this.props.courses.find(course => {
         return course.id == this.props.match.params.id
@@ -298,7 +296,7 @@ class CourseDetailsContainer extends Component {
               </Grid>
               <div class="book-session">
              <div className="hourly-pay">
-             $50/h
+             ${courseObject.hourly}/h
              </div>
               <Modal trigger={<Button onClick={this.handleOpen} style={{width: '150px', height: '50px', backgroundColor: "#eb872a", color: 'white'}} >Book Session</Button>}
               open={this.state.modalOpen}
