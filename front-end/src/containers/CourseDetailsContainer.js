@@ -266,6 +266,9 @@ class CourseDetailsContainer extends Component {
                 </Grid.Column>
               </Grid>
               <div class="book-session">
+             <div className="hourly-pay">
+             $50/h
+             </div>
               <Modal trigger={<Button onClick={this.handleOpen} style={{width: '150px', height: '50px', backgroundColor: "#eb872a", color: 'white'}} >Book Session</Button>}
               open={this.state.modalOpen}
               onClose={this.handleClose}

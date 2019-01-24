@@ -1,3 +1,11 @@
+
+.hourly-pay {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .courseBannerContainer {
   min-height: 300px;
   height: 300px;
