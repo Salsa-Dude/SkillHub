@@ -6,9 +6,11 @@ import moment from 'moment';
 import {fetchingCourses} from '../redux/actions'
 import {bookingSession} from '../redux/actions'
 import {sendingMessage} from '../redux/actions'
+import swal from 'sweetalert';
+
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea } from 'semantic-ui-react'
+import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea, Message } from 'semantic-ui-react'
 import '../styles/courseDetails.css'
 
 class CourseDetailsContainer extends Component {
@@ -33,18 +35,31 @@ class CourseDetailsContainer extends Component {
       }
       this.props.bookingSession(data)
       this.setState({ modalOpen: false })
+      swal({
+        text: "Booking confirmed",
+        icon: "success",
+        button: "Ok",
+      });
     }
   }
 
   sendMessage = (courseObject) => {
-    let data = {
-      content: this.state.messageContent,
-      sender_id: parseInt(localStorage.getItem('currentUser')),
-      recipient_id: courseObject.instructor_id,
-    }
-    
-    this.props.sendingMessage(data)
-    this.setState({ open: false })
+    if(localStorage.getItem('token')) {
+      let data = {
+        content: this.state.messageContent,
+        sender_id: parseInt(localStorage.getItem('currentUser')),
+        recipient_id: courseObject.instructor_id,
+      }
+      
+      this.props.sendingMessage(data)
+      this.setState({ open: false })
+
+      swal({
+        text: "Message has been sent!",
+        icon: "success",
+        button: "Ok",
+      });
+    } 
   }
 
   messageChange = (e) => {
@@ -69,6 +84,12 @@ class CourseDetailsContainer extends Component {
   handleOpen = () => {
     if(localStorage.getItem('currentUser')) {
       this.setState({ modalOpen: true })
+    } else {
+      swal({
+        text: "Need to Login",
+        icon: "info",
+        button: "Ok",
+      });
     }
   
   }
@@ -77,7 +98,11 @@ class CourseDetailsContainer extends Component {
     this.setState({ modalOpen: false })
   } 
 
-  show = dimmer => () => this.setState({ dimmer, open: true })
+  show = (dimmer) => ()  => localStorage.getItem('currentUser') ? this.setState({ dimmer, open: true }) : swal({
+    text: "Need to Login",
+    icon: "info",
+    button: "Ok",
+  });
 
   close = () => {
     this.setState({ 
@@ -101,7 +126,10 @@ class CourseDetailsContainer extends Component {
     let courseObject;
     let backgroundImage;
     let panes;
+    
     const { open, dimmer } = this.state
+   
+    
     
     if (this.props) {
       courseObject = this.props.courses.find(course => {

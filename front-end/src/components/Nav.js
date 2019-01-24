@@ -104,9 +104,9 @@ class Nav extends Component {
           <Menu.Menu position="right">
           <Menu.Item as={NavLink} to="/messages">
             <Icon name='mail' />Messages
-            <Label color='red'>
+            {/* <Label color='red'>
               
-            </Label>
+            </Label> */}
           </Menu.Item>
             <Menu.Item as={NavLink} to="/logout" name="Logout" onClick={this.logout} />
           </Menu.Menu>
