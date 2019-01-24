@@ -95,13 +95,15 @@ class Nav extends Component {
             </Dropdown>
           </Menu>
           
+          <Menu.Menu position="right">
+
           <Menu.Item
             name='DashBoard'
             as={NavLink}
             to="/dashboard"
             
           />
-          <Menu.Menu position="right">
+
           <Menu.Item as={NavLink} to="/messages">
             <Icon name='mail' />Messages
             {/* <Label color='red'>

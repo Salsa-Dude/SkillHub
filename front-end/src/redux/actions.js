@@ -7,23 +7,8 @@ const fetchingCourses = () => {
   }
 }
 
-const fetchingCourseSessions = () => {
-  return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/course_sessions')
-    .then(res => res.json())
-    .then(data => {
-      let userSessions = data.filter(session => {
-        return session.student_id === parseInt(localStorage.getItem('currentUser'))
-      })
-      dispatch(fetchedCourseSessions(userSessions))
-    })
-  }
-}
 
-const fetchedCourseSessions = (userSessions) => {
-  return {type: "FETCHED_COURSE_SESSIONS", userSessions}
-}
-
+/////////////// CATEGORIES /////////////////////////////////////////////
 
 const fetchingDancingCourses = () => {
   return (dispatch) => {
@@ -98,8 +83,44 @@ const fetchUser = (userData) => {
 }
 
 
+/////////////// CLASS_SESSIONS /////////////////////////////////////////////
+
+const fetchingClassSessions = () => {
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/course_sessions')
+    .then(res => res.json())
+    .then(data => {
+      let mentorSessions = data.filter(session => {
+        return session.course.instructor_id === parseInt(localStorage.getItem('currentUser'))
+      })
+      dispatch(fetchClassSessions(mentorSessions))
+    })
+  }
+}
+
+const fetchClassSessions = (classData) => {
+  return { type: "FETCH_CLASS_SESSIONS", classData}
+}
 
 /////////////// COURSE_SESSION /////////////////////////////////////////////
+
+
+const fetchingCourseSessions = () => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/course_sessions')
+    .then(res => res.json())
+    .then(data => {
+      let userSessions = data.filter(session => {
+        return session.student_id === parseInt(localStorage.getItem('currentUser'))
+      })
+      dispatch(fetchedCourseSessions(userSessions))
+    })
+  }
+}
+
+const fetchedCourseSessions = (userSessions) => {
+  return {type: "FETCHED_COURSE_SESSIONS", userSessions}
+}
 
 const bookedSession = (sessionData) => {
   return {type: "ADD_SESSION", sessionData}
@@ -275,7 +296,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

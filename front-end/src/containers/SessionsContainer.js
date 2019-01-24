@@ -7,9 +7,7 @@ import { Divider } from 'semantic-ui-react'
 import '../styles/sessions.css'
 
 class SessionsContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
+ 
   componentDidMount() {
     this.props.fetchingCourseSessions()
   }
@@ -20,7 +18,7 @@ class SessionsContainer extends Component {
       <Fragment>
         <Divider />
         <div className="sessions-container">
-          <h1>Up Coming Sessions</h1>
+          <h1>Booked Sessions</h1>
           <div className="ui four column grid">
             <div className="row">
               {this.props.userSessions.map(session => {

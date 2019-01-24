@@ -1,30 +1,34 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {fetchingUser} from '../redux/actions'
-import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea } 
+import {fetchingClassSessions} from '../redux/actions'
+import { Divider, Breadcrumb, Grid, Rating, Tab, Feed, Image, Button, Card, Icon, Modal, Form, Header, TextArea, Item  } 
 from 'semantic-ui-react'
-import CourseCard from "../components/CourseCard"
+import CourseSessionCard from '../components/CourseSessionCard'
 import "../styles/userContainer.css"
 
 class DashBoard extends Component {
+
+  state = {
+    mentorClasses: []
+  }
 
 
   componentDidMount() {
     let userId = parseInt(localStorage.getItem('currentUser'))
     this.props.fetchUser(userId)
-    console.log(userId)
+    this.props.fetchClassSessions()
   }
 
   render() {
-   
-
+    
     return this.props.user ? (
       <Fragment>
         <div className="user-container">
           <Grid>
             <Grid.Column className="user-sidebar" width={5}>
               <div className="user-image-photo">
-                <Image centered src={this.props.user.image} size='small' circular />
+                <Image centered src={this.props.user.image} size='medium' circular />
                 <div className="user-page-name">
                   {this.props.user.first_name} {this.props.user.last_name} 
                   <div>
@@ -37,22 +41,25 @@ class DashBoard extends Component {
                
               </div>
             </Grid.Column>
-            <Grid.Column className="user-about-me" width={9}>
+            <Grid.Column className="user-about-me" width={8}>
              <h2>About me</h2>
              <div className="inner-user-about-me">
                {this.props.user.bio}. {this.props.user.courses[0].bio}
              </div>
              <div className="user-courses-container">
-               <h2>My courses</h2>
+               <h2>Upcoming Class Sessions</h2> 
                 <div className="inner-user-courses">
-                  {this.props.user.courses.map(course => {
-                    return <CourseCard key={course.key} course={course} />
+                  {this.props.mentorSessions.map(course => {
+                    return (
+                     <CourseSessionCard classSession={course} />
+                     )
                   })}
                 </div>
              </div>
             </Grid.Column>
           </Grid>
         </div>
+        
       </Fragment>
     ) : null
   }
@@ -61,13 +68,15 @@ class DashBoard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    mentorSessions: state.mentorSessions
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: (id) => {dispatch(fetchingUser(id))}
+    fetchUser: (id) => {dispatch(fetchingUser(id))},
+    fetchClassSessions: () => dispatch(fetchingClassSessions())
   }
 }
 

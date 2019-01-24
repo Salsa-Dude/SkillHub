@@ -40,6 +40,15 @@ const loginReducer = (oldState = null, action) => {
   }
 }
 
+const classSessionReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCH_CLASS_SESSIONS":
+      return action.classData
+    default:
+      return state
+  }
+}
+
 const courseSessionReducer = (state = [], action) => {
  
   switch(action.type) {
@@ -121,6 +130,7 @@ const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
   login: loginReducer,
+  mentorSessions: classSessionReducer, 
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
   messages: messageReducer,
