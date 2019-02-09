@@ -39,14 +39,14 @@ class MyCoursesContainer extends Component {
    
     return (
       <Fragment>
-        <Divider />
-        <div className="sessions-container">
+        <Divider/>
+        <div className="session-mentor-container ">
           <h1>My Courses</h1>
               {userMentorCourses.map(course => {
                 return (
                   <div className="mentor-courses-container">
                     <Grid style={{marginTop: '20px'}}>
-                      <Grid.Column width={11}>
+                      <Grid.Column width={12}>
                         <MentorCourseCard key={course.id }course={course} />
                       </Grid.Column>
                     </Grid>

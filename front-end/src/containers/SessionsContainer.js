@@ -16,7 +16,7 @@ class SessionsContainer extends Component {
     console.log(this.props.userSessions)
     return  this.props.userSessions ? (
       <Fragment>
-        <Divider />
+        <Divider style={{borderTop: 'none', borderBottom: 'none'}} />
         <div className="sessions-container">
           <h1>Booked Sessions</h1>
           <div className="ui four column grid">

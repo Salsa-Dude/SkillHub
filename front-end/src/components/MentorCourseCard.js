@@ -107,6 +107,7 @@ class MentorCourseCard extends Component {
 
     const { open, dimmer } = this.state
     return (
+      <div className="">
       <Item.Group>
         <Item>
           <Item.Image size='medium' src={this.props.course.image} />
@@ -180,6 +181,7 @@ class MentorCourseCard extends Component {
           </Modal>
         </div>
       </Item.Group>
+      </div>
     )
   }
 

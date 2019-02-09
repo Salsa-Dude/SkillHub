@@ -1,7 +1,21 @@
+
+
+
 .mentor-courses-container {
-  
+  background-color: white;
   color: #41444b;
+  padding: 10px 0px 10px 50px;
+  margin-top: 20px;
+  
 }
+
+.session-mentor-container {
+  padding-top: 3%;
+  padding-left: 5%;
+  
+  height: 100vh;
+}
+
 
 .item-span {
   font-weight: bold;
@@ -10,7 +24,7 @@
 }
 
 .mentor-course-description {
-  color: #41444b
+  color: #41444b;
 }
 
 .mentor-course-header {
