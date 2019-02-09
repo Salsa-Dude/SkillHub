@@ -50,11 +50,11 @@ class DashBoard extends Component {
              <div className="user-courses-container">
                <h2>Upcoming Class Sessions</h2> 
                 <div className="inner-user-courses">
-                  {this.props.mentorSessions.map(course => {
+                  {this.props.mentorSessions && this.props.mentorSessions.length > 0 ? this.props.mentorSessions.map(course => {
                     return (
                      <CourseSessionCard classSession={course} />
                      )
-                  }) }
+                  }) : <h3 className="no-class">No Class Sessions</h3> }
                 </div>
              </div>
             </Grid.Column>

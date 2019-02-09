@@ -57,3 +57,9 @@
   padding: 5px !important;
   margin-top: 20px !important;
 }
+
+.no-class {
+  margin-top: -20px !important;
+  margin-left: 9%;
+  color: rgb(97, 95, 95)
+}

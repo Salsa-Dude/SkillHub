@@ -47,3 +47,7 @@
 .message-buttons button {
   margin-left: 20px !important;
 }
+
+.no-messages {
+  color: rgb(97, 95, 95)
+}
