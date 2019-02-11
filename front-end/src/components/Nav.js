@@ -68,7 +68,7 @@ class Nav extends Component {
         <Fragment>
           <Menu.Item
             as={NavLink}
-            to="/home"
+            to="/"
             name="SkillHub"
             style={logo}
 
@@ -117,7 +117,7 @@ class Nav extends Component {
           <Fragment>
             <Menu.Item
             as={NavLink}
-            to="/home"
+            to="/"
             name="SkillHub"
             style={logo}
             // active={this.props.pathname === "/home"}

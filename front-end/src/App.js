@@ -27,12 +27,12 @@ class App extends Component {
       <Fragment>
         {this.props.location.pathname !== '/login' ? <Nav /> : null }
         <Switch>
-          <Route exact path="/logout" render={() => <Redirect to="/home" />} />
-          <Route exact path="/home" render={() => 
+          <Route exact path="/logout" render={() => <Redirect to="/" />} />
+          <Route exact path="/" render={() => 
             <Home />} 
           />
           <Route exact path="/login" render={() => localStorage.getItem('token') ?
-            <LoginContainer /> : <Redirect to="/home" />}
+            <LoginContainer /> : <Redirect to="/" />}
           />
           <Route exact path="/explore" component={ExploreContainer} />
           <Route exact path="/dancing" render={() => <DancingContainer /> } />
