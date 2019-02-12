@@ -123,7 +123,7 @@ class MessageContainer extends Component {
           <h1>My Messages</h1>
           <div className="inner-message-container">
           <List divided verticalAlign='middle'>
-            {userMessages && userMessages.length > 0 ? userMessages.map(message => {
+            {userMessages && userMessages.length > 0 ? userMessages.reverse().map(message => {
               return (
                 <List.Item key={message.id}>
                   <List.Content className="message-buttons" floated='right'>
