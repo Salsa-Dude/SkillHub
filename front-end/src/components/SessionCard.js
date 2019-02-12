@@ -189,7 +189,7 @@ class SessionCard extends Component {
                 />
               </Modal.Actions>
             </Modal>
-            {/* <Modal
+            <Modal
               trigger={<Icon link onClick={this.handleOpen} name='trash' size='large' />}
               open={this.state.modalOpen}
               onClose={this.handleClose}
@@ -208,7 +208,7 @@ class SessionCard extends Component {
                 </Button>
               </Modal.Actions>
             </Modal>
-             */}
+            
           </div>
         </Card.Content>
       </Card>
