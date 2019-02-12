@@ -131,7 +131,7 @@ class SessionCard extends Component {
                 <Form style={{ width: '400px'}}>
                 <div>
                   <div>Rating: {rating}</div>
-                  <input type='range' min={0} max={5} value={rating} onChange={this.handleChange} />
+                  <input type='range' min={1} max={5} value={rating} onChange={this.handleChange} />
                   <br />
                   <Rating rating={this.state.rating} maxRating={5} />
                 </div>
