@@ -234,7 +234,7 @@ class CourseDetailsContainer extends Component {
                     <p>  <Rating icon='star' defaultRating={review.rating} maxRating={5} disabled /> {review.description} <span><Image size='mini' src={this.getStudentImage(review.student_id, courseObject)} avatar /></span>
                     </p>
                   )
-                }) : <p>No reviews has been posted</p> }
+                }) : <p>No reviews have been posted</p> }
             </div>
           </Tab.Pane> 
           },
