@@ -71,7 +71,6 @@ class MessageContainer extends Component {
     
     let btn = e.currentTarget
     
-    console.log(btn)
     let gotSenderImage = btn.dataset.image
     let gotSenderName = btn.dataset.name
     let gotSenderId = btn.dataset.id

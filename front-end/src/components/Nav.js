@@ -189,9 +189,9 @@ class Nav extends Component {
                   <Button size="big" color="teal" style={loginBtn} fluid type="submit">Login</Button>
                 </Form>
                 <Divider />
-                <div className="switchForm">
+                {/* <div className="switchForm">
                   <h3>Don't have a account? <a href="#">Sign Up</a></h3>
-                </div>
+                </div> */}
               </div>
               </Modal>
             </Menu.Menu>
