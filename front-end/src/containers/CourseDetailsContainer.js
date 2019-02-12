@@ -229,12 +229,12 @@ class CourseDetailsContainer extends Component {
         { menuItem: 'Reviews', render: () => 
           <Tab.Pane attached={false}>
             <div class="review-container">
-              {courseObject.reviews ? courseObject.reviews.map(review => {
+              {courseObject.reviews.length  ? courseObject.reviews.map(review => {
                   return (
                     <p>  <Rating icon='star' defaultRating={review.rating} maxRating={5} disabled /> {review.description} <span><Image size='mini' src={this.getStudentImage(review.student_id, courseObject)} avatar /></span>
                     </p>
                   )
-                }) : null }
+                }) : <p>No reveiws has been posted</p> }
             </div>
           </Tab.Pane> 
           },

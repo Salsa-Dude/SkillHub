@@ -118,26 +118,26 @@ class SessionCard extends Component {
           </Card.Description>
           <Card.Description>End: {moment(this.state.endDate).format("MMMM Do YYYY, h:mm a")}</Card.Description>
           <Modal
-            trigger={<Button onClick={this.handleOpen} style={{marginTop: '10px'}} size="mini" basic color='teal'> Leave Review
+            trigger={<Button onClick={this.handleOpen} style={{marginTop: '10px'}} size="small" basic color='teal'> Leave Review
             </Button>}
              onClose={this.handleClose}
              open={this.state.modalOpen}
           >
-            <Modal.Header>Leave a Review</Modal.Header>
+            <Modal.Header >Leave a Review</Modal.Header>
             <Modal.Content image>
               <Image wrapped size='medium' src={this.props.session.course.image} />
               <Modal.Description>
                 <Header>{this.props.session.course.name}</Header>
                 <Form style={{ width: '400px'}}>
-                <div>
-                  <div>Rating: {rating}</div>
+                <div className="rating-form">
+                  <div className="rating-form">Rating: {rating}</div>
                   <input type='range' min={1} max={5} value={rating} onChange={this.handleChange} />
                   <br />
                   <Rating rating={this.state.rating} maxRating={5} />
                 </div>
-                <Form.Field rows='6' onChange={(e) => this.reviewChange(e)} control={TextArea} label='Review' placeholder='Leave a review' />
+                <Form.Field style={{marginTop: "10px"}} rows='6' onChange={(e) => this.reviewChange(e)} control={TextArea}  placeholder='Leave a review' />
                 </Form>
-                <Button onClick={this.postReview}>Default</Button>
+                <Button color="teal" style={{marginTop: "10px"}} onClick={this.postReview}>Leave Review</Button>
               </Modal.Description>
             </Modal.Content>
           </Modal>
