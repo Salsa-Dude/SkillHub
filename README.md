@@ -5,3 +5,7 @@ Skill Hub is a community platform where people can find local mentors in the DC 
 + Designed the database schema and configured ActiveRecord associations
 + Implemented user interface employing React and Redux with CSS Modules and Semantic-React for styling
 + Utilized JSON web tokens and localStorage to store encrypted user information client-side
+
+For guest login <br>
+email: andrew@gmail.com <br>
+password: 123
