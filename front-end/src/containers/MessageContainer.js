@@ -70,7 +70,6 @@ class MessageContainer extends Component {
     this.setState({ dimmer, open: true })
     
     let btn = e.currentTarget
-    
     let gotSenderImage = btn.dataset.image
     let gotSenderName = btn.dataset.name
     let gotSenderId = btn.dataset.id
