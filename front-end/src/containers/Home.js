@@ -4,6 +4,8 @@ import { Button, Icon, Grid } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchingCourses} from '../redux/actions'
 
+import "../styles/home.css"
+
 class Home extends Component {
 
   componentDidMount() {

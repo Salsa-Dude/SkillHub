@@ -6,7 +6,7 @@ import { loggingOut} from '../redux/actions'
 import {fetchingMessages} from '../redux/actions'
 
 import { Menu, Icon, Label, Input, Modal, Form, Message, Button, Divider, Dropdown} from "semantic-ui-react";
-import {login, logo, loginContainer, loginForm, loginModal, loginBtn} from '../styles/navbar'
+import "../styles/nav.css"
 
 class Nav extends Component {
   
@@ -58,19 +58,19 @@ class Nav extends Component {
    render() {
    
 
-    const myCourses = {
-      fontSize: '16px'
-    }
+    // const myCourses = {
+    //   fontSize: '16px'
+    // }
     
     return (
-      <Menu className="navbar" pointing secondary size="huge">
+      <Menu stackable className="navbar" pointing secondary size="huge">
         {this.state.isUser || this.props.user ?  (
         <Fragment>
           <Menu.Item
             as={NavLink}
             to="/"
             name="SkillHub"
-            style={logo}
+            className="main-logo"
 
             // active={this.props.pathname === "/home"}
           />
@@ -89,8 +89,8 @@ class Nav extends Component {
           <Menu className="k">
             <Dropdown className="r" item text='Mentor'>
               <Dropdown.Menu>
-                <Link style={myCourses} to="/my-courses"><Dropdown.Item className="mentor-links">My Courses</Dropdown.Item></Link>
-                <Link style={myCourses} to="/add-course"><Dropdown.Item className="mentor-links">Add Course</Dropdown.Item></Link>
+                <Link to="/my-courses"><Dropdown.Item className="mentor-links">My Courses</Dropdown.Item></Link>
+                <Link to="/add-course"><Dropdown.Item className="mentor-links">Add Course</Dropdown.Item></Link>
               </Dropdown.Menu>
             </Dropdown>
           </Menu>
@@ -119,7 +119,7 @@ class Nav extends Component {
             as={NavLink}
             to="/"
             name="SkillHub"
-            style={logo}
+            className="main-logo"
             // active={this.props.pathname === "/home"}
             />
             <Menu.Item
@@ -127,9 +127,9 @@ class Nav extends Component {
             as={NavLink}
             to="/explore"
             />
-            <Menu.Item>
+            {/* <Menu.Item>
               <Input size='small' className='icon' icon='search' placeholder='Search...' />
-            </Menu.Item>
+            </Menu.Item> */}
             
             <Menu.Menu position="right">
               {/* <Menu.Item
@@ -137,12 +137,12 @@ class Nav extends Component {
                 as={NavLink}
                 to="/myProperties"
               /> */}
-              <Modal style={loginModal} trigger={
+              <Modal trigger={
                 <Menu.Item
                   // as={NavLink}
                   // to="/login"
                   name="Login"
-                  style={login}
+                  className="login-btn"
                   onClick={this.handleOpen}
                   // active={pathname === "/login"}
                 />
@@ -150,7 +150,7 @@ class Nav extends Component {
               open={this.state.modalOpen}
               onClose={this.handleClose}
               >
-              <div style={loginContainer}>
+              <div>
                 <div className="loginHeading">
                   <h3>Login In to Your SkillHub Account</h3>
                 </div>
@@ -158,7 +158,6 @@ class Nav extends Component {
                 <Form
                   onSubmit={this.handleLoginSubmit}
                   size="huge"
-                  style={loginForm}
                   key="big"
                   loading={this.props.authenticatingUser}
                   error={this.props.failedLogin}
@@ -186,7 +185,7 @@ class Nav extends Component {
                     value={this.state.password}
                   />
                   </Form.Field>
-                  <Button size="big" color="teal" style={loginBtn} fluid type="submit">Login</Button>
+                  <Button color="teal" fluid type="submit">Login</Button>
                 </Form>
                 <Divider />
                 {/* <div className="switchForm">
