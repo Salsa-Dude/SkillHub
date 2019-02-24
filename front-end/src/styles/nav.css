@@ -7,14 +7,39 @@
   /* margin-top: 1% !important; */
 }
 
+/**************************************************************** 
+  LOGIN FORM
+*****************************************************************/
+
+.login-modal {
+  width: 90% !important;
+}
+
 .main-logo {
   color: #00b5ad !important;
   font-family: 'Fredoka One';
   font-size: 1.25em !important;
 }
 
+.emailLabel, .passwordLabel {
+  padding-bottom: 10px;
+}
+
+.login-form-container {
+  padding: 20px 20px 20px 20px;
+  
+}
+
+.loginHeading {
+  text-align: center;
+  padding: 20px 0 10px 0;
+}
+
 .login-btn {
   color: white !important;
   background-color: #00b5ad !important;
- 
+}
+
+.login-form-btn {
+  font-size: 1.1em !important;
 }

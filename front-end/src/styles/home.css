@@ -61,6 +61,7 @@
 }
 
 
+
 /*********************************
  MEDIA QUERIES
 **********************************/
@@ -72,11 +73,18 @@ small devices (Ipod, 768px and up)
 ***************************************/
 @media (max-width: 768px) {
   .jumbo-container {
-    height: 60vh;
+    height: 400px;
+    background-position: 0%;
   }
 
   .jumbo-catchphase h1 {
     font-size: 2em;
+    line-height: 1.4em
+  }
+
+  .jumbo-catchphase h2 {
+    font-size: 1.5em;
+    line-height: 1.4em
   }
 
   .jumbo-catchphase {
@@ -84,7 +92,6 @@ small devices (Ipod, 768px and up)
     position: absolute;
     top: 10%;
     left: 10%;
-  
     color: white;
   }
 
@@ -112,8 +119,8 @@ small devices (Ipod, 768px and up)
   .howSkillAbout {
     color: white;
     /* margin-left: 5%; */
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 20px;
   }
 
 

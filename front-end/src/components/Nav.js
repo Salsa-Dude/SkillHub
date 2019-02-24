@@ -56,11 +56,7 @@ class Nav extends Component {
 
   
    render() {
-   
-
-    // const myCourses = {
-    //   fontSize: '16px'
-    // }
+  
     
     return (
       <Menu stackable className="navbar" pointing secondary size="huge">
@@ -137,7 +133,7 @@ class Nav extends Component {
                 as={NavLink}
                 to="/myProperties"
               /> */}
-              <Modal trigger={
+              <Modal className="login-modal" trigger={
                 <Menu.Item
                   // as={NavLink}
                   // to="/login"
@@ -150,14 +146,14 @@ class Nav extends Component {
               open={this.state.modalOpen}
               onClose={this.handleClose}
               >
-              <div>
+              <div className="login-form-container">
                 <div className="loginHeading">
-                  <h3>Login In to Your SkillHub Account</h3>
+                  <h2>Login In to Your SkillHub Account</h2>
                 </div>
                 <Divider />
                 <Form
                   onSubmit={this.handleLoginSubmit}
-                  size="huge"
+                  size="big"
                   key="big"
                   loading={this.props.authenticatingUser}
                   error={this.props.failedLogin}
@@ -167,7 +163,7 @@ class Nav extends Component {
                     header={this.props.failedLogin ? this.props.error : null}
                   />
                   <Form.Field>
-                  <label className="emailLabel">Email</label>
+                  <label className="emailLabel login-label">Email</label>
                   <Form.Input
                       placeholder="Email"
                       name="email"
@@ -176,7 +172,7 @@ class Nav extends Component {
                     />
                   </Form.Field>
                   <Form.Field>
-                  <label className="passwordLabel">Password</label>
+                  <label className="passwordLabel login-label">Password</label>
                   <Form.Input
                     type="password"
                     placeholder="password"
@@ -185,7 +181,7 @@ class Nav extends Component {
                     value={this.state.password}
                   />
                   </Form.Field>
-                  <Button color="teal" fluid type="submit">Login</Button>
+                  <Button color="teal" className="login-form-btn" fluid type="submit">Login</Button>
                 </Form>
                 <Divider />
                 {/* <div className="switchForm">
