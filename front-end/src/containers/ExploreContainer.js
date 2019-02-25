@@ -27,7 +27,7 @@ class ExploreContainer extends Component {
             slidesToShow: 3,
             slidesToScroll: 3,
             infinite: true,
-            dots: true
+            dots: false
           }
         },
         {
@@ -35,7 +35,8 @@ class ExploreContainer extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            initialSlide: 2
+            initialSlide: 2,
+            dots: false
           }
         },
         {
@@ -43,6 +44,7 @@ class ExploreContainer extends Component {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
+            dots: false
           }
         }
       ]
