@@ -43,3 +43,11 @@
 .login-form-btn {
   font-size: 1.1em !important;
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 600px) {
+  .login-modal {
+    width: 80% !important;
+  }
+}

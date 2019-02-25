@@ -42,6 +42,7 @@
   padding-top: 30px;
   background-image: linear-gradient(to right top, #103d70, #00b5ad);
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .howSkillHubWorks-inner {
@@ -56,22 +57,20 @@
 
 .howSkillAbout {
   color: white;
-  /* margin-left: 5%; */
+ 
   font-size: 17px;
 }
 
 
 
-/*********************************
+/***************************************************************
  MEDIA QUERIES
-**********************************/
+***************************************************************/
 
-/***********************************
 
-small devices (Ipod, 768px and up) 
+/* Extra small devices (phones, 600px and down) */
 
-***************************************/
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .jumbo-container {
     height: 400px;
     background-position: 0%;
@@ -122,7 +121,32 @@ small devices (Ipod, 768px and up)
     font-size: 16px;
     margin-bottom: 20px;
   }
+}
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 600px) {
+
+  .jumbo-catchphase {
+    width: 60%;
+  }
+
+  .howSkillHubWorks-container {
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+   
+  .howSkillHubIcon .howIcon {
+    font-size: 38px;
+  }
+  
+  .howSkillAbout {
+    font-size: 16px;
+  }
+  
+  
 
   
+
 }
+
