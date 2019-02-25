@@ -159,3 +159,25 @@
   }
 }
 
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+  .jumbo-catchphase {
+    width: 40%;
+  }
+
+  .howSkillHubIcon .howIcon {
+    font-size: 55px;
+  }
+
+  .howSkillAbout {
+    width: 100%;
+  }
+}
+
