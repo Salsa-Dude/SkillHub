@@ -127,6 +127,11 @@
 
 @media (min-width: 600px) {
 
+  .jumbo-container {
+    background-position: 0%;
+    height: 600px;
+  }
+
   .jumbo-catchphase {
     width: 60%;
   }
@@ -150,6 +155,8 @@
 /* Medium devices (landscape tablets, 768px and up) */
 
 @media (min-width: 768px) {
+
+
   .howSkillHubIcon .howIcon {
     font-size: 45px;
   }
@@ -162,12 +169,28 @@
 /* Large devices (laptops/desktops, 992px and up) */
 
 @media (min-width: 992px) {
-  
+  .jumbo-container {
+    background-position: 100%;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
 @media (min-width: 1200px) {
+
+  .jumbo-container {
+    height: 82vh;
+  }
+
+  .jumbo-catchphase h1 {
+    font-size: 3.5em;
+  }
+
+  .jumbo-catchphase h2 {
+    font-size: 1.8em;
+    line-height: 1.4em
+  }
+
   .jumbo-catchphase {
     width: 40%;
   }
@@ -178,6 +201,7 @@
 
   .howSkillAbout {
     width: 100%;
+    font-size: 18px;
   }
 }
 

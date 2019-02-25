@@ -16,58 +16,64 @@ class ExploreContainer extends Component {
 
   render(){
     
-    const exploreGrid = {
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginTop: "20px"
-    }
-
-    const CategoriesGrid = {
-      marginLeft: "auto",
-      marginRight: "auto",
-    }
-
     var settings = {
       dots: false,
       slidesToShow: 5,
-      arrows: true
+      arrows: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        }
+      ]
     };
 
-    const DancingLink = {
-      gridColumn: '1',
-      gridRow: '1 / 3'
-    }
-
-    const linkPadding = {
-      margin: '0',
-      padding: '0'
-    }
 
     return (
      <Fragment>
        <Divider />
        <div className="explore-container">
         <Grid>
-          <Grid.Column style={exploreGrid} width={14}>
+          <Grid.Column className="explore-grid" width={14}>
             <h2>Explore categories and skills</h2>
             <div className="explore-categories">
               <div class="wrapper">
-                <Link style={DancingLink} to="/dancing"><div class="box a">Dancing</div></Link>
-                <Link to="/languages"><div class="box b">Languages</div></Link>
-                <Link to="/carpentry"><div class="box c">Carpentry</div></Link>
-                <Link to="/musical"><div class="box d">Musical</div></Link>
-                <Link to="/art"><div class="box e">Art</div></Link>
+                <Link className="dancing-link explore-link" to="/dancing"><div class="box a">Dancing</div></Link>
+                <Link className="explore-link" to="/languages"><div class="box b">Languages</div></Link>
+                <Link className="explore-link" to="/carpentry"><div class="box c">Carpentry</div></Link>
+                <Link className="explore-link" to="/musical"><div class="box d">Musical</div></Link>
+                <Link className="explore-link" to="/art"><div class="box e">Art</div></Link>
               </div>
             </div>
           </Grid.Column>
         </Grid> 
-        <div className="space"></div>
-        <Grid>
-          <Grid.Column style={CategoriesGrid} width={14}>
+        {/* <div className="space"></div> */}
+        <Grid className="categories-main-container">
+          <Grid.Column className="categories-grid" width={14}>
             <div className="allCategoriesContainer">
               <h2>Featured courses</h2>
               <div className="featuredCourses">
-                <Slider {...settings}>
+                <Slider {...settings} className="settings">
                 {this.props.courses.map(course => {
                     return <div><CourseCard course={course} key={course.id} /></div> 
                   })}
