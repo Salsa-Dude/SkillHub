@@ -51,3 +51,11 @@
     width: 80% !important;
   }
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media (min-width: 768px) {
+  .login-modal {
+    width: 70% !important;
+  }
+}
