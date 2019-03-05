@@ -10,7 +10,10 @@ Message.destroy_all
 Category.destroy_all
 CourseSession.destroy_all
 
-@Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", password: '123', bio: "Salsa and bachata dancer and instructor" , image: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/17903340_1494075703959081_7689354803625661275_n.jpg?_nc_cat=100&_nc_ht=scontent-iad3-1.xx&oh=d0e7db040b8004e07c953c4ea6796b26&oe=5CBAC918")
+#***** Test Account ***************************
+@Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "guest@guest.com", password: 'guest', bio: "Salsa and bachata dancer and instructor" , image: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/17903340_1494075703959081_7689354803625661275_n.jpg?_nc_cat=100&_nc_ht=scontent-iad3-1.xx&oh=d0e7db040b8004e07c953c4ea6796b26&oe=5CBAC918")
+#**********************************************
+
 @Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", password: '123', bio: "I love to travel and explore new hobbies", image: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/46449267_10217886486896539_5240317790014930944_n.jpg?_nc_cat=103&_nc_ht=scontent-iad3-1.xx&oh=baf3da55aaa17b95a3e3e98bbfe9b3f5&oe=5CC6B031")
 @Anna = User.create!(first_name: "Anna", last_name: "Conaway", email: "anna@gmail.com", password: '123', bio: "Fluent in French and in my spare time I like to explore the different flavors in wine", image: "https://miro.medium.com/fit/c/240/240/1*xqYC2dILKcK6jKGzUg-7hA.jpeg")
 @Mike = User.create!(first_name: "Mike", last_name: "Kim", email: "mike@gmail.com", password: '123', bio: "Former collegiate athlete and active professional lacrosse player", image: "https://miro.medium.com/fit/c/240/240/0*EehIf4cq_fyYVL7I")

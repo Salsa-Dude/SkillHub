@@ -149,6 +149,9 @@ class Nav extends Component {
               <div className="login-form-container">
                 <div className="loginHeading">
                   <h2>Login In to Your SkillHub Account</h2>
+                  <Message className="guest-message">
+                    <p>Sign in with email 'guest@guest.com' and password 'guest' to demo the app. Or, create an account below.</p>
+                  </Message>
                 </div>
                 <Divider />
                 <Form
