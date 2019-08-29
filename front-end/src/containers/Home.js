@@ -25,7 +25,7 @@ class Home extends Component {
             <h1>Meet up and Learn a Skill from a Mentor</h1>
             <h2>Find a local mentor and accelerate your learning</h2>
               <div className="get-started-container">
-              <Button  as={NavLink} to="/explore" className="get-started-btn" color='teal'>Get Started</Button>
+              <Button  as={NavLink} to="/categories" className="get-started-btn" color='teal'>Get Started</Button>
               </div>
             </div>
           </div>

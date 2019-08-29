@@ -34,7 +34,7 @@ class App extends Component {
           <Route exact path="/login" render={() => localStorage.getItem('token') ?
             <LoginContainer /> : <Redirect to="/" />}
           />
-          <Route exact path="/explore" component={ExploreContainer} />
+          <Route exact path="/categories" component={ExploreContainer} />
           <Route exact path="/dancing" render={() => <DancingContainer /> } />
           <Route exact path="/languages" render={() => <LanguagesContainer /> } />
           <Route exact path="/carpentry" render={() => <CarpentryContainer /> } />
