@@ -3,6 +3,7 @@ import TopicHeader from '../components/TopicHeader'
 import {connect} from 'react-redux'
 import {fetchingDancingCourses} from '../redux/actions'
 import { Divider } from 'semantic-ui-react'
+import SearchBar from '../components/SearchBar'
 
 import CourseCard from '../components/CourseCard'
 
@@ -26,6 +27,7 @@ class LanguagesContainer extends Component {
           img="https://images.unsplash.com/photo-1513957723230-c330c6152342?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Languages"
         />
+        <SearchBar />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">

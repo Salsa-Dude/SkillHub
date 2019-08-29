@@ -7,3 +7,14 @@
   
 }
 
+.search-bar {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 45% !important;
+}
+
+.ui.search .prompt {
+  border: solid rgb(173, 171, 171) 1px;
+}
+

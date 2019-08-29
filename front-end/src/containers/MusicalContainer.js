@@ -5,6 +5,7 @@ import {fetchingDancingCourses} from '../redux/actions'
 import { Divider } from 'semantic-ui-react'
 import TopicHeader from '../components/TopicHeader'
 import CourseCard from '../components/CourseCard'
+import SearchBar from '../components/SearchBar'
 
 class MusicalContainer extends Component {
 
@@ -25,6 +26,7 @@ class MusicalContainer extends Component {
           img="https://images.unsplash.com/photo-1536657235019-030fc1fd7b43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Musical"
         />
+        <SearchBar />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">
