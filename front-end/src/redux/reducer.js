@@ -1,5 +1,6 @@
 
 import {combineReducers} from 'redux'
+import { fil } from 'date-fns/esm/locale';
 
 const userReducer = (state = null, action) => {
   switch(action.type) {
@@ -19,14 +20,48 @@ const courseReducer = (oldState = [], action) => {
   }
 }
 
-const dancingReducer = (oldState = [], action) => {
+const dancingReducer = (state = [], action) => {
   switch(action.type) {
-    case "FETCHED_DANCING_COURSES":
-      return action.dancingCourses
+    case "FETCHED_DANCING_COURSES_2":
+      console.log(action)
+      return action.danceCourses
+    // case "SEARCH_DANCING_COURSES":
+    //     const {searchTerm} = action;
+    //   console.log(state)
+     
+       
+    //     return {
+    //       ...state,
+    //       searchTerm: searchTerm
+    //     //   ...state,
+    //     //  test: state.filter((val) => val.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    //     }
+   
+      
+      // console.log(state)
+      // let copyState = [...state]
+
+      
+      // let filterDanceCourses = copyState.filter(course => {
+      //   if (course.name.toLowerCase().includes(action.searchTerm.toLowerCase())) {
+      //     return course
+      //   } 
+      // })
+
+      // return filterDanceCourses
     default:
-      return oldState
+      return state
   }
 
+}
+
+const dancingSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_DANCING_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
 }
 
 const loginReducer = (oldState = null, action) => {
@@ -134,7 +169,8 @@ const rootReducer = combineReducers({
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
   messages: messageReducer,
-  mentorCourses: mentorReducer
+  mentorCourses: mentorReducer,
+  dancingSearch: dancingSearch
 })
 
 export default rootReducer

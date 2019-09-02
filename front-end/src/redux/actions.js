@@ -14,12 +14,42 @@ const fetchingDancingCourses = () => {
   return (dispatch) => {
     fetch('https://skillhub-backend.herokuapp.com/api/v1/categories')
     .then(res => res.json())
-    .then(dancingCourses => dispatch(fetchedDancingCourses(dancingCourses)))
+    .then(dancingCourses => {
+      console.log(dancingCourses)
+      // dispatch(fetchedDancingCourses(dancingCourses))
+    })
+  }
+}
+
+const fetchingDancingCourses2 = () => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/dance')
+    .then(res => res.json())
+    .then(danceCategory => {
+     
+      let danceCourses = danceCategory.courses
+      dispatch(fetchedDancingCourses2(danceCourses))
+    })
   }
 }
 
 const fetchedDancingCourses = (dancingCourses) => {
   return {type: "FETCHED_DANCING_COURSES", dancingCourses}
+}
+
+const fetchedDancingCourses2 = (danceCourses) => {
+  return {type: "FETCHED_DANCING_COURSES_2", danceCourses}
+}
+
+
+const searchDancingCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedDancingCourses(event.target.value))
+  }
+}
+
+const searchedDancingCourses = (searchTerm) => {
+  return {type: "SEARCH_DANCING_COURSES", searchTerm}
 }
 
 /////////////// LOGIN/LOGOUT /////////////////////////////////////////////
@@ -297,7 +327,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

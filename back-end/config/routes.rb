@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :categories
       post '/login', to: 'auth#create'
       get '/home', to: 'users#home'
-      
+      get '/dance', to: 'categories#danceCategory'      
     end
   end
 end
