@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get '/languages', to: 'categories#languageCategory'     
       get '/musicals', to: 'categories#musicalCategory'
       get '/carpentry', to: 'categories#carpentryCategory'
+      get '/art', to: 'categories#artCategory'
     end
   end
 end

@@ -24,4 +24,9 @@ class Api::V1::CategoriesController < ApplicationController
     render json: @carpentry
   end
 
+  def artCategory
+    @art = Category.getArtCategory
+    render json: @art 
+  end
+
 end
