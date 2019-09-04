@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import TopicHeader from '../components/TopicHeader'
 import {connect} from 'react-redux'
-import {fetchingDancingCourses} from '../redux/actions'
-import { Divider } from 'semantic-ui-react'
+import {fetchingLanguagesCourses, searchLanguageCourses} from '../redux/actions'
+import { Divider, Search } from 'semantic-ui-react'
 import SearchBar from '../components/SearchBar'
 
 import CourseCard from '../components/CourseCard'
@@ -11,27 +11,52 @@ import CourseCard from '../components/CourseCard'
 class LanguagesContainer extends Component {
 
   componentDidMount() {
-    this.props.fetchingDancingCourses()
+    this.props.fetchingLanguageCourses()
+  }
+
+  onSearchHandle = (e) => {
+    let event = e
+    this.setState({
+      searchTerm: e.target.value
+    })
+    this.props.searchLanguageCourses(event)
+
+    // console.log(e.target.value)
+    // let searchDancingCourses = this.props.dancingCourses.find(course => {
+    //   return course.name === "Dancing"
+    // })
+    // console.log(searchDancingCourses.courses)
   }
 
   render() {
     
-    const languagesCourses = this.props.dancingCourses.find(course => {
-      return course.name === "Languages"
-    })
-
-    return languagesCourses ? (
+    return this.props.languageCourses ? (
       <Fragment>
         <Divider />
         <TopicHeader 
           img="https://images.unsplash.com/photo-1513957723230-c330c6152342?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Languages"
         />
-        <SearchBar />
+        {/* <SearchBar /> */}
+        <Search
+            input={{ fluid: true }} 
+            size="small"
+            className="search-bar"
+            onSearchChange={this.onSearchHandle}
+            // loading={true}
+            // onResultSelect={this.handleResultSelect}
+            // onSearchChange={_.debounce(this.handleSearchChange, 500, {
+            //   leading: true,
+            // })}
+            // results={results}
+            // value={value}
+            // {...this.props}
+            showNoResults={false}
+          />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">
-              {languagesCourses.courses.map(course => {
+              {this.props.languageCourses.map(course => {
                 return <CourseCard key={course.id} course={course} />
               })}
             </div>
@@ -44,12 +69,14 @@ class LanguagesContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { dancingCourses: state.dancingCourses}
+  let courses = state.languageSearch ? state.languageCourses.filter((course) => course.name.toLowerCase().startsWith(state.languageSearch.toLowerCase())) : state.languageCourses
+  return { languageCourses: courses }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingDancingCourses: () => {dispatch(fetchingDancingCourses())}
+    fetchingLanguageCourses: () => {dispatch(fetchingLanguagesCourses())},
+    searchLanguageCourses: (event) => {dispatch(searchLanguageCourses(event))}
   }
 }
 

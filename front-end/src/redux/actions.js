@@ -33,14 +33,31 @@ const fetchingDancingCourses2 = () => {
   }
 }
 
-const fetchedDancingCourses = (dancingCourses) => {
-  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
-}
-
 const fetchedDancingCourses2 = (danceCourses) => {
   return {type: "FETCHED_DANCING_COURSES_2", danceCourses}
 }
 
+const fetchingLanguagesCourses = () => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/languages')
+    .then(res => res.json())
+    .then(languageCategory => {
+     
+      let languageCourses = languageCategory.courses
+      dispatch(fetchedLanguageCourses(languageCourses))
+    })
+  }
+}
+
+const fetchedLanguageCourses = (languageCourses) => {
+  return {type: "FETCHED_LANGUAGES_COURSES", languageCourses}
+}
+
+
+
+const fetchedDancingCourses = (dancingCourses) => {
+  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
+}
 
 const searchDancingCourses = (event) => {
   return dispatch => {
@@ -50,6 +67,16 @@ const searchDancingCourses = (event) => {
 
 const searchedDancingCourses = (searchTerm) => {
   return {type: "SEARCH_DANCING_COURSES", searchTerm}
+}
+
+const searchLanguageCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedLanguageCourses(event.target.value))
+  }
+}
+
+const searchedLanguageCourses = (searchTerm) => {
+  return {type: "SEARCH_LANGUAGE_COURSES", searchTerm}
 }
 
 /////////////// LOGIN/LOGOUT /////////////////////////////////////////////
@@ -327,7 +354,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, searchDancingCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, searchLanguageCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

@@ -25,39 +25,32 @@ const dancingReducer = (state = [], action) => {
     case "FETCHED_DANCING_COURSES_2":
       console.log(action)
       return action.danceCourses
-    // case "SEARCH_DANCING_COURSES":
-    //     const {searchTerm} = action;
-    //   console.log(state)
-     
-       
-    //     return {
-    //       ...state,
-    //       searchTerm: searchTerm
-    //     //   ...state,
-    //     //  test: state.filter((val) => val.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    //     }
-   
-      
-      // console.log(state)
-      // let copyState = [...state]
-
-      
-      // let filterDanceCourses = copyState.filter(course => {
-      //   if (course.name.toLowerCase().includes(action.searchTerm.toLowerCase())) {
-      //     return course
-      //   } 
-      // })
-
-      // return filterDanceCourses
     default:
       return state
   }
+}
 
+const languageReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_LANGUAGES_COURSES":
+    return action.languageCourses
+    default: 
+      return state
+  }
 }
 
 const dancingSearch = (state = null, action) => {
   switch(action.type) {
     case "SEARCH_DANCING_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const languageSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_LANGUAGE_COURSES":
         return action.searchTerm
     default: 
       return state
@@ -164,13 +157,15 @@ const rootReducer = combineReducers({
   user: userReducer,
   courses: courseReducer,
   dancingCourses: dancingReducer,
+  languageCourses: languageReducer,
   login: loginReducer,
   mentorSessions: classSessionReducer, 
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
   messages: messageReducer,
   mentorCourses: mentorReducer,
-  dancingSearch: dancingSearch
+  dancingSearch: dancingSearch,
+  languageSearch: languageSearch
 })
 
 export default rootReducer

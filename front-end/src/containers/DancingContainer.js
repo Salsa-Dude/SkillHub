@@ -57,7 +57,7 @@ class DancingContainer extends Component {
             size="small"
             className="search-bar"
             onSearchChange={this.onSearchHandle}
-            // loading={isLoading}
+            // loading={true}
             // onResultSelect={this.handleResultSelect}
             // onSearchChange={_.debounce(this.handleSearchChange, 500, {
             //   leading: true,
@@ -65,6 +65,7 @@ class DancingContainer extends Component {
             // results={results}
             // value={value}
             // {...this.props}
+            showNoResults={false}
           />
             <div className="ui four column grid">
               <div className="row">
