@@ -5,8 +5,13 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def danceCategory
-    @dance = Category.danceCategory
+    @dance = Category.getDanceCategory
     render json: @dance
+  end
+
+  def languageCategory
+    @languages = Category.getLanguageCategory
+    render json: @languages
   end
 
 end
