@@ -13,4 +13,8 @@ class Category < ApplicationRecord
   def self.getMusicalCategory
     musicals = self.all.find {|category| category.name === "Musical"}
   end
+
+  def self.getCarpentryCategory
+    carpentry = self.all.find {|category| category.name === "Carpentry"}
+  end
 end
