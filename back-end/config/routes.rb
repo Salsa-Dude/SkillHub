@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/home', to: 'users#home'
       get '/dance', to: 'categories#danceCategory'
       get '/languages', to: 'categories#languageCategory'     
+      get '/musicals', to: 'categories#musicalCategory'
     end
   end
 end

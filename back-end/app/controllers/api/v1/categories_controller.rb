@@ -14,4 +14,9 @@ class Api::V1::CategoriesController < ApplicationController
     render json: @languages
   end
 
+  def musicalCategory
+    @musicals = Category.getMusicalCategory
+    render json: @musicals
+  end
+
 end

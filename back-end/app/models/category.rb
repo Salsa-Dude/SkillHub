@@ -8,6 +8,9 @@ class Category < ApplicationRecord
 
   def self.getLanguageCategory
     languages = self.all.find {|category| category.name === "Languages"}
-    p languages
+  end
+
+  def self.getMusicalCategory
+    musicals = self.all.find {|category| category.name === "Musical"}
   end
 end
