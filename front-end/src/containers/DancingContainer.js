@@ -66,6 +66,7 @@ class DancingContainer extends Component {
             // value={value}
             // {...this.props}
             showNoResults={false}
+            value={this.props.dancingSearch}
           />
             <div className="ui four column grid">
               <div className="row">
@@ -83,7 +84,11 @@ class DancingContainer extends Component {
 const mapStateToProps = (state) => {
   console.log(state.dancingSearch)
   let courses = state.dancingSearch ? state.dancingCourses.filter((val) => val.name.toLowerCase().startsWith(state.dancingSearch.toLowerCase())) : state.dancingCourses
-  return { danceCourses: courses }
+  return { 
+    danceCourses: courses,
+    dancingSearch: state.dancingSearch
+
+  }
 }
 
 const mapDispatchToProps = dispatch => {

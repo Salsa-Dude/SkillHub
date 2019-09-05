@@ -23,7 +23,7 @@ const fetchingDancingCourses = () => {
 
 const fetchingDancingCourses2 = () => {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/dance')
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/dance')
     .then(res => res.json())
     .then(danceCategory => {
      
@@ -39,7 +39,7 @@ const fetchedDancingCourses2 = (danceCourses) => {
 
 const fetchingLanguagesCourses = () => {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/languages')
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/languages')
     .then(res => res.json())
     .then(languageCategory => {
      

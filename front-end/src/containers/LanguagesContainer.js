@@ -52,6 +52,7 @@ class LanguagesContainer extends Component {
             // value={value}
             // {...this.props}
             showNoResults={false}
+            value={this.props.languageSearch}
           />
         <div className="dancing-container">
           <div className="ui four column grid">
@@ -69,8 +70,11 @@ class LanguagesContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  let courses = state.languageSearch ? state.languageCourses.filter((course) => course.name.toLowerCase().startsWith(state.languageSearch.toLowerCase())) : state.languageCourses
-  return { languageCourses: courses }
+  let courses = state.languageSearch ? state.languageCourses.filter((course) => course.name.toLowerCase().includes(state.languageSearch.toLowerCase())) : state.languageCourses
+  return { 
+    languageCourses: courses,
+    languageSearch: state.languageSearch 
+  }
 }
 
 const mapDispatchToProps = dispatch => {
