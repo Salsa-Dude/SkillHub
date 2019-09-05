@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {fetchingDancingCourses} from '../redux/actions'
+import {fetchingMusicalCourses, searchMusicalCourses} from '../redux/actions'
 
-import { Divider } from 'semantic-ui-react'
+import { Divider, Search } from 'semantic-ui-react'
 import TopicHeader from '../components/TopicHeader'
 import CourseCard from '../components/CourseCard'
 import SearchBar from '../components/SearchBar'
@@ -10,44 +10,54 @@ import SearchBar from '../components/SearchBar'
 class MusicalContainer extends Component {
 
   componentDidMount() {
-    this.props.fetchingDancingCoursesDispatch()
+    this.props.fetchingMusicalCourses()
   }
 
   render() {
 
-    const musicalCourses = this.props.dancingCourses.find(course => {
-      return course.name === "Musical"
-    })
-
-    return musicalCourses ? (
+    return  (
       <Fragment>
         <Divider />
         <TopicHeader 
           img="https://images.unsplash.com/photo-1536657235019-030fc1fd7b43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Musical"
         />
-        <SearchBar />
+        {/* <SearchBar /> */}
+        <Search
+            input={{ fluid: true }} 
+            size="small"
+            className="search-bar"
+            onSearchChange={this.onSearchHandle}
+            showNoResults={false}
+            value={this.props.dancingSearch}
+          />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">
-              {musicalCourses.courses.map(course => {
+              {/* {musicalCourses.courses.map(course => {
                 return <CourseCard key={course.id} course={course} />
-              })}
+              })} */}
             </div>
           </div>
         </div>
       </Fragment>
-    ) : null
+    ) 
   }
 }
 
 const mapStateToProps = (state) => {
-  return { dancingCourses: state.dancingCourses}
+  // let courses = state.Search ? state.dancingCourses.filter((val) => val.name.toLowerCase().startsWith(state.dancingSearch.toLowerCase())) : state.dancingCourses
+  // return { 
+  //   musicalCourses: courses,
+  //   // dancingSearch: state.dancingSearch
+
+  // }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingDancingCoursesDispatch: () => {dispatch(fetchingDancingCourses())}
+    fetchingMusicalCourses: () => {dispatch(fetchingMusicalCourses())},
+    searchDancingCourses: (event) => {dispatch(searchMusicalCourses(event))}
   }
 }
 

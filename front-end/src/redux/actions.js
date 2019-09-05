@@ -21,6 +21,10 @@ const fetchingDancingCourses = () => {
   }
 }
 
+const fetchedDancingCourses = (dancingCourses) => {
+  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
+}
+
 const fetchingDancingCourses2 = () => {
   return (dispatch) => {
     fetch('https://skillhub-backend.herokuapp.com/api/v1/dance')
@@ -53,11 +57,24 @@ const fetchedLanguageCourses = (languageCourses) => {
   return {type: "FETCHED_LANGUAGES_COURSES", languageCourses}
 }
 
-
-
-const fetchedDancingCourses = (dancingCourses) => {
-  return {type: "FETCHED_DANCING_COURSES", dancingCourses}
+const fetchingMusicalCourses = () => {
+  return (dispatch) => {
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/musicals')
+    .then(res => res.json())
+    .then(musicalCategory => {
+     
+      let musicalCourses = musicalCategory.courses
+      dispatch(fetchedMusicalCourses(musicalCourses))
+    })
+  }
 }
+
+const fetchedMusicalCourses = (musicalCourses) => {
+  return {type: "FETCHED_MUSICAL_COURSES", musicalCourses}
+}
+
+
+/////////////// SEARCH /////////////////////////////////////////////
 
 const searchDancingCourses = (event) => {
   return dispatch => {
@@ -76,6 +93,16 @@ const searchLanguageCourses = (event) => {
 }
 
 const searchedLanguageCourses = (searchTerm) => {
+  return {type: "SEARCH_LANGUAGE_COURSES", searchTerm}
+}
+
+const searchMusicalCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedMusicalCourses(event.target.value))
+  }
+}
+
+const searchedMusicalCourses = (searchTerm) => {
   return {type: "SEARCH_LANGUAGE_COURSES", searchTerm}
 }
 
@@ -354,7 +381,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, searchDancingCourses, searchLanguageCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

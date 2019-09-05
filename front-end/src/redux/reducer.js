@@ -39,6 +39,15 @@ const languageReducer = (state = [], action) => {
   }
 }
 
+const musicalReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_MUSICAL_COURSES":
+    return action.musicalCourses
+    default: 
+      return state
+  }
+}
+
 const dancingSearch = (state = null, action) => {
   switch(action.type) {
     case "SEARCH_DANCING_COURSES":
@@ -158,6 +167,7 @@ const rootReducer = combineReducers({
   courses: courseReducer,
   dancingCourses: dancingReducer,
   languageCourses: languageReducer,
+  musicalCourses: musicalReducer,
   login: loginReducer,
   mentorSessions: classSessionReducer, 
   courseSessions: courseSessionReducer,
