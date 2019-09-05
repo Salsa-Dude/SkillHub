@@ -103,7 +103,7 @@ const searchMusicalCourses = (event) => {
 }
 
 const searchedMusicalCourses = (searchTerm) => {
-  return {type: "SEARCH_LANGUAGE_COURSES", searchTerm}
+  return {type: "SEARCH_MUSICAL_COURSES", searchTerm}
 }
 
 /////////////// LOGIN/LOGOUT /////////////////////////////////////////////

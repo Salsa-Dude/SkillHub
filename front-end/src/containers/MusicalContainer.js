@@ -13,9 +13,17 @@ class MusicalContainer extends Component {
     this.props.fetchingMusicalCourses()
   }
 
-  render() {
+  onSearchHandle = (e) => {
+    let event = e
+    this.setState({
+      searchTerm: e.target.value
+    })
+    this.props.searchMusicalCourses(event)
+  }
 
-    return  (
+  render() {
+  
+    return this.props.musicalCourses? (
       <Fragment>
         <Divider />
         <TopicHeader 
@@ -29,35 +37,36 @@ class MusicalContainer extends Component {
             className="search-bar"
             onSearchChange={this.onSearchHandle}
             showNoResults={false}
-            value={this.props.dancingSearch}
+            value={this.props.musicalSearch}
           />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">
-              {/* {musicalCourses.courses.map(course => {
+              {this.props.musicalCourses.map(course => {
                 return <CourseCard key={course.id} course={course} />
-              })} */}
+              })}
             </div>
           </div>
         </div>
       </Fragment>
-    ) 
+    ) : null
   }
 }
 
 const mapStateToProps = (state) => {
-  // let courses = state.Search ? state.dancingCourses.filter((val) => val.name.toLowerCase().startsWith(state.dancingSearch.toLowerCase())) : state.dancingCourses
-  // return { 
-  //   musicalCourses: courses,
-  //   // dancingSearch: state.dancingSearch
+ 
+  let courses = state.musicalSearch ? state.musicalCourses.filter((course) => course.name.toLowerCase().includes(state.musicalSearch.toLowerCase())) : state.musicalCourses
+  return { 
+    musicalCourses: courses,
+    musicalSearch: state.musicalSearch
 
-  // }
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchingMusicalCourses: () => {dispatch(fetchingMusicalCourses())},
-    searchDancingCourses: (event) => {dispatch(searchMusicalCourses(event))}
+    searchMusicalCourses: (event) => {dispatch(searchMusicalCourses(event))}
   }
 }
 

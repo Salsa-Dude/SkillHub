@@ -66,6 +66,15 @@ const languageSearch = (state = null, action) => {
   }
 }
 
+const musicalSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_MUSICAL_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
 const loginReducer = (oldState = null, action) => {
   switch(action.type) {
     case "LOGGED_IN":
@@ -175,7 +184,8 @@ const rootReducer = combineReducers({
   messages: messageReducer,
   mentorCourses: mentorReducer,
   dancingSearch: dancingSearch,
-  languageSearch: languageSearch
+  languageSearch: languageSearch,
+  musicalSearch: musicalSearch
 })
 
 export default rootReducer
