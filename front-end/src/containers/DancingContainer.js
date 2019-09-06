@@ -24,24 +24,12 @@ class DancingContainer extends Component {
       searchTerm: e.target.value
     })
     this.props.searchDancingCourses(event)
-
-    // console.log(e.target.value)
-    // let searchDancingCourses = this.props.dancingCourses.find(course => {
-    //   return course.name === "Dancing"
-    // })
-    // console.log(searchDancingCourses.courses)
   }
 
   
 
   render() {
     
-    // const dancingCourses = this.props.dancingCourses.find(course => {
-    //   return course.name === "Dancing"
-    // })
-
-    
-  
     return this.props.danceCourses? (
       <Fragment>
         <Divider />

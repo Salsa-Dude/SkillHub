@@ -73,6 +73,22 @@ const fetchedMusicalCourses = (musicalCourses) => {
   return {type: "FETCHED_MUSICAL_COURSES", musicalCourses}
 }
 
+const fetchingCarpentryCourses = () => {
+  return (dispatch) => {
+    fetch('http://skillhub-backend.herokuapp.com/api/v1/carpentry')
+    .then(res => res.json())
+    .then(carpentryCategory => {
+     
+      let carpentryCourses = carpentryCategory.courses
+      dispatch(fetchedCarpentryCourses(carpentryCourses))
+    })
+  }
+}
+
+const fetchedCarpentryCourses = (carpentryCourses) => {
+  return {type: "FETCHED_CARPENTRY_COURSES", carpentryCourses}
+}
+
 
 /////////////// SEARCH /////////////////////////////////////////////
 
@@ -105,6 +121,17 @@ const searchMusicalCourses = (event) => {
 const searchedMusicalCourses = (searchTerm) => {
   return {type: "SEARCH_MUSICAL_COURSES", searchTerm}
 }
+
+const searchCarpentryCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedCarpentryCourses(event.target.value))
+  }
+}
+
+const searchedCarpentryCourses = (searchTerm) => {
+  return {type: "SEARCH_CARPENTRY_COURSES", searchTerm}
+}
+
 
 /////////////// LOGIN/LOGOUT /////////////////////////////////////////////
 
@@ -381,7 +408,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, searchCarpentryCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingCarpentryCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 

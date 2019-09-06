@@ -48,6 +48,15 @@ const musicalReducer = (state = [], action) => {
   }
 }
 
+const carpentryReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_CARPENTRY_COURSES":
+    return action.carpentryCourses
+    default: 
+      return state
+  }
+}
+
 const dancingSearch = (state = null, action) => {
   switch(action.type) {
     case "SEARCH_DANCING_COURSES":
@@ -69,6 +78,15 @@ const languageSearch = (state = null, action) => {
 const musicalSearch = (state = null, action) => {
   switch(action.type) {
     case "SEARCH_MUSICAL_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const carpentrySearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_CARPENTRY_COURSES":
         return action.searchTerm
     default: 
       return state
@@ -177,6 +195,7 @@ const rootReducer = combineReducers({
   dancingCourses: dancingReducer,
   languageCourses: languageReducer,
   musicalCourses: musicalReducer,
+  carpentryCourses: carpentryReducer,
   login: loginReducer,
   mentorSessions: classSessionReducer, 
   courseSessions: courseSessionReducer,
@@ -185,7 +204,8 @@ const rootReducer = combineReducers({
   mentorCourses: mentorReducer,
   dancingSearch: dancingSearch,
   languageSearch: languageSearch,
-  musicalSearch: musicalSearch
+  musicalSearch: musicalSearch,
+  carpentrySearch: carpentrySearch
 })
 
 export default rootReducer
