@@ -89,6 +89,22 @@ const fetchedCarpentryCourses = (carpentryCourses) => {
   return {type: "FETCHED_CARPENTRY_COURSES", carpentryCourses}
 }
 
+const fetchingArtCourses = () => {
+  return (dispatch) => {
+    fetch('http://skillhub-backend.herokuapp.com/api/v1/art')
+    .then(res => res.json())
+    .then(artCategory => {
+     
+      let artCourses = artCategory.courses
+      dispatch(fetchedArtCourses(artCourses))
+    })
+  }
+}
+
+const fetchedArtCourses = (artCourses) => {
+  return {type: "FETCHED_ART_COURSES", artCourses}
+}
+
 
 /////////////// SEARCH /////////////////////////////////////////////
 
@@ -130,6 +146,16 @@ const searchCarpentryCourses = (event) => {
 
 const searchedCarpentryCourses = (searchTerm) => {
   return {type: "SEARCH_CARPENTRY_COURSES", searchTerm}
+}
+
+const searchArtCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedArtCourses(event.target.value))
+  }
+}
+
+const searchedArtCourses = (searchTerm) => {
+  return {type: "SEARCH_ART_COURSES", searchTerm}
 }
 
 
@@ -408,7 +434,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, searchCarpentryCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingCarpentryCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, searchCarpentryCourses, searchArtCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingCarpentryCourses, fetchingArtCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 
