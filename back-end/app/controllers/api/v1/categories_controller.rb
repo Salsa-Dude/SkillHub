@@ -28,5 +28,5 @@ class Api::V1::CategoriesController < ApplicationController
     @art = Category.getArtCategory
     render json: @art 
   end
-
+  
 end
