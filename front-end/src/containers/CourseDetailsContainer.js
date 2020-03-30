@@ -279,7 +279,7 @@ class CourseDetailsContainer extends Component {
                 <Grid.Column style={exploreGrid} width={14}>
                   <div className="bread-crumb">
                     <Breadcrumb size='large'>
-                    <Link to="/explore">
+                    <Link to="/categories">
                     <Breadcrumb.Section style={BreadcrumbStyle} link>Courses</Breadcrumb.Section>
                     </Link>
                     <Breadcrumb.Divider icon='right chevron' />

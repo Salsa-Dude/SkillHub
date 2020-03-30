@@ -1,33 +1,48 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {fetchingDancingCourses} from '../redux/actions'
+import {fetchingArtCourses, searchArtCourses} from '../redux/actions'
 
-import { Divider } from 'semantic-ui-react'
+import { Divider, Search } from 'semantic-ui-react'
 import TopicHeader from '../components/TopicHeader'
 import CourseCard from '../components/CourseCard'
+import SearchBar from '../components/SearchBar'
+
 class ArtContainer extends Component {
 
   componentDidMount() {
-    this.props.fetchingDancingCourses()
+    this.props.fetchingArtCourses()
+  }
+
+  onSearchHandle = (e) => {
+    let event = e
+    this.setState({
+      searchTerm: e.target.value
+    })
+    this.props.searchArtCourses(event)
   }
 
   render() {
 
-    const artCourses = this.props.dancingCourses.find(course => {
-      return course.name === "Art"
-    })
-
-    return artCourses ? (
+    return this.props.artCourses ? (
       <Fragment>
          <Divider />
         <TopicHeader 
           img="https://images.unsplash.com/photo-1511113495287-4c70b42107ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
           title="Art"
         />
+         {/* <SearchBar /> */}
+         <Search
+            input={{ fluid: true }} 
+            size="small"
+            className="search-bar"
+            onSearchChange={this.onSearchHandle}
+            showNoResults={false}
+            value={this.props.artSearch}
+          />
         <div className="dancing-container">
           <div className="ui four column grid">
             <div className="row">
-              {artCourses.courses.map(course => {
+              {this.props.artCourses.map(course => {
                 return <CourseCard key={course.id} course={course} />
               })}
             </div>
@@ -39,12 +54,18 @@ class ArtContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { dancingCourses: state.dancingCourses}
+  let courses = state.artSearch ? state.artCourses.filter((course) => course.name.toLowerCase().includes(state.artSearch.toLowerCase())) : state.artCourses
+  return { 
+    artCourses: courses,
+    artSearch: state.artSearch
+
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingDancingCourses: () => {dispatch(fetchingDancingCourses())}
+    fetchingArtCourses: () => {dispatch(fetchingArtCourses())},
+    searchArtCourses: (event) => {dispatch(searchArtCourses(event))}
   }
 }
 

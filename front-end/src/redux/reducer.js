@@ -1,5 +1,6 @@
 
 import {combineReducers} from 'redux'
+import { fil } from 'date-fns/esm/locale';
 
 const userReducer = (state = null, action) => {
   switch(action.type) {
@@ -19,14 +20,95 @@ const courseReducer = (oldState = [], action) => {
   }
 }
 
-const dancingReducer = (oldState = [], action) => {
+const dancingReducer = (state = [], action) => {
   switch(action.type) {
-    case "FETCHED_DANCING_COURSES":
-      return action.dancingCourses
+    case "FETCHED_DANCING_COURSES_2":
+      console.log(action)
+      return action.danceCourses
     default:
-      return oldState
+      return state
   }
+}
 
+const languageReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_LANGUAGES_COURSES":
+    return action.languageCourses
+    default: 
+      return state
+  }
+}
+
+const musicalReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_MUSICAL_COURSES":
+    return action.musicalCourses
+    default: 
+      return state
+  }
+}
+
+const carpentryReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_CARPENTRY_COURSES":
+    return action.carpentryCourses
+    default: 
+      return state
+  }
+}
+
+const artReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_ART_COURSES":
+    return action.artCourses
+    default: 
+      return state
+  }
+}
+
+const dancingSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_DANCING_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const languageSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_LANGUAGE_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const musicalSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_MUSICAL_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const carpentrySearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_CARPENTRY_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
+}
+
+const artSearch = (state = null, action) => {
+  switch(action.type) {
+    case "SEARCH_ART_COURSES":
+        return action.searchTerm
+    default: 
+      return state
+  }
 }
 
 const loginReducer = (oldState = null, action) => {
@@ -129,12 +211,21 @@ const rootReducer = combineReducers({
   user: userReducer,
   courses: courseReducer,
   dancingCourses: dancingReducer,
+  languageCourses: languageReducer,
+  musicalCourses: musicalReducer,
+  carpentryCourses: carpentryReducer,
+  artCourses: artReducer,
   login: loginReducer,
   mentorSessions: classSessionReducer, 
   courseSessions: courseSessionReducer,
   reviews: reviewReducer,
   messages: messageReducer,
-  mentorCourses: mentorReducer
+  mentorCourses: mentorReducer,
+  dancingSearch: dancingSearch,
+  languageSearch: languageSearch,
+  musicalSearch: musicalSearch,
+  carpentrySearch: carpentrySearch,
+  artSearch: artSearch
 })
 
 export default rootReducer

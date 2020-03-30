@@ -7,5 +7,5 @@ Skill Hub is a community platform where people can find local mentors in the DC 
 + Utilized JSON web tokens and localStorage to store encrypted user information client-side
 
 For guest login <br>
-email: andrew@gmail.com <br>
-password: 123
+email: guest@guest.com <br>
+password: guest

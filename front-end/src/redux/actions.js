@@ -14,13 +14,150 @@ const fetchingDancingCourses = () => {
   return (dispatch) => {
     fetch('https://skillhub-backend.herokuapp.com/api/v1/categories')
     .then(res => res.json())
-    .then(dancingCourses => dispatch(fetchedDancingCourses(dancingCourses)))
+    .then(dancingCourses => {
+      console.log(dancingCourses)
+      // dispatch(fetchedDancingCourses(dancingCourses))
+    })
   }
 }
 
 const fetchedDancingCourses = (dancingCourses) => {
   return {type: "FETCHED_DANCING_COURSES", dancingCourses}
 }
+
+const fetchingDancingCourses2 = () => {
+  return (dispatch) => {
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/dance')
+    .then(res => res.json())
+    .then(danceCategory => {
+     
+      let danceCourses = danceCategory.courses
+      dispatch(fetchedDancingCourses2(danceCourses))
+    })
+  }
+}
+
+const fetchedDancingCourses2 = (danceCourses) => {
+  return {type: "FETCHED_DANCING_COURSES_2", danceCourses}
+}
+
+const fetchingLanguagesCourses = () => {
+  return (dispatch) => {
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/languages')
+    .then(res => res.json())
+    .then(languageCategory => {
+     
+      let languageCourses = languageCategory.courses
+      dispatch(fetchedLanguageCourses(languageCourses))
+    })
+  }
+}
+
+const fetchedLanguageCourses = (languageCourses) => {
+  return {type: "FETCHED_LANGUAGES_COURSES", languageCourses}
+}
+
+const fetchingMusicalCourses = () => {
+  return (dispatch) => {
+    fetch('https://skillhub-backend.herokuapp.com/api/v1/musicals')
+    .then(res => res.json())
+    .then(musicalCategory => {
+     
+      let musicalCourses = musicalCategory.courses
+      dispatch(fetchedMusicalCourses(musicalCourses))
+    })
+  }
+}
+
+const fetchedMusicalCourses = (musicalCourses) => {
+  return {type: "FETCHED_MUSICAL_COURSES", musicalCourses}
+}
+
+const fetchingCarpentryCourses = () => {
+  return (dispatch) => {
+    fetch('http://skillhub-backend.herokuapp.com/api/v1/carpentry')
+    .then(res => res.json())
+    .then(carpentryCategory => {
+     
+      let carpentryCourses = carpentryCategory.courses
+      dispatch(fetchedCarpentryCourses(carpentryCourses))
+    })
+  }
+}
+
+const fetchedCarpentryCourses = (carpentryCourses) => {
+  return {type: "FETCHED_CARPENTRY_COURSES", carpentryCourses}
+}
+
+const fetchingArtCourses = () => {
+  return (dispatch) => {
+    fetch('http://skillhub-backend.herokuapp.com/api/v1/art')
+    .then(res => res.json())
+    .then(artCategory => {
+     
+      let artCourses = artCategory.courses
+      dispatch(fetchedArtCourses(artCourses))
+    })
+  }
+}
+
+const fetchedArtCourses = (artCourses) => {
+  return {type: "FETCHED_ART_COURSES", artCourses}
+}
+
+
+/////////////// SEARCH /////////////////////////////////////////////
+
+const searchDancingCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedDancingCourses(event.target.value))
+  }
+}
+
+const searchedDancingCourses = (searchTerm) => {
+  return {type: "SEARCH_DANCING_COURSES", searchTerm}
+}
+
+const searchLanguageCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedLanguageCourses(event.target.value))
+  }
+}
+
+const searchedLanguageCourses = (searchTerm) => {
+  return {type: "SEARCH_LANGUAGE_COURSES", searchTerm}
+}
+
+const searchMusicalCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedMusicalCourses(event.target.value))
+  }
+}
+
+const searchedMusicalCourses = (searchTerm) => {
+  return {type: "SEARCH_MUSICAL_COURSES", searchTerm}
+}
+
+const searchCarpentryCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedCarpentryCourses(event.target.value))
+  }
+}
+
+const searchedCarpentryCourses = (searchTerm) => {
+  return {type: "SEARCH_CARPENTRY_COURSES", searchTerm}
+}
+
+const searchArtCourses = (event) => {
+  return dispatch => {
+    dispatch(searchedArtCourses(event.target.value))
+  }
+}
+
+const searchedArtCourses = (searchTerm) => {
+  return {type: "SEARCH_ART_COURSES", searchTerm}
+}
+
 
 /////////////// LOGIN/LOGOUT /////////////////////////////////////////////
 
@@ -297,7 +434,7 @@ const deleteMentorCourse = (menterCourse) => {
 }
 
 
-export {fetchingCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
+export {fetchingCourses, searchDancingCourses, searchLanguageCourses, searchMusicalCourses, searchCarpentryCourses, searchArtCourses, fetchingClassSessions, fetchingCourseSessions, fetchingDancingCourses, fetchingLanguagesCourses, fetchingMusicalCourses, fetchingCarpentryCourses, fetchingArtCourses, fetchingDancingCourses2, loggingIn, loggingOut, fetchingUser, bookingSession, updatingSession, deletingSession, addingReview, fetchingMessages, sendingMessage, deletingMessage, fetchingMentorCourses, updatingMentorCourses, deletingMentorCourse}
 
 
 
