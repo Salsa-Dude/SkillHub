@@ -71,9 +71,9 @@ class Nav extends Component {
             // active={this.props.pathname === "/home"}
           />
           <Menu.Item
-            name='Explore'
+            name='Categories'
             as={NavLink}
-            to="/explore"
+            to="/categories"
           />
           <Menu.Item
             name='My Sessions'
