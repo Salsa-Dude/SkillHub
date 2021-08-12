@@ -1,7 +1,11 @@
 
+// Development link: http://localhost:3000
+// Production link: https://skillhub-backend.herokuapp.com
+
+
 const fetchingCourses = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/courses')
+    fetch('http://localhost:3000/api/v1/courses')
     .then(res => res.json())
     .then(courses => dispatch({type: "FETCHED_COURSES", courses}))
   }
@@ -12,7 +16,7 @@ const fetchingCourses = () => {
 
 const fetchingDancingCourses = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/categories')
+    fetch('http://localhost:3000/api/v1/categories')
     .then(res => res.json())
     .then(dancingCourses => {
       console.log(dancingCourses)
@@ -27,7 +31,7 @@ const fetchedDancingCourses = (dancingCourses) => {
 
 const fetchingDancingCourses2 = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/dance')
+    fetch('http://localhost:3000/api/v1/dance')
     .then(res => res.json())
     .then(danceCategory => {
      
@@ -43,7 +47,7 @@ const fetchedDancingCourses2 = (danceCourses) => {
 
 const fetchingLanguagesCourses = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/languages')
+    fetch('http://localhost:3000/api/v1/languages')
     .then(res => res.json())
     .then(languageCategory => {
      
@@ -59,7 +63,7 @@ const fetchedLanguageCourses = (languageCourses) => {
 
 const fetchingMusicalCourses = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/musicals')
+    fetch('http://localhost:3000/api/v1/musicals')
     .then(res => res.json())
     .then(musicalCategory => {
      
@@ -75,7 +79,7 @@ const fetchedMusicalCourses = (musicalCourses) => {
 
 const fetchingCarpentryCourses = () => {
   return (dispatch) => {
-    fetch('http://skillhub-backend.herokuapp.com/api/v1/carpentry')
+    fetch('http://localhost:3000/api/v1/carpentry')
     .then(res => res.json())
     .then(carpentryCategory => {
      
@@ -91,7 +95,7 @@ const fetchedCarpentryCourses = (carpentryCourses) => {
 
 const fetchingArtCourses = () => {
   return (dispatch) => {
-    fetch('http://skillhub-backend.herokuapp.com/api/v1/art')
+    fetch('http://localhost:3000/api/v1/art')
     .then(res => res.json())
     .then(artCategory => {
      
@@ -163,7 +167,7 @@ const searchedArtCourses = (searchTerm) => {
 
 const loggingIn = (loggingInfo) => {
   return (dispatch) => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/login`, {
+    fetch(`http://localhost:3000/api/v1/login`, {
       method:"POST",
       headers: {
         "Content-type":"application/json",
@@ -207,7 +211,7 @@ const logOut = (user) => {
 
 const fetchingUser = (id) => {
   return dispatch => {
-   fetch(`https://skillhub-backend.herokuapp.com/api/v1/users/${id}`)
+   fetch(`http://localhost:3000/api/v1/users/${id}`)
    .then(res => res.json())
    .then(data => {
      dispatch(fetchUser(data))
@@ -224,7 +228,7 @@ const fetchUser = (userData) => {
 
 const fetchingClassSessions = () => {
   return dispatch => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/course_sessions')
+    fetch('http://localhost:3000/api/v1/course_sessions')
     .then(res => res.json())
     .then(data => {
       console.log(data)
@@ -245,7 +249,7 @@ const fetchClassSessions = (classData) => {
 
 const fetchingCourseSessions = () => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/course_sessions')
+    fetch('http://localhost:3000/api/v1/course_sessions')
     .then(res => res.json())
     .then(data => {
       let userSessions = data.filter(session => {
@@ -266,7 +270,7 @@ const bookedSession = (sessionData) => {
 
 const bookingSession = (sessionData) => {
   return (dispatch) => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/course_sessions', {
+    fetch('http://localhost:3000/api/v1/course_sessions', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -282,7 +286,7 @@ const bookingSession = (sessionData) => {
 const updatingSession = (sessionData) => {
   console.log(sessionData)
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/course_sessions/${sessionData.id}`, {
+    fetch(`http://localhost:3000/api/v1/course_sessions/${sessionData.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -301,7 +305,7 @@ const updatedSession = (sessionData) => {
 
 const deletingSession = (id) => {
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/course_sessions/${id}`, {
+    fetch(`http://localhost:3000/api/v1/course_sessions/${id}`, {
       method: "DELETE"
     }).then(res => res.json())
     .then(data => {
@@ -318,7 +322,7 @@ const deleteSession = (session) => {
 
 const addingReview = (sessionData) => {
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/reviews`, {
+    fetch(`http://localhost:3000/api/v1/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -337,7 +341,7 @@ const addReview = (reviewData) => {
 
 const fetchingMessages = () => {
   return dispatch => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/messages')
+    fetch('http://localhost:3000/api/v1/messages')
     .then(res => res.json())
     .then(data => {
       dispatch(fetchedMessages(data))
@@ -351,7 +355,7 @@ const fetchedMessages = (messagesData) => {
 
 const sendingMessage = (data) => {
   return dispatch => {
-    fetch('https://skillhub-backend.herokuapp.com/api/v1/messages', {
+    fetch('http://localhost:3000/api/v1/messages', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -370,7 +374,7 @@ const sendMessage = (messageData) => {
 
 const deletingMessage = (id) => {
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/messages/${id}`, {
+    fetch(`http://localhost:3000/api/v1/messages/${id}`, {
       method: "DELETE"
     }).then(res => res.json())
     .then(data => {
@@ -387,7 +391,7 @@ const deleteMessage = (messageData) => {
 
 const fetchingMentorCourses = () => {
   return dispatch => {
-    fetch("https://skillhub-backend.herokuapp.com/api/v1/courses")
+    fetch("http://localhost:3000/api/v1/courses")
     .then(res => res.json())
     .then(data => {
       dispatch(fetchMentorCourses(data))
@@ -401,7 +405,7 @@ const fetchMentorCourses = (mentorCoursesData) => {
 
 const updatingMentorCourses = (updateMentorCourses) => {
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/courses/${updateMentorCourses.id}`, {
+    fetch(`http://localhost:3000/api/v1/courses/${updateMentorCourses.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -420,7 +424,7 @@ const updatedMentorCourses = (updatedCourses) => {
 
 const deletingMentorCourse = (id) => {
   return dispatch => {
-    fetch(`https://skillhub-backend.herokuapp.com/api/v1/courses/${id}`, {
+    fetch(`http://localhost:3000/api/v1/courses/${id}`, {
       method: "DELETE"
     }).then(res => res.json())
     .then(data => {
