@@ -27,7 +27,7 @@ class MusicalContainer extends Component {
       <Fragment>
         <Divider />
         <TopicHeader 
-          img="https://images.unsplash.com/photo-1536657235019-030fc1fd7b43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
+          img="https://skill-hub-images.s3.amazonaws.com/topic/musical-topic.jpg" 
           title="Musical"
         />
         {/* <SearchBar /> */}
