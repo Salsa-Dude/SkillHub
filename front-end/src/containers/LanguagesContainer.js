@@ -34,7 +34,7 @@ class LanguagesContainer extends Component {
       <Fragment>
         <Divider />
         <TopicHeader 
-          img="https://images.unsplash.com/photo-1513957723230-c330c6152342?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
+          img="https://skill-hub-images.s3.amazonaws.com/topic/language-topic.jpeg" 
           title="Languages"
         />
         {/* <SearchBar /> */}
