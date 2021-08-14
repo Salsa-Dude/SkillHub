@@ -5,6 +5,12 @@
  
 }
 
+.course-card-container img {
+ /* height: 180px; */
+}
+
 .rating-number {
   font-weight: 600;
 }
+
+
