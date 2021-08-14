@@ -28,7 +28,7 @@ class CarpentryContainer extends Component {
       <Fragment>
         <Divider />
         <TopicHeader 
-          img="https://images.unsplash.com/photo-1497219055242-93359eeed651?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1591&q=80" 
+          img="https://skill-hub-images.s3.amazonaws.com/topic/carpentry-topic.jpg" 
           title="Carpentry"
         />
          {/* <SearchBar /> */}
