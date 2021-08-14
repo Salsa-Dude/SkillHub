@@ -89,7 +89,7 @@ const linkPadding = {
 }
 
 .d {
-  background: linear-gradient(rgba(100, 99, 99, 0.4), rgba(100, 99, 99, 0.4)), url("https://images.unsplash.com/photo-1513696447688-c301fedbda2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80");
+  background: linear-gradient(rgba(100, 99, 99, 0.4), rgba(100, 99, 99, 0.4)), url("https://skill-hub-images.s3.amazonaws.com/explore/musical-explore.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
