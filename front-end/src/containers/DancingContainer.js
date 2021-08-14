@@ -34,7 +34,7 @@ class DancingContainer extends Component {
       <Fragment>
         <Divider />
         <TopicHeader 
-          img="https://images.unsplash.com/photo-1511913411692-818ea059c8be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" 
+          img="https://skill-hub-images.s3.amazonaws.com/topic/dancing-topic.jpg" 
           title="Dancing"
         />
          
