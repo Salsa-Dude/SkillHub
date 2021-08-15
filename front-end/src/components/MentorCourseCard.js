@@ -49,7 +49,17 @@ class MentorCourseCard extends Component {
   }
 
   deleteCourse = () => {
-    this.props.deleteCourse(this.state.courseId)
+    //this.props.deleteCourse(this.state.courseId)
+
+    swal({
+      text: "Can't delete course as a guest",
+      icon: "error",
+      button: "Ok",
+    });
+      
+    this.setState({ 
+      open: false
+    })
   }
 
   nameChange = (e) => {
