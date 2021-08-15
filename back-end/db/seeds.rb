@@ -10,6 +10,7 @@ Message.destroy_all
 Category.destroy_all
 CourseSession.destroy_all
 
+
 #***** Test Account ***************************
 @Orlando = User.create!(first_name: "Orlando", last_name: "Machuca", email: "guest@guest.com", password: 'guest', bio: "Salsa and bachata dancer and instructor" , image: "https://skill-hub-images.s3.amazonaws.com/users/orlando.jpeg")
 #**********************************************
